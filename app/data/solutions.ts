@@ -1,0 +1,381 @@
+import type { LucideIcon } from "lucide-react";
+import { Workflow, BrainCircuit, Bot, BarChart3, Code2 } from "lucide-react";
+
+export interface Solution {
+  slug: string;
+  navTitle: string;
+  title: string;
+  shortDescription: string;
+  heroHeadline: string;
+  heroSub: string;
+  icon: LucideIcon;
+  svgIllustration: string;
+  capabilities: string[];
+  process: { step: string; title: string; description: string }[];
+  benefits: { title: string; description: string }[];
+  useCases: string[];
+  stack: string[];
+}
+
+export const solutions: Solution[] = [
+  {
+    slug: "ai-automation",
+    navTitle: "AI Automation",
+    title: "AI Automation",
+    shortDescription:
+      "Automate repetitive operations and free your teams to focus on higher-value work.",
+    heroHeadline: "Automation That Thinks.",
+    heroSub:
+      "We design intelligent automation systems that handle repetitive operational work end-to-end, reducing manual effort while improving accuracy and speed.",
+    icon: Workflow,
+    svgIllustration: "/Images/ai-automation.svg",
+    capabilities: [
+      "Process Automation",
+      "Document Intelligence",
+      "Workflow Orchestration",
+      "Robotic Task Automation",
+      "Intelligent Alerts",
+      "System Integration",
+    ],
+    process: [
+      {
+        step: "01",
+        title: "Map",
+        description:
+          "We audit existing workflows to find automation opportunities with the highest operational impact.",
+      },
+      {
+        step: "02",
+        title: "Design",
+        description:
+          "We architect automation logic that fits your systems, data, and compliance requirements.",
+      },
+      {
+        step: "03",
+        title: "Build",
+        description:
+          "We implement automations using resilient, observable, and maintainable pipelines.",
+      },
+      {
+        step: "04",
+        title: "Operate",
+        description:
+          "We monitor, refine, and scale automations as your operations evolve.",
+      },
+    ],
+    benefits: [
+      {
+        title: "Fewer Manual Hours",
+        description:
+          "Remove repetitive tasks from your team’s day-to-day workload.",
+      },
+      {
+        title: "Fewer Errors",
+        description: "Reduce human error in high-volume operational processes.",
+      },
+      {
+        title: "Faster Turnaround",
+        description: "Cut process cycle times from days to minutes.",
+      },
+    ],
+    useCases: [
+      "Invoice & document processing",
+      "Customer support triage",
+      "Internal operations workflows",
+      "Data entry & reconciliation",
+      "Compliance monitoring",
+    ],
+    stack: ["Python", "Node.js", "n8n", "Temporal", "AWS Lambda", "PostgreSQL"],
+  },
+  {
+    slug: "custom-ai",
+    navTitle: "Custom AI Development",
+    title: "Custom AI Development",
+    shortDescription:
+      "Purpose-built AI models and systems engineered around your business problem.",
+    heroHeadline: "Intelligence, Custom-Built.",
+    heroSub:
+      "We design and build bespoke AI systems tailored to your data, your workflows, and your business objectives — not off-the-shelf approximations.",
+    icon: BrainCircuit,
+    svgIllustration: "/Images/ai-powered-applications.svg",
+    capabilities: [
+      "Model Fine-Tuning",
+      "LLM Integration",
+      "Computer Vision",
+      "Predictive Modeling",
+      "Retrieval-Augmented Generation",
+      "Custom ML Pipelines",
+    ],
+    process: [
+      {
+        step: "01",
+        title: "Discover",
+        description:
+          "We define the problem, success metrics, and available data.",
+      },
+      {
+        step: "02",
+        title: "Prototype",
+        description: "We validate feasibility with rapid, testable prototypes.",
+      },
+      {
+        step: "03",
+        title: "Engineer",
+        description:
+          "We build production-grade models and serving infrastructure.",
+      },
+      {
+        step: "04",
+        title: "Scale",
+        description:
+          "We monitor performance and continuously improve accuracy.",
+      },
+    ],
+    benefits: [
+      {
+        title: "Built For Your Data",
+        description: "Models trained and tuned specifically on your domain.",
+      },
+      {
+        title: "Production Ready",
+        description:
+          "Engineered for reliability, not just proof-of-concept demos.",
+      },
+      {
+        title: "Measurable ROI",
+        description: "Every model ships with clear performance benchmarks.",
+      },
+    ],
+    useCases: [
+      "Custom recommendation engines",
+      "Fraud & anomaly detection",
+      "Document understanding",
+      "Forecasting & planning models",
+      "Domain-specific copilots",
+    ],
+    stack: [
+      "PyTorch",
+      "TensorFlow",
+      "Anthropic Claude",
+      "OpenAI",
+      "LangChain",
+      "Vector Databases",
+    ],
+  },
+  {
+    slug: "agentic-ai",
+    navTitle: "Agentic AI",
+    title: "Agentic AI",
+    shortDescription:
+      "Autonomous AI agents that plan, decide, and execute multi-step work independently.",
+    heroHeadline: "Systems That Act.",
+    heroSub:
+      "We build agentic AI systems capable of reasoning across tools, data, and multi-step tasks — acting autonomously within the guardrails you define.",
+    icon: Bot,
+    svgIllustration: "/Images/agentic-ai.svg",
+    capabilities: [
+      "Multi-Agent Orchestration",
+      "Tool-Using Agents",
+      "Autonomous Task Execution",
+      "Agent Memory Systems",
+      "Human-in-the-Loop Controls",
+      "Agent Evaluation Frameworks",
+    ],
+    process: [
+      {
+        step: "01",
+        title: "Define",
+        description:
+          "We define the agent’s scope, tools, and decision boundaries.",
+      },
+      {
+        step: "02",
+        title: "Architect",
+        description:
+          "We design the reasoning loop, memory, and tool integrations.",
+      },
+      {
+        step: "03",
+        title: "Guardrail",
+        description: "We implement safety checks, approvals, and monitoring.",
+      },
+      {
+        step: "04",
+        title: "Deploy",
+        description:
+          "We launch agents into production with full observability.",
+      },
+    ],
+    benefits: [
+      {
+        title: "Autonomous Execution",
+        description:
+          "Agents complete multi-step work without constant supervision.",
+      },
+      {
+        title: "Safe By Design",
+        description:
+          "Guardrails and human checkpoints keep agents accountable.",
+      },
+      {
+        title: "Composable",
+        description:
+          "Agents integrate cleanly with your existing tools and APIs.",
+      },
+    ],
+    useCases: [
+      "Autonomous research assistants",
+      "Multi-step operations agents",
+      "Customer-facing AI agents",
+      "Internal knowledge agents",
+      "Agent-driven QA & testing",
+    ],
+    stack: [
+      "LangGraph",
+      "Claude Agent SDK",
+      "Model Context Protocol",
+      "Vector Databases",
+      "Temporal",
+      "TypeScript",
+    ],
+  },
+  {
+    slug: "data-analytics",
+    navTitle: "Data & Analytics",
+    title: "Data & Analytics",
+    shortDescription:
+      "Turn fragmented data into a single, trustworthy source of business intelligence.",
+    heroHeadline: "Data Into Insight.",
+    heroSub:
+      "We build data infrastructure and analytics systems that transform fragmented operational data into a single, decision-ready source of truth.",
+    icon: BarChart3,
+    svgIllustration: "/Images/data-analytics.svg",
+    capabilities: [
+      "Data Pipelines",
+      "Real-Time Analytics",
+      "Predictive Analytics",
+      "Data Warehousing",
+      "Business Intelligence",
+      "Data Quality Monitoring",
+    ],
+    process: [
+      {
+        step: "01",
+        title: "Audit",
+        description: "We map your data sources, quality, and gaps.",
+      },
+      {
+        step: "02",
+        title: "Architect",
+        description: "We design pipelines and warehousing that scale.",
+      },
+      {
+        step: "03",
+        title: "Visualize",
+        description: "We build dashboards that surface what matters.",
+      },
+      {
+        step: "04",
+        title: "Predict",
+        description: "We layer predictive models on top of clean data.",
+      },
+    ],
+    benefits: [
+      {
+        title: "One Source of Truth",
+        description: "Unify fragmented data into a single reliable model.",
+      },
+      {
+        title: "Real-Time Visibility",
+        description: "See what’s happening in your business as it happens.",
+      },
+      {
+        title: "Predictive Power",
+        description: "Move from reporting the past to forecasting what’s next.",
+      },
+    ],
+    useCases: [
+      "Executive dashboards",
+      "Operational data warehouses",
+      "Customer analytics platforms",
+      "Demand forecasting",
+      "Data pipeline modernization",
+    ],
+    stack: [
+      "dbt",
+      "Snowflake",
+      "PostgreSQL",
+      "Airflow",
+      "Apache Kafka",
+      "Metabase",
+    ],
+  },
+  {
+    slug: "web-app-development",
+    navTitle: "Web & App Development",
+    title: "Web & App Development",
+    shortDescription:
+      "Full-stack software engineering for products built to scale with intelligence baked in.",
+    heroHeadline: "Software, Engineered.",
+    heroSub:
+      "We design and build full-stack web and mobile applications with intelligent capabilities built into the architecture from day one.",
+    icon: Code2,
+    svgIllustration: "/Images/full-stack-development.svg",
+    capabilities: [
+      "Full-Stack Engineering",
+      "API & Systems Design",
+      "Cloud Infrastructure",
+      "AI-Native Applications",
+      "Design Systems",
+      "Performance Engineering",
+    ],
+    process: [
+      {
+        step: "01",
+        title: "Plan",
+        description: "We define architecture, scope, and technical strategy.",
+      },
+      {
+        step: "02",
+        title: "Design",
+        description: "We craft interfaces that are premium, usable, and fast.",
+      },
+      {
+        step: "03",
+        title: "Build",
+        description: "We engineer scalable, well-tested full-stack systems.",
+      },
+      {
+        step: "04",
+        title: "Launch",
+        description: "We deploy, monitor, and iterate post-launch.",
+      },
+    ],
+    benefits: [
+      {
+        title: "Built To Scale",
+        description: "Architecture designed for growth from day one.",
+      },
+      {
+        title: "Intelligence Native",
+        description: "AI capability built into the product, not bolted on.",
+      },
+      {
+        title: "Premium Experience",
+        description: "Interfaces engineered for speed and polish.",
+      },
+    ],
+    useCases: [
+      "SaaS platforms",
+      "Internal enterprise tools",
+      "Customer portals",
+      "AI-powered applications",
+      "Mobile & web products",
+    ],
+    stack: ["React", "TypeScript", "Node.js", "PostgreSQL", "Tailwind CSS"],
+  },
+];
+
+export function getSolution(slug: string) {
+  return solutions.find((s) => s.slug === slug);
+}

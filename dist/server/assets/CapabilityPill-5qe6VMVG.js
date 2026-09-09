@@ -1,0 +1,7 @@
+import { jsx } from "react/jsx-runtime";
+function CapabilityPill({ label }) {
+  return /* @__PURE__ */ jsx("span", { className: "group cursor-default rounded-full border border-[rgba(0,70,150,0.2)] bg-white px-4 py-2 text-sm font-medium text-[#004696] transition-all duration-300 hover:-translate-y-0.5 hover:border-transparent hover:bg-[#1e8eab] hover:text-white hover:shadow-[0_10px_24px_rgba(30,142,171,0.28)]", children: label });
+}
+export {
+  CapabilityPill as C
+};

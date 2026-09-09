@@ -1,52 +1,62 @@
-interface CtaSectionProps {
-  onOpenConsultation: () => void;
+import { Link } from "react-router";
+import { ArrowRight } from "lucide-react";
+import { AnimatedBackground } from "./AnimatedBackground";
+import { ScrollReveal } from "./ScrollReveal";
+
+interface CTASectionProps {
+  title: string;
+  highlight?: string;
+  description?: string;
+  primaryLabel?: string;
+  primaryTo?: string;
+  secondaryLabel?: string;
+  secondaryTo?: string;
 }
 
-export function CtaSection({ onOpenConsultation }: CtaSectionProps) {
+export function CTASection({
+  title,
+  highlight,
+  description,
+  primaryLabel = "Get Started",
+  primaryTo = "/contact",
+  secondaryLabel = "Explore Solutions",
+  secondaryTo = "/solutions",
+}: CTASectionProps) {
   return (
-    <section
-      id="contact"
-      className="w-full bg-surface-container-low relative py-space-3xl overflow-hidden"
-    >
-      {/* Diagonal Brand Accent Ribbon across the top edge */}
-      <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-primary-container via-secondary to-on-tertiary-container" />
-
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="bg-surface-container-lowest p-8 lg:p-16 rounded-lg shadow-[0_16px_36px_rgba(3,8,104,0.06)] flex flex-col lg:flex-row items-center justify-between gap-10 border border-outline-variant/30">
-          <div className="max-w-2xl">
-            <span className="font-caption text-caption text-secondary uppercase tracking-wider font-semibold block mb-3">
-              Accelerate Deployment
-            </span>
-            <h2 className="font-headline-xl text-headline-xl text-primary-container font-bold tracking-tight mb-4">
-              Ready to accelerate your technological transformation?
-            </h2>
-            <p className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
-              Schedule an intensive architectural whiteboard session with our
-              senior systems directors. We evaluate your core dependencies and
-              present a concrete modernization roadmap.
+    <section className="relative overflow-hidden bg-[#f7fafc] py-10">
+      <div className="relative isolate mx-4 overflow-hidden rounded-[32px] border border-[rgba(0,70,150,0.12)] bg-white px-6 py-20 shadow-[0_20px_60px_rgba(0,70,150,0.08)] sm:mx-8 md:mx-auto md:max-w-6xl">
+        <AnimatedBackground variant="cta" />
+        <ScrollReveal className="relative z-10 mx-auto max-w-2xl text-center">
+          <h2 className="text-[clamp(2rem,4.5vw,3.25rem)] font-extrabold leading-[1.1] tracking-tight text-[#0b1f33]">
+            {title}
+            {highlight && (
+              <span className="text-gradient-brand"> {highlight}</span>
+            )}
+          </h2>
+          {description && (
+            <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-[#526575]">
+              {description}
             </p>
-          </div>
-
-          <div className="flex flex-col items-start lg:items-end gap-4 flex-shrink-0 w-full lg:w-auto">
-            <button
-              type="button"
-              onClick={onOpenConsultation}
-              className="w-full lg:w-auto inline-flex items-center justify-center font-label-action text-label-action text-on-primary bg-primary-container hover:bg-secondary px-8 py-4 rounded-[4px] shadow-[0_4px_16px_rgba(3,8,104,0.2)] transition-all cursor-pointer transform hover:-translate-y-0.5 active:translate-y-0"
+          )}
+          <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+            <Link
+              to={primaryTo}
+              className="group inline-flex items-center gap-2 rounded-full bg-[#004696] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(0,70,150,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1e8eab] hover:shadow-[0_16px_32px_rgba(30,142,171,0.32)]"
             >
-              Schedule Architectural Review
-            </button>
-
-            <div className="flex items-center gap-2 text-on-surface-variant text-sm font-medium">
-              <span>Direct Principal Line:</span>
-              <a
-                className="text-secondary font-semibold hover:underline"
-                href="mailto:enterprise@nexadigify.com"
-              >
-                enterprise@nexadigify.com
-              </a>
-            </div>
+              {primaryLabel}
+              <ArrowRight
+                size={16}
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              />
+            </Link>
+            <Link
+              to={secondaryTo}
+              className="inline-flex items-center gap-2 rounded-full border border-[rgba(0,70,150,0.3)] bg-white px-7 py-3.5 text-sm font-semibold text-[#004696] transition-all duration-300 hover:border-[#1e8eab] hover:bg-[#f3f8fa]"
+            >
+              {secondaryLabel}
+            </Link>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

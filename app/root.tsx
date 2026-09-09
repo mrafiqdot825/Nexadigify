@@ -5,39 +5,56 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  Link,
+  type LinksFunction,
+  type MetaFunction,
 } from "react-router";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
+import { ScrollProgress } from "@/components/ScrollProgress";
+import { CursorGlow } from "@/components/CursorGlow";
+import { PageTransition } from "@/components/PageTransition";
+import stylesheet from "./app.css?url";
 
-import type { Route } from "./+types/root";
-import "./app.css";
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: stylesheet },
+  { rel: "icon", href: "/favicon.ico" },
+];
 
-export const links: Route.LinksFunction = () => [
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
+export const meta: MetaFunction = () => [
+  { charSet: "utf-8" },
+  { name: "viewport", content: "width=device-width, initial-scale=1" },
+  { title: "Nexadigify — AI & Intelligent Technology" },
   {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous",
+    name: "description",
+    content:
+      "Nexadigify designs and builds intelligent digital systems — AI automation, agentic AI, custom AI development, and data platforms — for enterprise clients.",
   },
+  { property: "og:title", content: "Nexadigify — AI & Intelligent Technology" },
   {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap",
+    property: "og:description",
+    content:
+      "Enterprise AI automation, agentic AI, and data intelligence, engineered for real-world impact.",
   },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200",
-  },
+  { property: "og:type", content: "website" },
+  { name: "theme-color", content: "#ffffff" },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
       </head>
-      <body>
-        {children}
+      <body className="bg-white text-[#0b1f33]">
+        <ScrollProgress />
+        <CursorGlow />
+        <Navbar />
+        <main id="main-content">
+          <PageTransition>{children}</PageTransition>
+        </main>
+        <Footer />
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -49,7 +66,7 @@ export default function App() {
   return <Outlet />;
 }
 
-export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+export function ErrorBoundary({ error }: { error: unknown }) {
   let message = "Oops!";
   let details = "An unexpected error occurred.";
   let stack: string | undefined;
@@ -66,14 +83,30 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main className="pt-16 p-4 container mx-auto">
-      <h1>{message}</h1>
-      <p>{details}</p>
+    <div className="flex min-h-[70vh] flex-col items-center justify-center px-6 pt-32 text-center">
+      <span className="text-sm font-semibold uppercase tracking-[0.14em] text-[#1e8eab]">
+        {message}
+      </span>
+      <h1 className="mt-4 text-4xl font-extrabold text-[#0b1f33]">
+        {error &&
+        typeof error === "object" &&
+        "status" in error &&
+        (error as { status: number }).status === 404
+          ? "Page not found."
+          : "Something went wrong."}
+      </h1>
+      <p className="mt-3 max-w-md text-[#526575]">{details}</p>
       {stack && (
-        <pre className="w-full p-4 overflow-x-auto">
+        <pre className="mt-4 w-full max-w-2xl overflow-x-auto rounded-lg bg-red-50 p-4 text-left text-xs text-red-800">
           <code>{stack}</code>
         </pre>
       )}
-    </main>
+      <Link
+        to="/"
+        className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#004696] px-7 py-3.5 text-sm font-semibold text-white transition-colors duration-300 hover:bg-[#1e8eab]"
+      >
+        Back to Home
+      </Link>
+    </div>
   );
 }

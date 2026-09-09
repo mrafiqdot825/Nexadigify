@@ -1,179 +1,132 @@
-import { useState } from "react";
 import { Link } from "react-router";
+import { solutions } from "@/data/solutions";
+import { Logo } from "./Navbar";
+
+const SOCIAL_LINKS = [
+  {
+    name: "LinkedIn",
+    href: "#",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+      </svg>
+    ),
+  },
+  {
+    name: "X",
+    href: "#",
+    icon: (
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+      </svg>
+    ),
+  },
+  {
+    name: "GitHub",
+    href: "#",
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z" />
+      </svg>
+    ),
+  },
+];
+
+const COMPANY_LINKS = [
+  { label: "About", to: "/about" },
+  { label: "Portfolio", to: "/portfolio" },
+  { label: "Careers", to: "/careers" },
+  { label: "Contact", to: "/contact" },
+];
 
 export function Footer() {
-  const [showStatusModal, setShowStatusModal] = useState(false);
-
   return (
-    <footer className="w-full bg-primary-container text-on-primary mt-space-3xl relative">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-space-3xl pb-space-xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-space-xl pb-space-2xl border-b border-white/10">
-          {/* Brand Info (2 cols) */}
-          <div className="lg:col-span-2 flex flex-col gap-space-md pr-4">
-            <Link to="/" className="flex items-center gap-3">
-              <span className="font-headline-md text-headline-md font-bold tracking-tight text-on-primary">
-                NexaDigify
-              </span>
-            </Link>
-            <p className="font-body-md text-body-md text-surface-container-high max-w-sm leading-relaxed">
-              Engineering digital resilience and velocity for modern enterprise.
+    <footer className="relative overflow-hidden border-t border-[rgba(0,70,150,0.1)] bg-white">
+      <div className="animate-gradient-line h-[2px] w-full bg-gradient-to-r from-[#004696] via-[#1e8eab] to-[#004696]" />
+
+      <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="sm:col-span-2 lg:col-span-2">
+            <Logo />
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-[#526575]">
+              We design and build intelligent digital systems that automate
+              operations, transform data into insight, and create measurable
+              business value.
             </p>
-
-            {/* Interactive Operational Status Indicator */}
-            <div className="relative mt-space-xs">
-              <button
-                type="button"
-                onClick={() => setShowStatusModal(!showStatusModal)}
-                className="flex items-center gap-3 py-1.5 px-3 rounded bg-surface-container-lowest/10 hover:bg-surface-container-lowest/15 transition-colors cursor-pointer"
-              >
-                <span className="inline-flex w-2.5 h-2.5 rounded-full bg-[#02B4FC] animate-pulse"></span>
-                <span className="font-caption text-caption text-surface-container-high tracking-wider uppercase font-semibold text-left">
-                  All Enterprise Systems Operational
-                </span>
-                <span className="material-symbols-outlined text-[14px] text-tertiary-fixed-dim">
-                  info
-                </span>
-              </button>
-
-              {showStatusModal && (
-                <div className="absolute bottom-full left-0 mb-3 w-72 p-3 bg-surface-container-lowest text-on-surface rounded-lg shadow-2xl border border-outline-variant/40 z-30 animate-fadeIn text-xs">
-                  <div className="flex justify-between items-center pb-2 border-b border-surface-container-high font-semibold">
-                    <span className="text-primary font-bold">
-                      Network Infrastructure
-                    </span>
-                    <span className="text-secondary font-mono">100.0%</span>
-                  </div>
-                  <div className="space-y-1.5 pt-2 text-[11px]">
-                    <div className="flex justify-between">
-                      <span className="text-outline">
-                        US-East Control Plane
-                      </span>
-                      <span className="text-secondary font-semibold">
-                        Operational
-                      </span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-outline">EU-West Ingress Mesh</span>
-                      <span className="text-secondary font-semibold">
-                        Operational
-                      </span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-outline">APAC Edge Anycast</span>
-                      <span className="text-secondary font-semibold">
-                        Operational
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              )}
+            <div className="mt-6 flex items-center gap-3">
+              {SOCIAL_LINKS.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  aria-label={item.name}
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(0,70,150,0.14)] text-[#004696] transition-colors duration-200 hover:border-[#1e8eab] hover:bg-[#f3f8fa]"
+                >
+                  {item.icon}
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Capabilities */}
-          <div className="flex flex-col gap-space-sm">
-            <h4 className="font-subhead-md text-subhead-md text-on-primary font-bold uppercase tracking-wider text-xs">
-              Capabilities
-            </h4>
-            <ul className="flex flex-col gap-2.5">
-              <li className="font-label-nav text-label-nav text-surface-container-high hover:text-on-primary transition-colors">
-                <Link to="/services">Cloud Architecture</Link>
-              </li>
-              <li className="font-label-nav text-label-nav text-surface-container-high hover:text-on-primary transition-colors">
-                <Link to="/services">Data &amp; Intelligence</Link>
-              </li>
-              <li className="font-label-nav text-label-nav text-surface-container-high hover:text-on-primary transition-colors">
-                <Link to="/services">Cyber Defense</Link>
-              </li>
-              <li className="font-label-nav text-label-nav text-surface-container-high hover:text-on-primary transition-colors">
-                <Link to="/services">Platform Modernization</Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Solutions */}
-          <div className="flex flex-col gap-space-sm">
-            <h4 className="font-subhead-md text-subhead-md text-on-primary font-bold uppercase tracking-wider text-xs">
+          <div>
+            <h3 className="mb-4 text-sm font-bold uppercase tracking-wide text-[#004696]">
               Solutions
-            </h4>
-            <ul className="flex flex-col gap-2.5">
-              <li className="font-label-nav text-label-nav text-surface-container-high hover:text-on-primary transition-colors">
-                <Link to="/work">Financial Services</Link>
-              </li>
-              <li className="font-label-nav text-label-nav text-surface-container-high hover:text-on-primary transition-colors">
-                <Link to="/work">Healthcare Tech</Link>
-              </li>
-              <li className="font-label-nav text-label-nav text-surface-container-high hover:text-on-primary transition-colors">
-                <Link to="/work">Industrial IoT</Link>
-              </li>
-              <li className="font-label-nav text-label-nav text-surface-container-high hover:text-on-primary transition-colors">
-                <Link to="/work">Enterprise SaaS</Link>
-              </li>
+            </h3>
+            <ul className="space-y-2.5">
+              {solutions.map((s) => (
+                <li key={s.slug}>
+                  <Link
+                    to={`/solutions/${s.slug}`}
+                    className="text-sm text-[#526575] transition-colors duration-200 hover:text-[#1e8eab]"
+                  >
+                    {s.navTitle}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Company */}
-          <div className="flex flex-col gap-space-sm">
-            <h4 className="font-subhead-md text-subhead-md text-on-primary font-bold uppercase tracking-wider text-xs">
+          <div>
+            <h3 className="mb-4 text-sm font-bold uppercase tracking-wide text-[#004696]">
               Company
-            </h4>
-            <ul className="flex flex-col gap-2.5">
-              <li className="font-label-nav text-label-nav text-surface-container-high hover:text-on-primary transition-colors">
-                <Link to="/about">About NexaDigify</Link>
-              </li>
-              <li className="font-label-nav text-label-nav text-surface-container-high hover:text-on-primary transition-colors">
-                <Link to="/insights">Insights &amp; Papers</Link>
-              </li>
-              <li className="font-label-nav text-label-nav text-surface-container-high hover:text-on-primary transition-colors">
-                <Link to="/about">Leadership</Link>
-              </li>
-              <li className="font-label-nav text-label-nav text-surface-container-high hover:text-on-primary transition-colors">
-                <Link to="/contact">Careers</Link>
-              </li>
+            </h3>
+            <ul className="space-y-2.5">
+              {COMPANY_LINKS.map((l) => (
+                <li key={l.to}>
+                  <Link
+                    to={l.to}
+                    className="text-sm text-[#526575] transition-colors duration-200 hover:text-[#1e8eab]"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Legal */}
-          <div className="flex flex-col gap-space-sm">
-            <h4 className="font-subhead-md text-subhead-md text-on-primary font-bold uppercase tracking-wider text-xs">
-              Legal &amp; Trust
-            </h4>
-            <ul className="flex flex-col gap-2.5">
-              <li className="font-label-nav text-label-nav text-surface-container-high hover:text-on-primary transition-colors">
-                <Link to="/about">Privacy Policy</Link>
-              </li>
-              <li className="font-label-nav text-label-nav text-surface-container-high hover:text-on-primary transition-colors">
-                <Link to="/about">Terms of Service</Link>
-              </li>
-              <li className="font-label-nav text-label-nav text-surface-container-high hover:text-on-primary transition-colors">
-                <Link to="/services">Security &amp; Trust</Link>
-              </li>
-              <li className="font-label-nav text-label-nav text-surface-container-high hover:text-on-primary transition-colors">
-                <Link to="/contact">Compliance</Link>
-              </li>
+          <div>
+            <h3 className="mb-4 text-sm font-bold uppercase tracking-wide text-[#004696]">
+              Connect
+            </h3>
+            <ul className="space-y-2.5 text-sm text-[#526575]">
+              <li>hello@nexadigify.com</li>
+              <li>+92 51 1234567</li>
+              <li>Islamabad, Pakistan</li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-space-lg flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="font-caption text-caption text-surface-container-high text-center md:text-left">
-            © 2025 NexaDigify Inc. All rights reserved. Precision architecture
-            for enterprise transformation.
+        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-[rgba(0,70,150,0.08)] pt-8 text-sm text-[#718391] sm:flex-row">
+          <p>
+            &copy; {new Date().getFullYear()} Nexadigify AI. All rights
+            reserved.
           </p>
-          <div className="flex items-center gap-6">
-            <span className="font-caption text-caption text-surface-container-high flex items-center gap-1.5">
-              <span className="material-symbols-outlined text-[14px] text-tertiary-fixed-dim">
-                verified
-              </span>
-              SOC2 Type II Certified
-            </span>
-            <span className="font-caption text-caption text-surface-container-high flex items-center gap-1.5">
-              <span className="material-symbols-outlined text-[14px] text-tertiary-fixed-dim">
-                security
-              </span>
-              ISO 27001 Compliant
-            </span>
+          <div className="flex gap-6">
+            <a href="#" className="transition-colors hover:text-[#1e8eab]">
+              Privacy Policy
+            </a>
+            <a href="#" className="transition-colors hover:text-[#1e8eab]">
+              Terms of Service
+            </a>
           </div>
         </div>
       </div>

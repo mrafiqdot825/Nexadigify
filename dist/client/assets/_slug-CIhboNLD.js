@@ -1,0 +1,1 @@
+import{j as t}from"./index-CXfxg_J_.js";const o=()=>t.jsx("div",{className:"flex min-h-[60vh] items-center justify-center pt-32",children:t.jsx("p",{className:"text-[#526575]",children:"Solution not found."})});export{o as notFoundComponent};
