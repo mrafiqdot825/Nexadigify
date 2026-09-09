@@ -770,9 +770,9 @@ function Footer() {
         /* @__PURE__ */ jsxs("div", { children: [
           /* @__PURE__ */ jsx("h3", { className: "mb-4 text-sm font-bold uppercase tracking-wide text-[#004696]", children: "Connect" }),
           /* @__PURE__ */ jsxs("ul", { className: "space-y-2.5 text-sm text-[#526575]", children: [
-            /* @__PURE__ */ jsx("li", { children: "hello@novaforge.ai" }),
-            /* @__PURE__ */ jsx("li", { children: "+1 (415) 555-0148" }),
-            /* @__PURE__ */ jsx("li", { children: "San Francisco, CA" })
+            /* @__PURE__ */ jsx("li", { children: "hello@nexadigify.com" }),
+            /* @__PURE__ */ jsx("li", { children: "+92 51 1234567" }),
+            /* @__PURE__ */ jsx("li", { children: "Islamabad, Pakistan" })
           ] })
         ] })
       ] }),
@@ -2440,7 +2440,12 @@ const portfolio = [
       "Deployed with enterprise-grade access controls"
     ],
     solution: "We built a retrieval-augmented AI assistant grounded in the firm’s internal knowledge base, with fine-tuned response behavior and enterprise access controls, deployed directly into existing collaboration tools.",
-    technology: ["Anthropic Claude", "LangChain", "Vector Databases", "TypeScript"],
+    technology: [
+      "Anthropic Claude",
+      "LangChain",
+      "Vector Databases",
+      "TypeScript"
+    ],
     results: [
       { metric: "76%", label: "Reduction in search time" },
       { metric: "12,000+", label: "Queries answered monthly" },
@@ -2787,7 +2792,13 @@ const SERVICES = [
   "AI Consulting",
   "Other"
 ];
-const BUDGETS = ["Under $25k", "$25k – $75k", "$75k – $150k", "$150k+", "Not sure yet"];
+const BUDGETS = [
+  "Under $25k",
+  "$25k – $75k",
+  "$75k – $150k",
+  "$150k+",
+  "Not sure yet"
+];
 function ContactForm({ variant = "contact" }) {
   const isCareers = variant === "careers";
   const formName = isCareers ? "careers-application" : "contact";
@@ -2863,20 +2874,64 @@ function ContactForm({ variant = "contact" }) {
         /* @__PURE__ */ jsxs("div", { className: "grid gap-5 sm:grid-cols-2", children: [
           /* @__PURE__ */ jsxs("div", { children: [
             /* @__PURE__ */ jsx("label", { className: labelClass, htmlFor: "name", children: "Name" }),
-            /* @__PURE__ */ jsx("input", { id: "name", name: "name", required: true, value: fields.name, onChange: handleChange, className: inputClass, placeholder: "Jane Doe" })
+            /* @__PURE__ */ jsx(
+              "input",
+              {
+                id: "name",
+                name: "name",
+                required: true,
+                value: fields.name,
+                onChange: handleChange,
+                className: inputClass,
+                placeholder: "Jane Doe"
+              }
+            )
           ] }),
           /* @__PURE__ */ jsxs("div", { children: [
             /* @__PURE__ */ jsx("label", { className: labelClass, htmlFor: "email", children: "Email" }),
-            /* @__PURE__ */ jsx("input", { id: "email", type: "email", name: "email", required: true, value: fields.email, onChange: handleChange, className: inputClass, placeholder: "jane@company.com" })
+            /* @__PURE__ */ jsx(
+              "input",
+              {
+                id: "email",
+                type: "email",
+                name: "email",
+                required: true,
+                value: fields.email,
+                onChange: handleChange,
+                className: inputClass,
+                placeholder: "jane@company.com"
+              }
+            )
           ] }),
           isCareers ? /* @__PURE__ */ jsxs(Fragment, { children: [
             /* @__PURE__ */ jsxs("div", { children: [
               /* @__PURE__ */ jsx("label", { className: labelClass, htmlFor: "position", children: "Position" }),
-              /* @__PURE__ */ jsx("input", { id: "position", name: "position", required: true, value: fields.position, onChange: handleChange, className: inputClass, placeholder: "AI Engineer" })
+              /* @__PURE__ */ jsx(
+                "input",
+                {
+                  id: "position",
+                  name: "position",
+                  required: true,
+                  value: fields.position,
+                  onChange: handleChange,
+                  className: inputClass,
+                  placeholder: "AI Engineer"
+                }
+              )
             ] }),
             /* @__PURE__ */ jsxs("div", { children: [
               /* @__PURE__ */ jsx("label", { className: labelClass, htmlFor: "portfolio", children: "Portfolio / LinkedIn" }),
-              /* @__PURE__ */ jsx("input", { id: "portfolio", name: "portfolio", value: fields.portfolio, onChange: handleChange, className: inputClass, placeholder: "https://" })
+              /* @__PURE__ */ jsx(
+                "input",
+                {
+                  id: "portfolio",
+                  name: "portfolio",
+                  value: fields.portfolio,
+                  onChange: handleChange,
+                  className: inputClass,
+                  placeholder: "https://"
+                }
+              )
             ] }),
             /* @__PURE__ */ jsxs("div", { className: "sm:col-span-2", children: [
               /* @__PURE__ */ jsx("label", { className: labelClass, htmlFor: "resume", children: "Resume" }),
@@ -2907,25 +2962,65 @@ function ContactForm({ variant = "contact" }) {
           ] }) : /* @__PURE__ */ jsxs(Fragment, { children: [
             /* @__PURE__ */ jsxs("div", { children: [
               /* @__PURE__ */ jsx("label", { className: labelClass, htmlFor: "company", children: "Company" }),
-              /* @__PURE__ */ jsx("input", { id: "company", name: "company", value: fields.company, onChange: handleChange, className: inputClass, placeholder: "Company name" })
+              /* @__PURE__ */ jsx(
+                "input",
+                {
+                  id: "company",
+                  name: "company",
+                  value: fields.company,
+                  onChange: handleChange,
+                  className: inputClass,
+                  placeholder: "Company name"
+                }
+              )
             ] }),
             /* @__PURE__ */ jsxs("div", { children: [
               /* @__PURE__ */ jsx("label", { className: labelClass, htmlFor: "phone", children: "Phone" }),
-              /* @__PURE__ */ jsx("input", { id: "phone", name: "phone", value: fields.phone, onChange: handleChange, className: inputClass, placeholder: "+1 (555) 000-0000" })
+              /* @__PURE__ */ jsx(
+                "input",
+                {
+                  id: "phone",
+                  name: "phone",
+                  value: fields.phone,
+                  onChange: handleChange,
+                  className: inputClass,
+                  placeholder: "+92 51 1234567"
+                }
+              )
             ] }),
             /* @__PURE__ */ jsxs("div", { children: [
               /* @__PURE__ */ jsx("label", { className: labelClass, htmlFor: "service", children: "Service" }),
-              /* @__PURE__ */ jsxs("select", { id: "service", name: "service", value: fields.service, onChange: handleChange, className: inputClass, children: [
-                /* @__PURE__ */ jsx("option", { value: "", children: "Select a service" }),
-                SERVICES.map((s) => /* @__PURE__ */ jsx("option", { value: s, children: s }, s))
-              ] })
+              /* @__PURE__ */ jsxs(
+                "select",
+                {
+                  id: "service",
+                  name: "service",
+                  value: fields.service,
+                  onChange: handleChange,
+                  className: inputClass,
+                  children: [
+                    /* @__PURE__ */ jsx("option", { value: "", children: "Select a service" }),
+                    SERVICES.map((s) => /* @__PURE__ */ jsx("option", { value: s, children: s }, s))
+                  ]
+                }
+              )
             ] }),
             /* @__PURE__ */ jsxs("div", { children: [
               /* @__PURE__ */ jsx("label", { className: labelClass, htmlFor: "budget", children: "Budget" }),
-              /* @__PURE__ */ jsxs("select", { id: "budget", name: "budget", value: fields.budget, onChange: handleChange, className: inputClass, children: [
-                /* @__PURE__ */ jsx("option", { value: "", children: "Select a range" }),
-                BUDGETS.map((b) => /* @__PURE__ */ jsx("option", { value: b, children: b }, b))
-              ] })
+              /* @__PURE__ */ jsxs(
+                "select",
+                {
+                  id: "budget",
+                  name: "budget",
+                  value: fields.budget,
+                  onChange: handleChange,
+                  className: inputClass,
+                  children: [
+                    /* @__PURE__ */ jsx("option", { value: "", children: "Select a range" }),
+                    BUDGETS.map((b) => /* @__PURE__ */ jsx("option", { value: b, children: b }, b))
+                  ]
+                }
+              )
             ] })
           ] }),
           /* @__PURE__ */ jsxs("div", { className: "sm:col-span-2", children: [
@@ -2954,7 +3049,13 @@ function ContactForm({ variant = "contact" }) {
             className: "group mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#004696] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(0,70,150,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1e8eab] disabled:opacity-60 sm:w-auto",
             children: [
               submitting ? "Sending…" : isCareers ? "Submit Application" : "Send Message",
-              /* @__PURE__ */ jsx(ArrowRight, { size: 16, className: "transition-transform duration-300 group-hover:translate-x-1" })
+              /* @__PURE__ */ jsx(
+                ArrowRight,
+                {
+                  size: 16,
+                  className: "transition-transform duration-300 group-hover:translate-x-1"
+                }
+              )
             ]
           }
         )
@@ -3242,10 +3343,10 @@ const CONTACT_DETAILS = [{
   label: "hello@nexadigify.com"
 }, {
   icon: Phone,
-  label: "+1 (415) 555-0148"
+  label: "+91 9876543210"
 }, {
   icon: MapPin,
-  label: "San Francisco, CA"
+  label: "Islamabad, Pakistan"
 }];
 const contact = UNSAFE_withComponentProps(function Contact() {
   return /* @__PURE__ */ jsxs("section", {
@@ -3298,7 +3399,7 @@ const route8 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProper
   default: contact,
   meta
 }, Symbol.toStringTag, { value: "Module" }));
-const serverManifest = { "entry": { "module": "/assets/entry.client-CumgHwSh.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js"], "css": [] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": true, "module": "/assets/root-yX3KjfJ4.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/solutions-gr_vGTtm.js", "/assets/chevron-down-BR73dhf9.js", "/assets/workflow-j394aVPG.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/home": { "id": "routes/home", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/home-BVPPKxBp.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CNfLWwjI.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/arrow-up-right-DQenOPWu.js", "/assets/CapabilityPill-Bq2zShMu.js", "/assets/CTASection-Cusbx29I.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/workflow-j394aVPG.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/about": { "id": "routes/about", "parentId": "root", "path": "about", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/about-NoUgTetp.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CNfLWwjI.js", "/assets/CTASection-Cusbx29I.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/arrow-right-B3CR_aBv.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/solutions/index": { "id": "routes/solutions/index", "parentId": "root", "path": "solutions", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/index-Ckqos3lV.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CNfLWwjI.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/CTASection-Cusbx29I.js", "/assets/solutions-gr_vGTtm.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/workflow-j394aVPG.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/solutions/detail": { "id": "routes/solutions/detail", "parentId": "root", "path": "solutions/:slug", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": true, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/detail-DJBmWc8k.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CNfLWwjI.js", "/assets/CapabilityPill-Bq2zShMu.js", "/assets/CTASection-Cusbx29I.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/solutions-gr_vGTtm.js", "/assets/circle-check-yQLdv0a9.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/workflow-j394aVPG.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/portfolio/index": { "id": "routes/portfolio/index", "parentId": "root", "path": "portfolio", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/index-8utSmDA4.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CNfLWwjI.js", "/assets/portfolio-kvTROtGu.js", "/assets/CTASection-Cusbx29I.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/arrow-up-right-DQenOPWu.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/portfolio/detail": { "id": "routes/portfolio/detail", "parentId": "root", "path": "portfolio/:slug", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": true, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/detail-ody0DrHH.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/portfolio-kvTROtGu.js", "/assets/CTASection-Cusbx29I.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/arrow-up-right-DQenOPWu.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/careers": { "id": "routes/careers", "parentId": "root", "path": "careers", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/careers-CBXJbHPt.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/SectionHeader-CNfLWwjI.js", "/assets/ContactForm-uEOYmpOQ.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/chevron-down-BR73dhf9.js", "/assets/circle-check-yQLdv0a9.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/contact": { "id": "routes/contact", "parentId": "root", "path": "contact", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/contact-CT3VpMgz.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/ContactForm-uEOYmpOQ.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/circle-check-yQLdv0a9.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 } }, "url": "/assets/manifest-c2b67a07.js", "version": "c2b67a07", "sri": void 0 };
+const serverManifest = { "entry": { "module": "/assets/entry.client-CumgHwSh.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js"], "css": [] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": true, "module": "/assets/root-BRWtg_d2.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/solutions-gr_vGTtm.js", "/assets/chevron-down-BR73dhf9.js", "/assets/workflow-j394aVPG.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/home": { "id": "routes/home", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/home-BVPPKxBp.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CNfLWwjI.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/arrow-up-right-DQenOPWu.js", "/assets/CapabilityPill-Bq2zShMu.js", "/assets/CTASection-Cusbx29I.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/workflow-j394aVPG.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/about": { "id": "routes/about", "parentId": "root", "path": "about", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/about-NoUgTetp.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CNfLWwjI.js", "/assets/CTASection-Cusbx29I.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/arrow-right-B3CR_aBv.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/solutions/index": { "id": "routes/solutions/index", "parentId": "root", "path": "solutions", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/index-Ckqos3lV.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CNfLWwjI.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/CTASection-Cusbx29I.js", "/assets/solutions-gr_vGTtm.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/workflow-j394aVPG.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/solutions/detail": { "id": "routes/solutions/detail", "parentId": "root", "path": "solutions/:slug", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": true, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/detail-DJBmWc8k.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CNfLWwjI.js", "/assets/CapabilityPill-Bq2zShMu.js", "/assets/CTASection-Cusbx29I.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/solutions-gr_vGTtm.js", "/assets/circle-check-yQLdv0a9.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/workflow-j394aVPG.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/portfolio/index": { "id": "routes/portfolio/index", "parentId": "root", "path": "portfolio", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/index-8utSmDA4.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CNfLWwjI.js", "/assets/portfolio-kvTROtGu.js", "/assets/CTASection-Cusbx29I.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/arrow-up-right-DQenOPWu.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/portfolio/detail": { "id": "routes/portfolio/detail", "parentId": "root", "path": "portfolio/:slug", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": true, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/detail-ody0DrHH.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/portfolio-kvTROtGu.js", "/assets/CTASection-Cusbx29I.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/arrow-up-right-DQenOPWu.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/careers": { "id": "routes/careers", "parentId": "root", "path": "careers", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/careers-DlDCu_ur.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/SectionHeader-CNfLWwjI.js", "/assets/ContactForm-Dc1Lk0eV.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/chevron-down-BR73dhf9.js", "/assets/circle-check-yQLdv0a9.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/contact": { "id": "routes/contact", "parentId": "root", "path": "contact", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/contact-BxH_21DT.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/ContactForm-Dc1Lk0eV.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/circle-check-yQLdv0a9.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 } }, "url": "/assets/manifest-59cd0fa7.js", "version": "59cd0fa7", "sri": void 0 };
 const assetsBuildDirectory = "build/client";
 const basename = "/";
 const future = { "unstable_optimizeDeps": false, "v8_passThroughRequests": false, "v8_trailingSlashAwareDataRequests": false, "unstable_previewServerPrerendering": false, "v8_middleware": false, "v8_splitRouteModules": false, "v8_viteEnvironmentApi": false };
