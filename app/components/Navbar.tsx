@@ -20,7 +20,7 @@ export function Logo({ className = "h-9 w-auto" }: { className?: string }) {
       aria-label="Nexadigify Home"
     >
       <img
-        src="/logo.svg"
+        src="/Logo.png"
         alt="Nexadigify"
         className={`${className} transition-transform duration-300 group-hover:scale-[1.03]`}
       />
