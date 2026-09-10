@@ -12,18 +12,30 @@ const NAV_LINKS = [
   { label: "Contact", to: "/contact" },
 ];
 
-export function Logo({ className = "h-9 w-auto" }: { className?: string }) {
+export function Logo({
+  className = "h-9 w-auto",
+  showText = true,
+}: {
+  className?: string;
+  showText?: boolean;
+}) {
   return (
     <Link
       to="/"
-      className="group flex items-center"
+      className="group flex items-center gap-2.5"
       aria-label="Nexadigify Home"
     >
       <img
         src="/Logo.png"
         alt="Nexadigify"
-        className={`${className} transition-transform duration-300 group-hover:scale-[1.03]`}
+        className={`${className} transition-transform duration-300 group-hover:scale-[1.04]`}
       />
+      {showText && (
+        <span className="flex items-center text-xl tracking-tight select-none">
+          <span className="font-black tracking-[-0.03em] text-[#004696]">NEXA</span>
+          <span className="ml-1.5 font-medium tracking-[-0.01em] text-[#1e8eab]">DIGIFY</span>
+        </span>
+      )}
     </Link>
   );
 }
