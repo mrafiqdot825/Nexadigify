@@ -22,7 +22,7 @@ export function Logo({
   return (
     <Link
       to="/"
-      className="group flex items-center gap-2.5"
+      className="group flex items-center gap-2"
       aria-label="Nexadigify Home"
     >
       <img
@@ -31,9 +31,9 @@ export function Logo({
         className={`${className} transition-transform duration-300 group-hover:scale-[1.04]`}
       />
       {showText && (
-        <span className="flex items-center text-xl tracking-tight select-none">
-          <span className="font-black tracking-[-0.03em] text-[#004696]">NEXA</span>
-          <span className="ml-1.5 font-medium tracking-[-0.01em] text-[#1e8eab]">DIGIFY</span>
+        <span className="flex items-center text-[22px] font-extrabold tracking-tight select-none">
+          <span className="text-[#004696]">Nexa</span>
+          <span className="text-[#1e8eab]">digify</span>
         </span>
       )}
     </Link>
