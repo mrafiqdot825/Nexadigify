@@ -122,7 +122,7 @@ export function ContactForm({ variant = "contact" }: ContactFormProps) {
             value={fields.name}
             onChange={handleChange}
             className={inputClass}
-            placeholder="Jane Doe"
+            placeholder="Your name"
           />
         </div>
         <div>
@@ -137,7 +137,7 @@ export function ContactForm({ variant = "contact" }: ContactFormProps) {
             value={fields.email}
             onChange={handleChange}
             className={inputClass}
-            placeholder="jane@company.com"
+            placeholder="your.email@company.com"
           />
         </div>
 
@@ -219,7 +219,7 @@ export function ContactForm({ variant = "contact" }: ContactFormProps) {
                 value={fields.phone}
                 onChange={handleChange}
                 className={inputClass}
-                placeholder="+92 51 1234567"
+                placeholder="Your phone number"
               />
             </div>
             <div>
