@@ -35,7 +35,6 @@ const SOCIAL_LINKS = [
 const COMPANY_LINKS = [
   { label: "About", to: "/about" },
   { label: "Portfolio", to: "/portfolio" },
-  { label: "Careers", to: "/careers" },
   { label: "Contact", to: "/contact" },
 ];
 

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 54" fill="none">
+  <defs>
+    <linearGradient id="nexaGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#030868" />
+      <stop offset="55%" stop-color="#0C5EEB" />
+      <stop offset="100%" stop-color="#02B4FC" />
+    </linearGradient>
+  </defs>
+  <!-- Overlapping bracket stylized 'N' logo mark -->
+  <g transform="translate(4, 3)">
+    <!-- Left upright bracket -->
+    <path d="M4 42V10L14 10V34L22 34V42H4Z" fill="#030868"/>
+    <!-- Diagonal dynamic energy stroke -->
+    <path d="M12 10L36 38H26L6 10H12Z" fill="url(#nexaGrad)"/>
+    <!-- Right upright bracket inverted -->
+    <path d="M38 6V38L28 38V14L20 14V6H38Z" fill="#0C5EEB"/>
+    <!-- Cyan kinetic accent spark -->
+    <polygon points="34,6 42,6 38,14" fill="#02B4FC"/>
+  </g>
+  <!-- Wordmark: NEXA solid heavy, DIGIFY light outline/regular -->
+  <text x="56" y="34" font-family="'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-weight="900" font-size="22" letter-spacing="-0.03em" fill="#030868">NEXA</text>
+  <text x="123" y="34" font-family="'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-weight="400" font-size="22" letter-spacing="-0.01em" fill="#0C5EEB">DIGIFY</text>
+</svg>
+

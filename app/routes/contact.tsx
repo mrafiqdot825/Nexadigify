@@ -21,9 +21,9 @@ const CONTACT_DETAILS = [
 
 export default function Contact() {
   return (
-    <section className="relative overflow-hidden pt-36 pb-24 sm:pt-44 sm:pb-32">
+    <section className="relative flex min-h-screen min-h-[100dvh] w-full flex-col justify-center overflow-hidden pt-24 pb-16 sm:pt-28 sm:pb-20">
       <AnimatedBackground variant="hero" />
-      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 lg:grid-cols-[1fr_1.2fr] lg:px-8">
+      <div className="relative z-10 mx-auto w-full grid max-w-7xl grid-cols-1 gap-16 px-6 lg:grid-cols-[1fr_1.2fr] lg:px-8">
         <div>
           <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-[rgba(0,70,150,0.16)] bg-white/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-[#004696]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#1e8eab]" />

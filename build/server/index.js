@@ -865,7 +865,7 @@ function PageTransition({ children }) {
     location.pathname
   ) });
 }
-const stylesheet = "/assets/app-C_8vuKdO.css";
+const stylesheet = "/assets/app-BgwGev8V.css";
 const links = () => [{
   rel: "stylesheet",
   href: stylesheet
@@ -1167,115 +1167,144 @@ function Hero({
   primaryTo = "/contact",
   secondaryLabel = "Explore Solutions",
   secondaryTo = "/solutions",
-  compact = false
+  compact = false,
+  showVisualization
 }) {
+  const renderVisualization = showVisualization ?? !compact;
   return /* @__PURE__ */ jsxs(
     "section",
     {
-      className: `relative overflow-hidden ${compact ? "pt-36 pb-16" : "pt-40 pb-24 sm:pt-48 sm:pb-32"}`,
+      className: "relative flex min-h-screen min-h-[100dvh] w-full flex-col justify-center overflow-hidden pt-24 pb-16 sm:pt-28 sm:pb-20",
       children: [
         /* @__PURE__ */ jsx(AnimatedBackground, { variant: "hero" }),
-        /* @__PURE__ */ jsxs("div", { className: "relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 lg:grid-cols-2 lg:px-8", children: [
-          /* @__PURE__ */ jsxs("div", { children: [
-            eyebrow && /* @__PURE__ */ jsxs(
-              motion.span,
-              {
-                initial: { opacity: 0, y: 10 },
-                animate: { opacity: 1, y: 0 },
-                transition: { duration: 0.6 },
-                className: "mb-6 inline-flex items-center gap-2 rounded-full border border-[rgba(0,70,150,0.16)] bg-white/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-[#004696] backdrop-blur-sm",
-                children: [
-                  /* @__PURE__ */ jsx("span", { className: "h-1.5 w-1.5 rounded-full bg-[#1e8eab]" }),
-                  eyebrow
-                ]
-              }
-            ),
-            /* @__PURE__ */ jsx("h1", { className: "text-[clamp(2.4rem,5.4vw,4.2rem)] font-extrabold leading-[1.05] tracking-tight text-[#0b1f33]", children: titleLines.map((line, i) => /* @__PURE__ */ jsx(
-              motion.span,
-              {
-                initial: { opacity: 0, y: 24 },
-                animate: { opacity: 1, y: 0 },
-                transition: {
-                  duration: 0.7,
-                  delay: 0.1 + i * 0.12,
-                  ease: [0.16, 1, 0.3, 1]
-                },
-                className: "block",
-                children: line.map((word, j) => {
-                  const isHighlight = typeof word === "object" && word.highlight;
-                  const text = typeof word === "string" ? word : word.text;
-                  return /* @__PURE__ */ jsxs(
-                    "span",
-                    {
-                      className: isHighlight ? "text-gradient-brand" : void 0,
-                      children: [
-                        text,
-                        " "
-                      ]
+        /* @__PURE__ */ jsxs(
+          "div",
+          {
+            className: `relative z-10 mx-auto w-full px-6 lg:px-8 ${renderVisualization ? "grid max-w-7xl grid-cols-1 items-center gap-16 lg:grid-cols-2" : "max-w-4xl"}`,
+            children: [
+              /* @__PURE__ */ jsxs("div", { className: renderVisualization ? void 0 : "max-w-3xl", children: [
+                eyebrow && /* @__PURE__ */ jsxs(
+                  motion.span,
+                  {
+                    initial: { opacity: 0, y: 10 },
+                    animate: { opacity: 1, y: 0 },
+                    transition: { duration: 0.6 },
+                    className: "mb-6 inline-flex items-center gap-2 rounded-full border border-[rgba(0,70,150,0.16)] bg-white/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-[#004696] backdrop-blur-sm",
+                    children: [
+                      /* @__PURE__ */ jsx("span", { className: "h-1.5 w-1.5 rounded-full bg-[#1e8eab]" }),
+                      eyebrow
+                    ]
+                  }
+                ),
+                /* @__PURE__ */ jsx("h1", { className: "text-[clamp(2.4rem,5.4vw,4.2rem)] font-extrabold leading-[1.05] tracking-tight text-[#0b1f33]", children: titleLines.map((line, i) => /* @__PURE__ */ jsx(
+                  motion.span,
+                  {
+                    initial: { opacity: 0, y: 24 },
+                    animate: { opacity: 1, y: 0 },
+                    transition: {
+                      duration: 0.7,
+                      delay: 0.1 + i * 0.12,
+                      ease: [0.16, 1, 0.3, 1]
                     },
-                    j
-                  );
-                })
-              },
-              i
-            )) }),
-            /* @__PURE__ */ jsx(
-              motion.p,
-              {
-                initial: { opacity: 0, y: 20 },
-                animate: { opacity: 1, y: 0 },
-                transition: { duration: 0.7, delay: 0.4 },
-                className: "mt-7 max-w-lg text-lg leading-relaxed text-[#526575]",
-                children: description
-              }
-            ),
-            /* @__PURE__ */ jsxs(
-              motion.div,
-              {
-                initial: { opacity: 0, y: 20 },
-                animate: { opacity: 1, y: 0 },
-                transition: { duration: 0.7, delay: 0.55 },
-                className: "mt-10 flex flex-wrap items-center gap-4",
-                children: [
-                  /* @__PURE__ */ jsxs(
-                    HeroButton,
-                    {
-                      to: primaryTo,
-                      className: "group inline-flex items-center gap-2 rounded-full bg-[#004696] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(0,70,150,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1e8eab] hover:shadow-[0_16px_32px_rgba(30,142,171,0.32)]",
-                      children: [
-                        primaryLabel,
-                        /* @__PURE__ */ jsx(
-                          ArrowRight,
-                          {
-                            size: 16,
-                            className: "transition-transform duration-300 group-hover:translate-x-1"
-                          }
-                        )
-                      ]
-                    }
-                  ),
-                  /* @__PURE__ */ jsx(
-                    HeroButton,
-                    {
-                      to: secondaryTo,
-                      className: "inline-flex items-center gap-2 rounded-full border border-[rgba(0,70,150,0.28)] bg-white px-7 py-3.5 text-sm font-semibold text-[#004696] transition-all duration-300 hover:border-[#1e8eab] hover:bg-[#f3f8fa]",
-                      children: secondaryLabel
-                    }
-                  )
-                ]
-              }
-            )
-          ] }),
-          /* @__PURE__ */ jsx(
-            motion.div,
-            {
-              initial: { opacity: 0, scale: 0.94 },
-              animate: { opacity: 1, scale: 1 },
-              transition: { duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] },
-              children: /* @__PURE__ */ jsx(HeroVisualization, {})
-            }
-          )
-        ] })
+                    className: "block",
+                    children: line.map((word, j) => {
+                      const isHighlight = typeof word === "object" && word.highlight;
+                      const text = typeof word === "string" ? word : word.text;
+                      return /* @__PURE__ */ jsxs(
+                        "span",
+                        {
+                          className: isHighlight ? "text-gradient-brand" : void 0,
+                          children: [
+                            text,
+                            " "
+                          ]
+                        },
+                        j
+                      );
+                    })
+                  },
+                  i
+                )) }),
+                /* @__PURE__ */ jsx(
+                  motion.p,
+                  {
+                    initial: { opacity: 0, y: 20 },
+                    animate: { opacity: 1, y: 0 },
+                    transition: { duration: 0.7, delay: 0.4 },
+                    className: "mt-7 max-w-lg text-lg leading-relaxed text-[#526575]",
+                    children: description
+                  }
+                ),
+                /* @__PURE__ */ jsxs(
+                  motion.div,
+                  {
+                    initial: { opacity: 0, y: 20 },
+                    animate: { opacity: 1, y: 0 },
+                    transition: { duration: 0.7, delay: 0.55 },
+                    className: "mt-10 flex flex-wrap items-center gap-4",
+                    children: [
+                      /* @__PURE__ */ jsxs(
+                        HeroButton,
+                        {
+                          to: primaryTo,
+                          className: "group inline-flex items-center gap-2 rounded-full bg-[#004696] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(0,70,150,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1e8eab] hover:shadow-[0_16px_32px_rgba(30,142,171,0.32)]",
+                          children: [
+                            primaryLabel,
+                            /* @__PURE__ */ jsx(
+                              ArrowRight,
+                              {
+                                size: 16,
+                                className: "transition-transform duration-300 group-hover:translate-x-1"
+                              }
+                            )
+                          ]
+                        }
+                      ),
+                      /* @__PURE__ */ jsx(
+                        HeroButton,
+                        {
+                          to: secondaryTo,
+                          className: "inline-flex items-center gap-2 rounded-full border border-[rgba(0,70,150,0.28)] bg-white px-7 py-3.5 text-sm font-semibold text-[#004696] transition-all duration-300 hover:border-[#1e8eab] hover:bg-[#f3f8fa]",
+                          children: secondaryLabel
+                        }
+                      )
+                    ]
+                  }
+                )
+              ] }),
+              renderVisualization && /* @__PURE__ */ jsx(
+                motion.div,
+                {
+                  initial: { opacity: 0, scale: 0.94 },
+                  animate: { opacity: 1, scale: 1 },
+                  transition: { duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] },
+                  children: /* @__PURE__ */ jsx(HeroVisualization, {})
+                }
+              )
+            ]
+          }
+        ),
+        /* @__PURE__ */ jsxs(
+          motion.div,
+          {
+            initial: { opacity: 0 },
+            animate: { opacity: 1 },
+            transition: { duration: 0.8, delay: 0.7 },
+            className: "pointer-events-none absolute bottom-5 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1.5 select-none sm:flex",
+            "aria-hidden": "true",
+            children: [
+              /* @__PURE__ */ jsx("span", { className: "text-[10px] font-semibold uppercase tracking-widest text-[#718391]/80", children: "Scroll" }),
+              /* @__PURE__ */ jsx("div", { className: "flex h-4 w-2.5 items-start justify-center rounded-full border border-[rgba(0,70,150,0.22)] p-0.5", children: /* @__PURE__ */ jsx(
+                motion.div,
+                {
+                  animate: { y: [0, 5, 0] },
+                  transition: { repeat: Infinity, duration: 1.6, ease: "easeInOut" },
+                  className: "h-1 w-1 rounded-full bg-[#1e8eab]"
+                }
+              ) })
+            ]
+          }
+        )
       ]
     }
   );
@@ -2892,7 +2921,7 @@ function ContactForm({ variant = "contact" }) {
                 value: fields.name,
                 onChange: handleChange,
                 className: inputClass,
-                placeholder: "Jane Doe"
+                placeholder: "Your name"
               }
             )
           ] }),
@@ -2908,7 +2937,7 @@ function ContactForm({ variant = "contact" }) {
                 value: fields.email,
                 onChange: handleChange,
                 className: inputClass,
-                placeholder: "jane@company.com"
+                placeholder: "your.email@company.com"
               }
             )
           ] }),
@@ -2993,7 +3022,7 @@ function ContactForm({ variant = "contact" }) {
                   value: fields.phone,
                   onChange: handleChange,
                   className: inputClass,
-                  placeholder: "+92 51 1234567"
+                  placeholder: "Your phone number"
                 }
               )
             ] }),
@@ -3359,11 +3388,11 @@ const CONTACT_DETAILS = [{
 }];
 const contact = UNSAFE_withComponentProps(function Contact() {
   return /* @__PURE__ */ jsxs("section", {
-    className: "relative overflow-hidden pt-36 pb-24 sm:pt-44 sm:pb-32",
+    className: "relative flex min-h-screen min-h-[100dvh] w-full flex-col justify-center overflow-hidden pt-24 pb-16 sm:pt-28 sm:pb-20",
     children: [/* @__PURE__ */ jsx(AnimatedBackground, {
       variant: "hero"
     }), /* @__PURE__ */ jsxs("div", {
-      className: "relative z-10 mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 lg:grid-cols-[1fr_1.2fr] lg:px-8",
+      className: "relative z-10 mx-auto w-full grid max-w-7xl grid-cols-1 gap-16 px-6 lg:grid-cols-[1fr_1.2fr] lg:px-8",
       children: [/* @__PURE__ */ jsxs("div", {
         children: [/* @__PURE__ */ jsxs("span", {
           className: "mb-6 inline-flex items-center gap-2 rounded-full border border-[rgba(0,70,150,0.16)] bg-white/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-[#004696]",
@@ -3408,7 +3437,7 @@ const route8 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProper
   default: contact,
   meta
 }, Symbol.toStringTag, { value: "Module" }));
-const serverManifest = { "entry": { "module": "/assets/entry.client-CumgHwSh.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js"], "css": [] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": true, "module": "/assets/root-D-DSGfkV.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/solutions-gr_vGTtm.js", "/assets/chevron-down-BR73dhf9.js", "/assets/workflow-j394aVPG.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/home": { "id": "routes/home", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/home-BVPPKxBp.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CNfLWwjI.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/arrow-up-right-DQenOPWu.js", "/assets/CapabilityPill-Bq2zShMu.js", "/assets/CTASection-Cusbx29I.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/workflow-j394aVPG.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/about": { "id": "routes/about", "parentId": "root", "path": "about", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/about-NoUgTetp.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CNfLWwjI.js", "/assets/CTASection-Cusbx29I.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/arrow-right-B3CR_aBv.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/solutions/index": { "id": "routes/solutions/index", "parentId": "root", "path": "solutions", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/index-Ckqos3lV.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CNfLWwjI.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/CTASection-Cusbx29I.js", "/assets/solutions-gr_vGTtm.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/workflow-j394aVPG.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/solutions/detail": { "id": "routes/solutions/detail", "parentId": "root", "path": "solutions/:slug", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": true, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/detail-DJBmWc8k.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CNfLWwjI.js", "/assets/CapabilityPill-Bq2zShMu.js", "/assets/CTASection-Cusbx29I.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/solutions-gr_vGTtm.js", "/assets/circle-check-yQLdv0a9.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/workflow-j394aVPG.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/portfolio/index": { "id": "routes/portfolio/index", "parentId": "root", "path": "portfolio", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/index-8utSmDA4.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CNfLWwjI.js", "/assets/portfolio-kvTROtGu.js", "/assets/CTASection-Cusbx29I.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/arrow-up-right-DQenOPWu.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/portfolio/detail": { "id": "routes/portfolio/detail", "parentId": "root", "path": "portfolio/:slug", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": true, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/detail-ody0DrHH.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/portfolio-kvTROtGu.js", "/assets/CTASection-Cusbx29I.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/arrow-up-right-DQenOPWu.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/careers": { "id": "routes/careers", "parentId": "root", "path": "careers", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/careers-DlDCu_ur.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/SectionHeader-CNfLWwjI.js", "/assets/ContactForm-Dc1Lk0eV.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/chevron-down-BR73dhf9.js", "/assets/circle-check-yQLdv0a9.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/contact": { "id": "routes/contact", "parentId": "root", "path": "contact", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/contact-BxH_21DT.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/ContactForm-Dc1Lk0eV.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/circle-check-yQLdv0a9.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 } }, "url": "/assets/manifest-39198155.js", "version": "39198155", "sri": void 0 };
+const serverManifest = { "entry": { "module": "/assets/entry.client-CumgHwSh.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js"], "css": [] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": true, "module": "/assets/root-CK8k004L.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/solutions-gr_vGTtm.js", "/assets/chevron-down-BR73dhf9.js", "/assets/workflow-j394aVPG.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/home": { "id": "routes/home", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/home-M-XCYP0G.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-D3GzA7t1.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/arrow-up-right-DQenOPWu.js", "/assets/CapabilityPill-Bq2zShMu.js", "/assets/CTASection-Cusbx29I.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/workflow-j394aVPG.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/about": { "id": "routes/about", "parentId": "root", "path": "about", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/about-DfqZ7uxD.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-D3GzA7t1.js", "/assets/CTASection-Cusbx29I.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/arrow-right-B3CR_aBv.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/solutions/index": { "id": "routes/solutions/index", "parentId": "root", "path": "solutions", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/index-UJj7GBRN.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-D3GzA7t1.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/CTASection-Cusbx29I.js", "/assets/solutions-gr_vGTtm.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/workflow-j394aVPG.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/solutions/detail": { "id": "routes/solutions/detail", "parentId": "root", "path": "solutions/:slug", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": true, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/detail-NOOz6BjT.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-D3GzA7t1.js", "/assets/CapabilityPill-Bq2zShMu.js", "/assets/CTASection-Cusbx29I.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/solutions-gr_vGTtm.js", "/assets/circle-check-yQLdv0a9.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/workflow-j394aVPG.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/portfolio/index": { "id": "routes/portfolio/index", "parentId": "root", "path": "portfolio", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/index-fb5xUxaG.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-D3GzA7t1.js", "/assets/portfolio-kvTROtGu.js", "/assets/CTASection-Cusbx29I.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/arrow-up-right-DQenOPWu.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/portfolio/detail": { "id": "routes/portfolio/detail", "parentId": "root", "path": "portfolio/:slug", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": true, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/detail-ody0DrHH.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/portfolio-kvTROtGu.js", "/assets/CTASection-Cusbx29I.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/arrow-up-right-DQenOPWu.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/careers": { "id": "routes/careers", "parentId": "root", "path": "careers", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/careers-w3T3RZJv.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/SectionHeader-D3GzA7t1.js", "/assets/ContactForm-BkzTwGDz.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/chevron-down-BR73dhf9.js", "/assets/circle-check-yQLdv0a9.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/contact": { "id": "routes/contact", "parentId": "root", "path": "contact", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/contact-QGRi1eTF.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/ContactForm-BkzTwGDz.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/circle-check-yQLdv0a9.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 } }, "url": "/assets/manifest-a38b8fa5.js", "version": "a38b8fa5", "sri": void 0 };
 const assetsBuildDirectory = "build/client";
 const basename = "/";
 const future = { "unstable_optimizeDeps": false, "v8_passThroughRequests": false, "v8_trailingSlashAwareDataRequests": false, "unstable_previewServerPrerendering": false, "v8_middleware": false, "v8_splitRouteModules": false, "v8_viteEnvironmentApi": false };

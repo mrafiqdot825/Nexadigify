@@ -33,9 +33,6 @@ type Pages = {
       "slug": string;
     };
   };
-  "/careers": {
-    params: {};
-  };
   "/contact": {
     params: {};
   };
@@ -44,7 +41,7 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/about" | "/solutions" | "/solutions/:slug" | "/portfolio" | "/portfolio/:slug" | "/careers" | "/contact";
+    page: "/" | "/about" | "/solutions" | "/solutions/:slug" | "/portfolio" | "/portfolio/:slug" | "/contact";
   };
   "routes/home.tsx": {
     id: "routes/home";
@@ -70,10 +67,6 @@ type RouteFiles = {
     id: "routes/portfolio/detail";
     page: "/portfolio/:slug";
   };
-  "routes/careers.tsx": {
-    id: "routes/careers";
-    page: "/careers";
-  };
   "routes/contact.tsx": {
     id: "routes/contact";
     page: "/contact";
@@ -88,6 +81,5 @@ type RouteModules = {
   "routes/solutions/detail": typeof import("./app/routes/solutions/detail.tsx");
   "routes/portfolio/index": typeof import("./app/routes/portfolio/index.tsx");
   "routes/portfolio/detail": typeof import("./app/routes/portfolio/detail.tsx");
-  "routes/careers": typeof import("./app/routes/careers.tsx");
   "routes/contact": typeof import("./app/routes/contact.tsx");
 };

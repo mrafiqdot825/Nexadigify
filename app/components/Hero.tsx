@@ -37,6 +37,7 @@ interface HeroProps {
   secondaryLabel?: string;
   secondaryTo?: string;
   compact?: boolean;
+  showVisualization?: boolean;
 }
 
 export function Hero({
@@ -48,14 +49,21 @@ export function Hero({
   secondaryLabel = "Explore Solutions",
   secondaryTo = "/solutions",
   compact = false,
+  showVisualization,
 }: HeroProps) {
+  const renderVisualization = showVisualization ?? !compact;
+
   return (
-    <section
-      className={`relative overflow-hidden ${compact ? "pt-36 pb-16" : "pt-40 pb-24 sm:pt-48 sm:pb-32"}`}
-    >
+    <section className="relative flex min-h-screen min-h-[100dvh] w-full flex-col justify-center overflow-hidden pt-24 pb-16 sm:pt-28 sm:pb-20">
       <AnimatedBackground variant="hero" />
-      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 lg:grid-cols-2 lg:px-8">
-        <div>
+      <div
+        className={`relative z-10 mx-auto w-full px-6 lg:px-8 ${
+          renderVisualization
+            ? "grid max-w-7xl grid-cols-1 items-center gap-16 lg:grid-cols-2"
+            : "max-w-4xl"
+        }`}
+      >
+        <div className={renderVisualization ? undefined : "max-w-3xl"}>
           {eyebrow && (
             <motion.span
               initial={{ opacity: 0, y: 10 }}
@@ -134,14 +142,36 @@ export function Hero({
           </motion.div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.94 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <HeroVisualization />
-        </motion.div>
+        {renderVisualization && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.94 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <HeroVisualization />
+          </motion.div>
+        )}
       </div>
+
+      {/* Subtle scroll prompt */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.7 }}
+        className="pointer-events-none absolute bottom-5 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1.5 select-none sm:flex"
+        aria-hidden="true"
+      >
+        <span className="text-[10px] font-semibold uppercase tracking-widest text-[#718391]/80">
+          Scroll
+        </span>
+        <div className="flex h-4 w-2.5 items-start justify-center rounded-full border border-[rgba(0,70,150,0.22)] p-0.5">
+          <motion.div
+            animate={{ y: [0, 5, 0] }}
+            transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
+            className="h-1 w-1 rounded-full bg-[#1e8eab]"
+          />
+        </div>
+      </motion.div>
     </section>
   );
 }
