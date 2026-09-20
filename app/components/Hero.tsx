@@ -54,12 +54,12 @@ export function Hero({
   const renderVisualization = showVisualization ?? !compact;
 
   return (
-    <section className="relative flex min-h-screen min-h-[100dvh] w-full flex-col justify-center overflow-hidden pt-24 pb-16 sm:pt-28 sm:pb-20">
+    <section className="relative flex min-h-screen min-h-[100dvh] w-full flex-col justify-center overflow-hidden pt-28 pb-14 sm:pt-32 sm:pb-20">
       <AnimatedBackground variant="hero" />
       <div
-        className={`relative z-10 mx-auto w-full px-6 lg:px-8 ${
+        className={`relative z-10 mx-auto w-full px-4 sm:px-6 lg:px-8 ${
           renderVisualization
-            ? "grid max-w-7xl grid-cols-1 items-center gap-16 lg:grid-cols-2"
+            ? "grid max-w-7xl grid-cols-1 items-center gap-10 sm:gap-14 lg:grid-cols-2 lg:gap-16"
             : "max-w-4xl"
         }`}
       >
@@ -76,7 +76,7 @@ export function Hero({
             </motion.span>
           )}
 
-          <h1 className="text-[clamp(2.4rem,5.4vw,4.2rem)] font-extrabold leading-[1.05] tracking-tight text-[#0b1f33]">
+          <h1 className="text-[clamp(1.9rem,5.5vw,4.2rem)] font-extrabold leading-[1.08] tracking-tight text-[#0b1f33] break-words">
             {titleLines.map((line, i) => (
               <motion.span
                 key={i}
@@ -112,7 +112,7 @@ export function Hero({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4 }}
-            className="mt-7 max-w-lg text-lg leading-relaxed text-[#526575]"
+            className="mt-6 sm:mt-7 max-w-lg text-base sm:text-lg leading-relaxed text-[#526575]"
           >
             {description}
           </motion.p>
@@ -121,11 +121,11 @@ export function Hero({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.55 }}
-            className="mt-10 flex flex-wrap items-center gap-4"
+            className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4 w-full sm:w-auto"
           >
             <HeroButton
               to={primaryTo}
-              className="group inline-flex items-center gap-2 rounded-full bg-[#004696] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(0,70,150,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1e8eab] hover:shadow-[0_16px_32px_rgba(30,142,171,0.32)]"
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#004696] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(0,70,150,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1e8eab] hover:shadow-[0_16px_32px_rgba(30,142,171,0.32)]"
             >
               {primaryLabel}
               <ArrowRight
@@ -135,7 +135,7 @@ export function Hero({
             </HeroButton>
             <HeroButton
               to={secondaryTo}
-              className="inline-flex items-center gap-2 rounded-full border border-[rgba(0,70,150,0.28)] bg-white px-7 py-3.5 text-sm font-semibold text-[#004696] transition-all duration-300 hover:border-[#1e8eab] hover:bg-[#f3f8fa]"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-[rgba(0,70,150,0.28)] bg-white px-7 py-3.5 text-sm font-semibold text-[#004696] transition-all duration-300 hover:border-[#1e8eab] hover:bg-[#f3f8fa]"
             >
               {secondaryLabel}
             </HeroButton>

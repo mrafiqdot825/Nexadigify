@@ -3,7 +3,7 @@
  * teal/blue connection nodes, slow rotation. No photographic imagery.
  */
 export function AnimatedGlobe() {
-  const meridians = [0, 30, 60, 90, 120, 150]
+  const meridians = [0, 30, 60, 90, 120, 150];
   const nodes = [
     { cx: 30, cy: 25 },
     { cx: 70, cy: 20 },
@@ -12,16 +12,29 @@ export function AnimatedGlobe() {
     { cx: 25, cy: 65 },
     { cx: 50, cy: 50 },
     { cx: 15, cy: 40 },
-  ]
+  ];
 
   return (
-    <div className="relative mx-auto flex h-[340px] w-[340px] items-center justify-center sm:h-[420px] sm:w-[420px]" style={{ perspective: '1000px' }}>
+    <div
+      className="relative mx-auto flex h-[260px] w-[260px] min-[380px]:h-[300px] min-[380px]:w-[300px] sm:h-[380px] sm:w-[380px] lg:h-[420px] lg:w-[420px] max-w-full aspect-square items-center justify-center"
+      style={{ perspective: "1000px" }}
+    >
       <div
         className="animate-globe-spin absolute h-full w-full rounded-full border border-[rgba(0,70,150,0.14)]"
-        style={{ background: 'radial-gradient(circle at 35% 30%, rgba(30,142,171,0.08), transparent 60%)' }}
+        style={{
+          background:
+            "radial-gradient(circle at 35% 30%, rgba(30,142,171,0.08), transparent 60%)",
+        }}
       >
         <svg viewBox="0 0 100 100" className="h-full w-full">
-          <circle cx="50" cy="50" r="49" fill="none" stroke="rgba(0,70,150,0.16)" strokeWidth="0.4" />
+          <circle
+            cx="50"
+            cy="50"
+            r="49"
+            fill="none"
+            stroke="rgba(0,70,150,0.16)"
+            strokeWidth="0.4"
+          />
           {meridians.map((_, i) => (
             <ellipse
               key={i}
@@ -35,7 +48,16 @@ export function AnimatedGlobe() {
             />
           ))}
           {[20, 35, 50, 65, 80].map((cy, i) => (
-            <ellipse key={i} cx="50" cy={cy} rx="49" ry={Math.abs(50 - cy) < 1 ? 49 : 12 - Math.abs(50 - cy) * 0.1} fill="none" stroke="rgba(0,70,150,0.1)" strokeWidth="0.25" />
+            <ellipse
+              key={i}
+              cx="50"
+              cy={cy}
+              rx="49"
+              ry={Math.abs(50 - cy) < 1 ? 49 : 12 - Math.abs(50 - cy) * 0.1}
+              fill="none"
+              stroke="rgba(0,70,150,0.1)"
+              strokeWidth="0.25"
+            />
           ))}
 
           {nodes.map((n, i) => (
@@ -59,14 +81,17 @@ export function AnimatedGlobe() {
               cx={n.cx}
               cy={n.cy}
               r="1.4"
-              fill={i % 2 === 0 ? '#004696' : '#1e8eab'}
+              fill={i % 2 === 0 ? "#004696" : "#1e8eab"}
               className="animate-node-glow"
               style={{ animationDelay: `${i * 0.4}s` }}
             />
           ))}
         </svg>
       </div>
-      <div className="absolute h-full w-full rounded-full" style={{ boxShadow: 'inset 0 0 60px rgba(0,70,150,0.08)' }} />
+      <div
+        className="absolute h-full w-full rounded-full"
+        style={{ boxShadow: "inset 0 0 60px rgba(0,70,150,0.08)" }}
+      />
     </div>
-  )
+  );
 }

@@ -11,7 +11,7 @@ const NAV_LINKS = [
 ];
 
 export function Logo({
-  className = "h-9 w-auto",
+  className = "h-8 sm:h-9 w-auto",
   showText = true,
 }: {
   className?: string;
@@ -29,7 +29,7 @@ export function Logo({
         className={`${className} transition-transform duration-300 group-hover:scale-[1.04]`}
       />
       {showText && (
-        <span className="flex items-center text-[22px] font-extrabold tracking-tight select-none">
+        <span className="flex items-center text-xl sm:text-[22px] font-extrabold tracking-tight select-none">
           <span className="text-[#004696]">Nexa</span>
           <span className="text-[#1e8eab]">digify</span>
         </span>
@@ -68,7 +68,7 @@ export function Navbar() {
       }`}
     >
       <nav
-        className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8"
+        className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"
         aria-label="Primary"
       >
         <Logo />
@@ -120,7 +120,7 @@ export function Navbar() {
             Let's Talk
           </Link>
           <button
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[rgba(0,70,150,0.14)] text-[#0b1f33] lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[rgba(0,70,150,0.14)] text-[#0b1f33] transition-colors hover:bg-[#f3f8fa] lg:hidden"
             aria-label="Open menu"
             onClick={() => setMobileOpen(true)}
           >

@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import { AnimatePresence, motion } from "motion/react";
 import { X, ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { solutions } from "@/data/solutions";
 
 const NAV_LINKS = [
@@ -19,6 +19,17 @@ export function MobileNavigation({
   onClose: () => void;
 }) {
   const [solutionsExpanded, setSolutionsExpanded] = useState(false);
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   return (
     <AnimatePresence>
@@ -43,7 +54,7 @@ export function MobileNavigation({
               <button
                 aria-label="Close menu"
                 onClick={onClose}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-[rgba(0,70,150,0.14)] text-[#0b1f33]"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-[rgba(0,70,150,0.14)] text-[#0b1f33] transition-colors hover:bg-[#f3f8fa]"
               >
                 <X size={18} />
               </button>

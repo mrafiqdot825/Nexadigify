@@ -33,7 +33,7 @@ export function ServiceCard({
         ease: [0.16, 1, 0.3, 1] as const,
       }}
       whileHover={{ y: -8 }}
-      className="group relative flex flex-col justify-between overflow-hidden rounded-[24px] border border-[rgba(0,70,150,0.1)] bg-white p-7 shadow-[0_2px_16px_rgba(0,70,150,0.04)] transition-all duration-300 hover:border-[rgba(30,142,171,0.4)] hover:shadow-[0_24px_48px_rgba(0,70,150,0.12)]"
+      className="group relative flex flex-col justify-between overflow-hidden rounded-[24px] border border-[rgba(0,70,150,0.1)] bg-white p-5 sm:p-7 shadow-[0_2px_16px_rgba(0,70,150,0.04)] transition-all duration-300 hover:border-[rgba(30,142,171,0.4)] hover:shadow-[0_24px_48px_rgba(0,70,150,0.12)]"
     >
       <div
         className="absolute inset-0 -z-10 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
@@ -44,7 +44,7 @@ export function ServiceCard({
       />
       <div>
         {svgSrc && (
-          <div className="mb-5 h-40 w-full overflow-hidden rounded-xl bg-[#0b0f1f] shadow-sm">
+          <div className="mb-5 h-36 sm:h-40 w-full overflow-hidden rounded-xl bg-[#0b0f1f] shadow-sm">
             <img
               src={svgSrc}
               alt={title}

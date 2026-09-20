@@ -4,9 +4,9 @@ import { createReadableStreamFromReadable } from "@react-router/node";
 import { ServerRouter, Link, NavLink, useLocation, UNSAFE_withComponentProps, Outlet, UNSAFE_withErrorBoundaryProps, isRouteErrorResponse, Meta, Links, ScrollRestoration, Scripts, useLoaderData } from "react-router";
 import { isbot } from "isbot";
 import { renderToPipeableStream } from "react-dom/server";
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useScroll, useSpring } from "motion/react";
-import { Workflow, BrainCircuit, Bot, BarChart3, Code2, ArrowRight, X, ChevronDown, Menu, ArrowUpRight, Sparkles, Layers, Rocket, Target, Lightbulb, Compass, Users, CheckCircle2, ArrowLeft, Upload, Briefcase, MapPin, Mail, Phone } from "lucide-react";
+import { Workflow, BrainCircuit, Bot, BarChart3, Code2, ArrowRight, X, ChevronDown, Menu, ArrowUpRight, Sparkles, Layers, Rocket, Target, Lightbulb, Compass, Users, CheckCircle2, ArrowLeft, Upload, Mail, Phone, MapPin, Globe2, Zap, HeartHandshake, Clock } from "lucide-react";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 const streamTimeout = 5e3;
@@ -460,6 +460,16 @@ function MobileNavigation({
   onClose
 }) {
   const [solutionsExpanded, setSolutionsExpanded] = useState(false);
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
   return /* @__PURE__ */ jsx(AnimatePresence, { children: open && /* @__PURE__ */ jsxs(Fragment, { children: [
     /* @__PURE__ */ jsx(
       motion.div,
@@ -487,7 +497,7 @@ function MobileNavigation({
               {
                 "aria-label": "Close menu",
                 onClick: onClose,
-                className: "flex h-10 w-10 items-center justify-center rounded-full border border-[rgba(0,70,150,0.14)] text-[#0b1f33]",
+                className: "flex h-11 w-11 items-center justify-center rounded-full border border-[rgba(0,70,150,0.14)] text-[#0b1f33] transition-colors hover:bg-[#f3f8fa]",
                 children: /* @__PURE__ */ jsx(X, { size: 18 })
               }
             )
@@ -576,12 +586,10 @@ function MobileNavigation({
 }
 const NAV_LINKS = [
   { label: "About", to: "/about" },
-  { label: "Portfolio", to: "/portfolio" },
-  { label: "Careers", to: "/careers" },
-  { label: "Contact", to: "/contact" }
+  { label: "Portfolio", to: "/portfolio" }
 ];
 function Logo({
-  className = "h-9 w-auto",
+  className = "h-8 sm:h-9 w-auto",
   showText = true
 }) {
   return /* @__PURE__ */ jsxs(
@@ -599,7 +607,7 @@ function Logo({
             className: `${className} transition-transform duration-300 group-hover:scale-[1.04]`
           }
         ),
-        showText && /* @__PURE__ */ jsxs("span", { className: "flex items-center text-[22px] font-extrabold tracking-tight select-none", children: [
+        showText && /* @__PURE__ */ jsxs("span", { className: "flex items-center text-xl sm:text-[22px] font-extrabold tracking-tight select-none", children: [
           /* @__PURE__ */ jsx("span", { className: "text-[#004696]", children: "Nexa" }),
           /* @__PURE__ */ jsx("span", { className: "text-[#1e8eab]", children: "digify" })
         ] })
@@ -633,7 +641,7 @@ function Navbar() {
         /* @__PURE__ */ jsxs(
           "nav",
           {
-            className: "mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8",
+            className: "mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8",
             "aria-label": "Primary",
             children: [
               /* @__PURE__ */ jsx(Logo, {}),
@@ -691,7 +699,7 @@ function Navbar() {
                 /* @__PURE__ */ jsx(
                   "button",
                   {
-                    className: "inline-flex h-10 w-10 items-center justify-center rounded-full border border-[rgba(0,70,150,0.14)] text-[#0b1f33] lg:hidden",
+                    className: "inline-flex h-11 w-11 items-center justify-center rounded-full border border-[rgba(0,70,150,0.14)] text-[#0b1f33] transition-colors hover:bg-[#f3f8fa] lg:hidden",
                     "aria-label": "Open menu",
                     onClick: () => setMobileOpen(true),
                     children: /* @__PURE__ */ jsx(Menu, { size: 20 })
@@ -738,8 +746,8 @@ const COMPANY_LINKS = [
 function Footer() {
   return /* @__PURE__ */ jsxs("footer", { className: "relative overflow-hidden border-t border-[rgba(0,70,150,0.1)] bg-white", children: [
     /* @__PURE__ */ jsx("div", { className: "animate-gradient-line h-[2px] w-full bg-gradient-to-r from-[#004696] via-[#1e8eab] to-[#004696]" }),
-    /* @__PURE__ */ jsxs("div", { className: "mx-auto max-w-7xl px-6 py-16 lg:px-8", children: [
-      /* @__PURE__ */ jsxs("div", { className: "grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-5", children: [
+    /* @__PURE__ */ jsxs("div", { className: "mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8", children: [
+      /* @__PURE__ */ jsxs("div", { className: "grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-5 lg:gap-12", children: [
         /* @__PURE__ */ jsxs("div", { className: "sm:col-span-2 lg:col-span-2", children: [
           /* @__PURE__ */ jsx(Logo, {}),
           /* @__PURE__ */ jsx("p", { className: "mt-5 max-w-sm text-sm leading-relaxed text-[#526575]", children: "We design and build intelligent digital systems that automate operations, transform data into insight, and create measurable business value." }),
@@ -748,7 +756,7 @@ function Footer() {
             {
               href: item.href,
               "aria-label": item.name,
-              className: "flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(0,70,150,0.14)] text-[#004696] transition-colors duration-200 hover:border-[#1e8eab] hover:bg-[#f3f8fa]",
+              className: "flex h-10 w-10 items-center justify-center rounded-full border border-[rgba(0,70,150,0.14)] text-[#004696] transition-colors duration-200 hover:border-[#1e8eab] hover:bg-[#f3f8fa]",
               children: item.icon
             },
             item.name
@@ -785,13 +793,13 @@ function Footer() {
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs("div", { className: "mt-14 flex flex-col items-center justify-between gap-4 border-t border-[rgba(0,70,150,0.08)] pt-8 text-sm text-[#718391] sm:flex-row", children: [
+      /* @__PURE__ */ jsxs("div", { className: "mt-12 flex flex-col items-center justify-between gap-4 border-t border-[rgba(0,70,150,0.08)] pt-8 text-center sm:text-left text-sm text-[#718391] sm:flex-row", children: [
         /* @__PURE__ */ jsxs("p", { children: [
           "© ",
           (/* @__PURE__ */ new Date()).getFullYear(),
           " Nexadigify AI. All rights reserved."
         ] }),
-        /* @__PURE__ */ jsxs("div", { className: "flex gap-6", children: [
+        /* @__PURE__ */ jsxs("div", { className: "flex flex-wrap justify-center gap-6", children: [
           /* @__PURE__ */ jsx("a", { href: "#", className: "transition-colors hover:text-[#1e8eab]", children: "Privacy Policy" }),
           /* @__PURE__ */ jsx("a", { href: "#", className: "transition-colors hover:text-[#1e8eab]", children: "Terms of Service" })
         ] })
@@ -865,7 +873,7 @@ function PageTransition({ children }) {
     location.pathname
   ) });
 }
-const stylesheet = "/assets/app-BgwGev8V.css";
+const stylesheet = "/assets/app-Bs7jeKrK.css";
 const links = () => [{
   rel: "stylesheet",
   href: stylesheet
@@ -953,7 +961,10 @@ const route0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProper
   links,
   meta: meta$8
 }, Symbol.toStringTag, { value: "Module" }));
-function AnimatedBackground({ variant = "section", className = "" }) {
+function AnimatedBackground({
+  variant = "section",
+  className = ""
+}) {
   const intensity = variant === "hero" || variant === "cta" ? 1 : variant === "subtle" ? 0.5 : 0.75;
   return /* @__PURE__ */ jsxs(
     "div",
@@ -964,7 +975,7 @@ function AnimatedBackground({ variant = "section", className = "" }) {
         /* @__PURE__ */ jsx(
           "div",
           {
-            className: "animate-orb-a absolute -left-[10%] -top-[15%] h-[55vw] w-[55vw] max-w-[720px] max-h-[720px] rounded-full blur-[90px]",
+            className: "animate-orb-a absolute -left-[10%] -top-[15%] h-[55vw] w-[55vw] max-w-[720px] max-h-[720px] rounded-full blur-[50px] sm:blur-[90px]",
             style: {
               background: "radial-gradient(circle, rgba(0,70,150,0.28), transparent 70%)",
               opacity: intensity
@@ -974,7 +985,7 @@ function AnimatedBackground({ variant = "section", className = "" }) {
         /* @__PURE__ */ jsx(
           "div",
           {
-            className: "animate-orb-b absolute -right-[12%] top-[10%] h-[48vw] w-[48vw] max-w-[640px] max-h-[640px] rounded-full blur-[90px]",
+            className: "animate-orb-b absolute -right-[12%] top-[10%] h-[48vw] w-[48vw] max-w-[640px] max-h-[640px] rounded-full blur-[50px] sm:blur-[90px]",
             style: {
               background: "radial-gradient(circle, rgba(30,142,171,0.26), transparent 70%)",
               opacity: intensity
@@ -984,7 +995,7 @@ function AnimatedBackground({ variant = "section", className = "" }) {
         /* @__PURE__ */ jsx(
           "div",
           {
-            className: "animate-orb-a absolute bottom-[-20%] left-[20%] h-[40vw] w-[40vw] max-w-[520px] max-h-[520px] rounded-full blur-[100px]",
+            className: "animate-orb-a absolute bottom-[-20%] left-[20%] h-[40vw] w-[40vw] max-w-[520px] max-h-[520px] rounded-full blur-[60px] sm:blur-[100px]",
             style: {
               background: "radial-gradient(circle, rgba(0,70,150,0.16), transparent 70%)",
               opacity: intensity * 0.8,
@@ -1051,38 +1062,66 @@ function ConnectionLines() {
     { x1: 15, y1: 70, x2: 42, y2: 85 },
     { x1: 60, y1: 78, x2: 85, y2: 62 }
   ];
-  return /* @__PURE__ */ jsx("svg", { className: "absolute inset-0 h-full w-full", preserveAspectRatio: "none", viewBox: "0 0 100 100", children: lines.map((l, i) => /* @__PURE__ */ jsxs("g", { children: [
-    /* @__PURE__ */ jsx(
-      "line",
-      {
-        x1: l.x1,
-        y1: l.y1,
-        x2: l.x2,
-        y2: l.y2,
-        stroke: "rgba(0,70,150,0.12)",
-        strokeWidth: "0.15",
-        vectorEffect: "non-scaling-stroke"
-      }
-    ),
-    /* @__PURE__ */ jsx(
-      "line",
-      {
-        x1: l.x1,
-        y1: l.y1,
-        x2: l.x2,
-        y2: l.y2,
-        stroke: "#1e8eab",
-        strokeWidth: "0.3",
-        strokeDasharray: "4 236",
-        vectorEffect: "non-scaling-stroke",
-        style: {
-          animation: `pulse-line ${8 + i * 1.6}s linear ${i * 1.3}s infinite`
-        }
-      }
-    ),
-    /* @__PURE__ */ jsx("circle", { cx: l.x1, cy: l.y1, r: "0.5", fill: "#004696", className: "animate-node-glow", style: { animationDelay: `${i * 0.4}s` } }),
-    /* @__PURE__ */ jsx("circle", { cx: l.x2, cy: l.y2, r: "0.5", fill: "#1e8eab", className: "animate-node-glow", style: { animationDelay: `${i * 0.6}s` } })
-  ] }, i)) });
+  return /* @__PURE__ */ jsx(
+    "svg",
+    {
+      className: "absolute inset-0 h-full w-full",
+      preserveAspectRatio: "none",
+      viewBox: "0 0 100 100",
+      children: lines.map((l, i) => /* @__PURE__ */ jsxs("g", { children: [
+        /* @__PURE__ */ jsx(
+          "line",
+          {
+            x1: l.x1,
+            y1: l.y1,
+            x2: l.x2,
+            y2: l.y2,
+            stroke: "rgba(0,70,150,0.12)",
+            strokeWidth: "0.15",
+            vectorEffect: "non-scaling-stroke"
+          }
+        ),
+        /* @__PURE__ */ jsx(
+          "line",
+          {
+            x1: l.x1,
+            y1: l.y1,
+            x2: l.x2,
+            y2: l.y2,
+            stroke: "#1e8eab",
+            strokeWidth: "0.3",
+            strokeDasharray: "4 236",
+            vectorEffect: "non-scaling-stroke",
+            style: {
+              animation: `pulse-line ${8 + i * 1.6}s linear ${i * 1.3}s infinite`
+            }
+          }
+        ),
+        /* @__PURE__ */ jsx(
+          "circle",
+          {
+            cx: l.x1,
+            cy: l.y1,
+            r: "0.5",
+            fill: "#004696",
+            className: "animate-node-glow",
+            style: { animationDelay: `${i * 0.4}s` }
+          }
+        ),
+        /* @__PURE__ */ jsx(
+          "circle",
+          {
+            cx: l.x2,
+            cy: l.y2,
+            r: "0.5",
+            fill: "#1e8eab",
+            className: "animate-node-glow",
+            style: { animationDelay: `${i * 0.6}s` }
+          }
+        )
+      ] }, i))
+    }
+  );
 }
 function HeroVisualization() {
   const outerNodes = [
@@ -1095,12 +1134,14 @@ function HeroVisualization() {
     { angle: 240, ring: 2 },
     { angle: 330, ring: 2 }
   ];
-  return /* @__PURE__ */ jsxs("div", { className: "relative mx-auto flex h-[380px] w-[380px] items-center justify-center sm:h-[460px] sm:w-[460px]", children: [
+  return /* @__PURE__ */ jsxs("div", { className: "relative mx-auto flex h-[270px] w-[270px] min-[380px]:h-[320px] min-[380px]:w-[320px] sm:h-[400px] sm:w-[400px] lg:h-[460px] lg:w-[460px] max-w-full aspect-square items-center justify-center", children: [
     /* @__PURE__ */ jsx(
       "div",
       {
-        className: "absolute h-full w-full rounded-full blur-3xl",
-        style: { background: "radial-gradient(circle, rgba(30,142,171,0.18), transparent 65%)" }
+        className: "absolute h-full w-full rounded-full blur-2xl sm:blur-3xl",
+        style: {
+          background: "radial-gradient(circle, rgba(30,142,171,0.18), transparent 65%)"
+        }
       }
     ),
     /* @__PURE__ */ jsx("div", { className: "animate-orbit-spin absolute h-[92%] w-[92%] rounded-full border border-dashed border-[rgba(0,70,150,0.18)]" }),
@@ -1108,7 +1149,7 @@ function HeroVisualization() {
     /* @__PURE__ */ jsx("div", { className: "animate-orbit-spin absolute h-[92%] w-[92%]", children: outerNodes.filter((n) => n.ring === 1).map((n, i) => /* @__PURE__ */ jsx(
       "span",
       {
-        className: "absolute h-2.5 w-2.5 rounded-full bg-[#004696] shadow-[0_0_12px_rgba(0,70,150,0.6)]",
+        className: "absolute h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full bg-[#004696] shadow-[0_0_12px_rgba(0,70,150,0.6)]",
         style: {
           top: `${50 + 49 * Math.sin(n.angle * Math.PI / 180)}%`,
           left: `${50 + 49 * Math.cos(n.angle * Math.PI / 180)}%`
@@ -1119,7 +1160,7 @@ function HeroVisualization() {
     /* @__PURE__ */ jsx("div", { className: "animate-orbit-spin-reverse absolute h-[68%] w-[68%]", children: outerNodes.filter((n) => n.ring === 2).map((n, i) => /* @__PURE__ */ jsx(
       "span",
       {
-        className: "absolute h-2 w-2 rounded-full bg-[#1e8eab] shadow-[0_0_10px_rgba(30,142,171,0.6)]",
+        className: "absolute h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-[#1e8eab] shadow-[0_0_10px_rgba(30,142,171,0.6)]",
         style: {
           top: `${50 + 49 * Math.sin(n.angle * Math.PI / 180)}%`,
           left: `${50 + 49 * Math.cos(n.angle * Math.PI / 180)}%`
@@ -1128,7 +1169,17 @@ function HeroVisualization() {
       i
     )) }),
     /* @__PURE__ */ jsxs("svg", { className: "absolute h-full w-full", viewBox: "0 0 100 100", children: [
-      /* @__PURE__ */ jsx("circle", { cx: "50", cy: "50", r: "46", fill: "none", stroke: "rgba(0,70,150,0.08)", strokeWidth: "0.3" }),
+      /* @__PURE__ */ jsx(
+        "circle",
+        {
+          cx: "50",
+          cy: "50",
+          r: "46",
+          fill: "none",
+          stroke: "rgba(0,70,150,0.08)",
+          strokeWidth: "0.3"
+        }
+      ),
       [15, 85, 45, 130, 200, 260].map((a, i) => /* @__PURE__ */ jsx(
         "line",
         {
@@ -1143,9 +1194,9 @@ function HeroVisualization() {
         i
       ))
     ] }),
-    /* @__PURE__ */ jsxs("div", { className: "animate-core-pulse relative z-10 flex h-28 w-28 items-center justify-center rounded-full bg-gradient-to-br from-[#004696] to-[#1e8eab] shadow-[0_0_60px_rgba(30,142,171,0.55)] sm:h-32 sm:w-32", children: [
+    /* @__PURE__ */ jsxs("div", { className: "animate-core-pulse relative z-10 flex h-20 w-20 min-[380px]:h-24 min-[380px]:w-24 sm:h-28 sm:w-28 lg:h-32 lg:w-32 items-center justify-center rounded-full bg-gradient-to-br from-[#004696] to-[#1e8eab] shadow-[0_0_40px_rgba(30,142,171,0.45)] sm:shadow-[0_0_60px_rgba(30,142,171,0.55)]", children: [
       /* @__PURE__ */ jsx("div", { className: "absolute h-full w-full rounded-full bg-white/10 blur-sm" }),
-      /* @__PURE__ */ jsx("div", { className: "h-14 w-14 rounded-full bg-white/90 shadow-[0_0_30px_rgba(255,255,255,0.8)] sm:h-16 sm:w-16" })
+      /* @__PURE__ */ jsx("div", { className: "h-10 w-10 min-[380px]:h-12 min-[380px]:w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 rounded-full bg-white/90 shadow-[0_0_20px_rgba(255,255,255,0.7)] sm:shadow-[0_0_30px_rgba(255,255,255,0.8)]" })
     ] })
   ] });
 }
@@ -1171,143 +1222,137 @@ function Hero({
   showVisualization
 }) {
   const renderVisualization = showVisualization ?? !compact;
-  return /* @__PURE__ */ jsxs(
-    "section",
-    {
-      className: "relative flex min-h-screen min-h-[100dvh] w-full flex-col justify-center overflow-hidden pt-24 pb-16 sm:pt-28 sm:pb-20",
-      children: [
-        /* @__PURE__ */ jsx(AnimatedBackground, { variant: "hero" }),
-        /* @__PURE__ */ jsxs(
-          "div",
-          {
-            className: `relative z-10 mx-auto w-full px-6 lg:px-8 ${renderVisualization ? "grid max-w-7xl grid-cols-1 items-center gap-16 lg:grid-cols-2" : "max-w-4xl"}`,
-            children: [
-              /* @__PURE__ */ jsxs("div", { className: renderVisualization ? void 0 : "max-w-3xl", children: [
-                eyebrow && /* @__PURE__ */ jsxs(
-                  motion.span,
-                  {
-                    initial: { opacity: 0, y: 10 },
-                    animate: { opacity: 1, y: 0 },
-                    transition: { duration: 0.6 },
-                    className: "mb-6 inline-flex items-center gap-2 rounded-full border border-[rgba(0,70,150,0.16)] bg-white/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-[#004696] backdrop-blur-sm",
-                    children: [
-                      /* @__PURE__ */ jsx("span", { className: "h-1.5 w-1.5 rounded-full bg-[#1e8eab]" }),
-                      eyebrow
-                    ]
-                  }
-                ),
-                /* @__PURE__ */ jsx("h1", { className: "text-[clamp(2.4rem,5.4vw,4.2rem)] font-extrabold leading-[1.05] tracking-tight text-[#0b1f33]", children: titleLines.map((line, i) => /* @__PURE__ */ jsx(
-                  motion.span,
-                  {
-                    initial: { opacity: 0, y: 24 },
-                    animate: { opacity: 1, y: 0 },
-                    transition: {
-                      duration: 0.7,
-                      delay: 0.1 + i * 0.12,
-                      ease: [0.16, 1, 0.3, 1]
+  return /* @__PURE__ */ jsxs("section", { className: "relative flex min-h-screen min-h-[100dvh] w-full flex-col justify-center overflow-hidden pt-28 pb-14 sm:pt-32 sm:pb-20", children: [
+    /* @__PURE__ */ jsx(AnimatedBackground, { variant: "hero" }),
+    /* @__PURE__ */ jsxs(
+      "div",
+      {
+        className: `relative z-10 mx-auto w-full px-4 sm:px-6 lg:px-8 ${renderVisualization ? "grid max-w-7xl grid-cols-1 items-center gap-10 sm:gap-14 lg:grid-cols-2 lg:gap-16" : "max-w-4xl"}`,
+        children: [
+          /* @__PURE__ */ jsxs("div", { className: renderVisualization ? void 0 : "max-w-3xl", children: [
+            eyebrow && /* @__PURE__ */ jsxs(
+              motion.span,
+              {
+                initial: { opacity: 0, y: 10 },
+                animate: { opacity: 1, y: 0 },
+                transition: { duration: 0.6 },
+                className: "mb-6 inline-flex items-center gap-2 rounded-full border border-[rgba(0,70,150,0.16)] bg-white/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-[#004696] backdrop-blur-sm",
+                children: [
+                  /* @__PURE__ */ jsx("span", { className: "h-1.5 w-1.5 rounded-full bg-[#1e8eab]" }),
+                  eyebrow
+                ]
+              }
+            ),
+            /* @__PURE__ */ jsx("h1", { className: "text-[clamp(1.9rem,5.5vw,4.2rem)] font-extrabold leading-[1.08] tracking-tight text-[#0b1f33] break-words", children: titleLines.map((line, i) => /* @__PURE__ */ jsx(
+              motion.span,
+              {
+                initial: { opacity: 0, y: 24 },
+                animate: { opacity: 1, y: 0 },
+                transition: {
+                  duration: 0.7,
+                  delay: 0.1 + i * 0.12,
+                  ease: [0.16, 1, 0.3, 1]
+                },
+                className: "block",
+                children: line.map((word, j) => {
+                  const isHighlight = typeof word === "object" && word.highlight;
+                  const text = typeof word === "string" ? word : word.text;
+                  return /* @__PURE__ */ jsxs(
+                    "span",
+                    {
+                      className: isHighlight ? "text-gradient-brand" : void 0,
+                      children: [
+                        text,
+                        " "
+                      ]
                     },
-                    className: "block",
-                    children: line.map((word, j) => {
-                      const isHighlight = typeof word === "object" && word.highlight;
-                      const text = typeof word === "string" ? word : word.text;
-                      return /* @__PURE__ */ jsxs(
-                        "span",
-                        {
-                          className: isHighlight ? "text-gradient-brand" : void 0,
-                          children: [
-                            text,
-                            " "
-                          ]
-                        },
-                        j
-                      );
-                    })
-                  },
-                  i
-                )) }),
-                /* @__PURE__ */ jsx(
-                  motion.p,
-                  {
-                    initial: { opacity: 0, y: 20 },
-                    animate: { opacity: 1, y: 0 },
-                    transition: { duration: 0.7, delay: 0.4 },
-                    className: "mt-7 max-w-lg text-lg leading-relaxed text-[#526575]",
-                    children: description
-                  }
-                ),
-                /* @__PURE__ */ jsxs(
-                  motion.div,
-                  {
-                    initial: { opacity: 0, y: 20 },
-                    animate: { opacity: 1, y: 0 },
-                    transition: { duration: 0.7, delay: 0.55 },
-                    className: "mt-10 flex flex-wrap items-center gap-4",
-                    children: [
-                      /* @__PURE__ */ jsxs(
-                        HeroButton,
-                        {
-                          to: primaryTo,
-                          className: "group inline-flex items-center gap-2 rounded-full bg-[#004696] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(0,70,150,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1e8eab] hover:shadow-[0_16px_32px_rgba(30,142,171,0.32)]",
-                          children: [
-                            primaryLabel,
-                            /* @__PURE__ */ jsx(
-                              ArrowRight,
-                              {
-                                size: 16,
-                                className: "transition-transform duration-300 group-hover:translate-x-1"
-                              }
-                            )
-                          ]
-                        }
-                      ),
-                      /* @__PURE__ */ jsx(
-                        HeroButton,
-                        {
-                          to: secondaryTo,
-                          className: "inline-flex items-center gap-2 rounded-full border border-[rgba(0,70,150,0.28)] bg-white px-7 py-3.5 text-sm font-semibold text-[#004696] transition-all duration-300 hover:border-[#1e8eab] hover:bg-[#f3f8fa]",
-                          children: secondaryLabel
-                        }
-                      )
-                    ]
-                  }
-                )
-              ] }),
-              renderVisualization && /* @__PURE__ */ jsx(
-                motion.div,
-                {
-                  initial: { opacity: 0, scale: 0.94 },
-                  animate: { opacity: 1, scale: 1 },
-                  transition: { duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] },
-                  children: /* @__PURE__ */ jsx(HeroVisualization, {})
-                }
-              )
-            ]
-          }
-        ),
-        /* @__PURE__ */ jsxs(
-          motion.div,
-          {
-            initial: { opacity: 0 },
-            animate: { opacity: 1 },
-            transition: { duration: 0.8, delay: 0.7 },
-            className: "pointer-events-none absolute bottom-5 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1.5 select-none sm:flex",
-            "aria-hidden": "true",
-            children: [
-              /* @__PURE__ */ jsx("span", { className: "text-[10px] font-semibold uppercase tracking-widest text-[#718391]/80", children: "Scroll" }),
-              /* @__PURE__ */ jsx("div", { className: "flex h-4 w-2.5 items-start justify-center rounded-full border border-[rgba(0,70,150,0.22)] p-0.5", children: /* @__PURE__ */ jsx(
-                motion.div,
-                {
-                  animate: { y: [0, 5, 0] },
-                  transition: { repeat: Infinity, duration: 1.6, ease: "easeInOut" },
-                  className: "h-1 w-1 rounded-full bg-[#1e8eab]"
-                }
-              ) })
-            ]
-          }
-        )
-      ]
-    }
-  );
+                    j
+                  );
+                })
+              },
+              i
+            )) }),
+            /* @__PURE__ */ jsx(
+              motion.p,
+              {
+                initial: { opacity: 0, y: 20 },
+                animate: { opacity: 1, y: 0 },
+                transition: { duration: 0.7, delay: 0.4 },
+                className: "mt-6 sm:mt-7 max-w-lg text-base sm:text-lg leading-relaxed text-[#526575]",
+                children: description
+              }
+            ),
+            /* @__PURE__ */ jsxs(
+              motion.div,
+              {
+                initial: { opacity: 0, y: 20 },
+                animate: { opacity: 1, y: 0 },
+                transition: { duration: 0.7, delay: 0.55 },
+                className: "mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4 w-full sm:w-auto",
+                children: [
+                  /* @__PURE__ */ jsxs(
+                    HeroButton,
+                    {
+                      to: primaryTo,
+                      className: "group inline-flex items-center justify-center gap-2 rounded-full bg-[#004696] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(0,70,150,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1e8eab] hover:shadow-[0_16px_32px_rgba(30,142,171,0.32)]",
+                      children: [
+                        primaryLabel,
+                        /* @__PURE__ */ jsx(
+                          ArrowRight,
+                          {
+                            size: 16,
+                            className: "transition-transform duration-300 group-hover:translate-x-1"
+                          }
+                        )
+                      ]
+                    }
+                  ),
+                  /* @__PURE__ */ jsx(
+                    HeroButton,
+                    {
+                      to: secondaryTo,
+                      className: "inline-flex items-center justify-center gap-2 rounded-full border border-[rgba(0,70,150,0.28)] bg-white px-7 py-3.5 text-sm font-semibold text-[#004696] transition-all duration-300 hover:border-[#1e8eab] hover:bg-[#f3f8fa]",
+                      children: secondaryLabel
+                    }
+                  )
+                ]
+              }
+            )
+          ] }),
+          renderVisualization && /* @__PURE__ */ jsx(
+            motion.div,
+            {
+              initial: { opacity: 0, scale: 0.94 },
+              animate: { opacity: 1, scale: 1 },
+              transition: { duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] },
+              children: /* @__PURE__ */ jsx(HeroVisualization, {})
+            }
+          )
+        ]
+      }
+    ),
+    /* @__PURE__ */ jsxs(
+      motion.div,
+      {
+        initial: { opacity: 0 },
+        animate: { opacity: 1 },
+        transition: { duration: 0.8, delay: 0.7 },
+        className: "pointer-events-none absolute bottom-5 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1.5 select-none sm:flex",
+        "aria-hidden": "true",
+        children: [
+          /* @__PURE__ */ jsx("span", { className: "text-[10px] font-semibold uppercase tracking-widest text-[#718391]/80", children: "Scroll" }),
+          /* @__PURE__ */ jsx("div", { className: "flex h-4 w-2.5 items-start justify-center rounded-full border border-[rgba(0,70,150,0.22)] p-0.5", children: /* @__PURE__ */ jsx(
+            motion.div,
+            {
+              animate: { y: [0, 5, 0] },
+              transition: { repeat: Infinity, duration: 1.6, ease: "easeInOut" },
+              className: "h-1 w-1 rounded-full bg-[#1e8eab]"
+            }
+          ) })
+        ]
+      }
+    )
+  ] });
 }
 function ScrollReveal({
   children,
@@ -1372,20 +1417,30 @@ function SectionHeader({
   align = "left",
   className
 }) {
-  return /* @__PURE__ */ jsxs(ScrollReveal, { className: cn("max-w-3xl", align === "center" && "mx-auto text-center", className), children: [
-    eyebrow && /* @__PURE__ */ jsxs("span", { className: "mb-4 inline-flex items-center gap-2 rounded-full border border-[rgba(0,70,150,0.16)] bg-white/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-[#004696]", children: [
-      /* @__PURE__ */ jsx("span", { className: "h-1.5 w-1.5 rounded-full bg-[#1e8eab]" }),
-      eyebrow
-    ] }),
-    /* @__PURE__ */ jsxs("h2", { className: "text-[clamp(2rem,4.5vw,3.25rem)] font-extrabold leading-[1.08] tracking-tight text-[#0b1f33]", children: [
-      title,
-      highlight && /* @__PURE__ */ jsxs("span", { className: "text-gradient-brand", children: [
-        " ",
-        highlight
-      ] })
-    ] }),
-    description && /* @__PURE__ */ jsx("p", { className: "mt-5 text-lg leading-relaxed text-[#526575]", children: description })
-  ] });
+  return /* @__PURE__ */ jsxs(
+    ScrollReveal,
+    {
+      className: cn(
+        "max-w-3xl",
+        align === "center" && "mx-auto text-center",
+        className
+      ),
+      children: [
+        eyebrow && /* @__PURE__ */ jsxs("span", { className: "mb-4 inline-flex items-center gap-2 rounded-full border border-[rgba(0,70,150,0.16)] bg-white/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-[#004696]", children: [
+          /* @__PURE__ */ jsx("span", { className: "h-1.5 w-1.5 rounded-full bg-[#1e8eab]" }),
+          eyebrow
+        ] }),
+        /* @__PURE__ */ jsxs("h2", { className: "text-[clamp(1.75rem,4.5vw,3.25rem)] font-extrabold leading-[1.1] tracking-tight text-[#0b1f33] break-words", children: [
+          title,
+          highlight && /* @__PURE__ */ jsxs("span", { className: "text-gradient-brand", children: [
+            " ",
+            highlight
+          ] })
+        ] }),
+        description && /* @__PURE__ */ jsx("p", { className: "mt-4 sm:mt-5 text-base sm:text-lg leading-relaxed text-[#526575]", children: description })
+      ]
+    }
+  );
 }
 function ServiceCard({
   number,
@@ -1408,7 +1463,7 @@ function ServiceCard({
         ease: [0.16, 1, 0.3, 1]
       },
       whileHover: { y: -8 },
-      className: "group relative flex flex-col justify-between overflow-hidden rounded-[24px] border border-[rgba(0,70,150,0.1)] bg-white p-7 shadow-[0_2px_16px_rgba(0,70,150,0.04)] transition-all duration-300 hover:border-[rgba(30,142,171,0.4)] hover:shadow-[0_24px_48px_rgba(0,70,150,0.12)]",
+      className: "group relative flex flex-col justify-between overflow-hidden rounded-[24px] border border-[rgba(0,70,150,0.1)] bg-white p-5 sm:p-7 shadow-[0_2px_16px_rgba(0,70,150,0.04)] transition-all duration-300 hover:border-[rgba(30,142,171,0.4)] hover:shadow-[0_24px_48px_rgba(0,70,150,0.12)]",
       children: [
         /* @__PURE__ */ jsx(
           "div",
@@ -1420,7 +1475,7 @@ function ServiceCard({
           }
         ),
         /* @__PURE__ */ jsxs("div", { children: [
-          svgSrc && /* @__PURE__ */ jsx("div", { className: "mb-5 h-40 w-full overflow-hidden rounded-xl bg-[#0b0f1f] shadow-sm", children: /* @__PURE__ */ jsx(
+          svgSrc && /* @__PURE__ */ jsx("div", { className: "mb-5 h-36 sm:h-40 w-full overflow-hidden rounded-xl bg-[#0b0f1f] shadow-sm", children: /* @__PURE__ */ jsx(
             "img",
             {
               src: svgSrc,
@@ -1470,11 +1525,18 @@ function FeatureCard({
         delay: index2 * 0.1,
         ease: [0.16, 1, 0.3, 1]
       },
-      className: "group relative rounded-[28px] border border-[rgba(0,70,150,0.1)] bg-gradient-to-b from-white to-[#f7fafc] p-10 transition-all duration-300 hover:border-[rgba(30,142,171,0.35)] hover:shadow-[0_20px_40px_rgba(0,70,150,0.08)]",
+      className: "group relative rounded-[24px] sm:rounded-[28px] border border-[rgba(0,70,150,0.1)] bg-gradient-to-b from-white to-[#f7fafc] p-6 sm:p-8 lg:p-10 transition-all duration-300 hover:border-[rgba(30,142,171,0.35)] hover:shadow-[0_20px_40px_rgba(0,70,150,0.08)]",
       children: [
-        /* @__PURE__ */ jsx("span", { className: "text-6xl font-extrabold tracking-tighter text-[rgba(0,70,150,0.08)]", children: number }),
-        /* @__PURE__ */ jsx("div", { className: "-mt-8 mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-white p-2 text-[#1e8eab] shadow-[0_10px_24px_rgba(0,70,150,0.1)] transition-transform duration-300 group-hover:scale-105", children: svgSrc ? /* @__PURE__ */ jsx("img", { src: svgSrc, alt: title, className: "h-12 w-12 object-contain" }) : Icon ? /* @__PURE__ */ jsx(Icon, { size: 28, strokeWidth: 1.6 }) : null }),
-        /* @__PURE__ */ jsx("h3", { className: "mb-3 text-2xl font-bold text-[#0b1f33]", children: title }),
+        /* @__PURE__ */ jsx("span", { className: "text-5xl sm:text-6xl font-extrabold tracking-tighter text-[rgba(0,70,150,0.08)]", children: number }),
+        /* @__PURE__ */ jsx("div", { className: "-mt-8 mb-5 flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-white p-2 text-[#1e8eab] shadow-[0_10px_24px_rgba(0,70,150,0.1)] transition-transform duration-300 group-hover:scale-105", children: svgSrc ? /* @__PURE__ */ jsx(
+          "img",
+          {
+            src: svgSrc,
+            alt: title,
+            className: "h-10 w-10 sm:h-12 sm:w-12 object-contain"
+          }
+        ) : Icon ? /* @__PURE__ */ jsx(Icon, { size: 26, strokeWidth: 1.6 }) : null }),
+        /* @__PURE__ */ jsx("h3", { className: "mb-3 text-xl sm:text-2xl font-bold text-[#0b1f33]", children: title }),
         /* @__PURE__ */ jsx("p", { className: "text-[15px] leading-relaxed text-[#526575]", children: description })
       ]
     }
@@ -1492,23 +1554,23 @@ function CTASection({
   secondaryLabel = "Explore Solutions",
   secondaryTo = "/solutions"
 }) {
-  return /* @__PURE__ */ jsx("section", { className: "relative overflow-hidden bg-[#f7fafc] py-10", children: /* @__PURE__ */ jsxs("div", { className: "relative isolate mx-4 overflow-hidden rounded-[32px] border border-[rgba(0,70,150,0.12)] bg-white px-6 py-20 shadow-[0_20px_60px_rgba(0,70,150,0.08)] sm:mx-8 md:mx-auto md:max-w-6xl", children: [
+  return /* @__PURE__ */ jsx("section", { className: "relative overflow-hidden bg-[#f7fafc] py-10", children: /* @__PURE__ */ jsxs("div", { className: "relative isolate mx-3 overflow-hidden rounded-[24px] sm:rounded-[32px] border border-[rgba(0,70,150,0.12)] bg-white px-5 py-12 sm:px-8 sm:py-16 md:px-12 md:py-20 shadow-[0_20px_60px_rgba(0,70,150,0.08)] sm:mx-6 md:mx-auto md:max-w-6xl", children: [
     /* @__PURE__ */ jsx(AnimatedBackground, { variant: "cta" }),
     /* @__PURE__ */ jsxs(ScrollReveal, { className: "relative z-10 mx-auto max-w-2xl text-center", children: [
-      /* @__PURE__ */ jsxs("h2", { className: "text-[clamp(2rem,4.5vw,3.25rem)] font-extrabold leading-[1.1] tracking-tight text-[#0b1f33]", children: [
+      /* @__PURE__ */ jsxs("h2", { className: "text-[clamp(1.75rem,4.5vw,3.25rem)] font-extrabold leading-[1.12] tracking-tight text-[#0b1f33] break-words", children: [
         title,
         highlight && /* @__PURE__ */ jsxs("span", { className: "text-gradient-brand", children: [
           " ",
           highlight
         ] })
       ] }),
-      description && /* @__PURE__ */ jsx("p", { className: "mx-auto mt-5 max-w-xl text-lg leading-relaxed text-[#526575]", children: description }),
-      /* @__PURE__ */ jsxs("div", { className: "mt-9 flex flex-wrap items-center justify-center gap-4", children: [
+      description && /* @__PURE__ */ jsx("p", { className: "mx-auto mt-4 sm:mt-5 max-w-xl text-base sm:text-lg leading-relaxed text-[#526575]", children: description }),
+      /* @__PURE__ */ jsxs("div", { className: "mt-8 sm:mt-9 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3.5 sm:gap-4 w-full sm:w-auto", children: [
         /* @__PURE__ */ jsxs(
           Link,
           {
             to: primaryTo,
-            className: "group inline-flex items-center gap-2 rounded-full bg-[#004696] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(0,70,150,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1e8eab] hover:shadow-[0_16px_32px_rgba(30,142,171,0.32)]",
+            className: "group inline-flex items-center justify-center gap-2 rounded-full bg-[#004696] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(0,70,150,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1e8eab] hover:shadow-[0_16px_32px_rgba(30,142,171,0.32)]",
             children: [
               primaryLabel,
               /* @__PURE__ */ jsx(
@@ -1525,7 +1587,7 @@ function CTASection({
           Link,
           {
             to: secondaryTo,
-            className: "inline-flex items-center gap-2 rounded-full border border-[rgba(0,70,150,0.3)] bg-white px-7 py-3.5 text-sm font-semibold text-[#004696] transition-all duration-300 hover:border-[#1e8eab] hover:bg-[#f3f8fa]",
+            className: "inline-flex items-center justify-center gap-2 rounded-full border border-[rgba(0,70,150,0.3)] bg-white px-7 py-3.5 text-sm font-semibold text-[#004696] transition-all duration-300 hover:border-[#1e8eab] hover:bg-[#f3f8fa]",
             children: secondaryLabel
           }
         )
@@ -1544,57 +1606,94 @@ function AnimatedGlobe() {
     { cx: 50, cy: 50 },
     { cx: 15, cy: 40 }
   ];
-  return /* @__PURE__ */ jsxs("div", { className: "relative mx-auto flex h-[340px] w-[340px] items-center justify-center sm:h-[420px] sm:w-[420px]", style: { perspective: "1000px" }, children: [
-    /* @__PURE__ */ jsx(
-      "div",
-      {
-        className: "animate-globe-spin absolute h-full w-full rounded-full border border-[rgba(0,70,150,0.14)]",
-        style: { background: "radial-gradient(circle at 35% 30%, rgba(30,142,171,0.08), transparent 60%)" },
-        children: /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 100 100", className: "h-full w-full", children: [
-          /* @__PURE__ */ jsx("circle", { cx: "50", cy: "50", r: "49", fill: "none", stroke: "rgba(0,70,150,0.16)", strokeWidth: "0.4" }),
-          meridians.map((_, i) => /* @__PURE__ */ jsx(
-            "ellipse",
-            {
-              cx: "50",
-              cy: "50",
-              rx: 49 * Math.abs(Math.cos(i * Math.PI / meridians.length)),
-              ry: "49",
-              fill: "none",
-              stroke: "rgba(0,70,150,0.12)",
-              strokeWidth: "0.3"
+  return /* @__PURE__ */ jsxs(
+    "div",
+    {
+      className: "relative mx-auto flex h-[260px] w-[260px] min-[380px]:h-[300px] min-[380px]:w-[300px] sm:h-[380px] sm:w-[380px] lg:h-[420px] lg:w-[420px] max-w-full aspect-square items-center justify-center",
+      style: { perspective: "1000px" },
+      children: [
+        /* @__PURE__ */ jsx(
+          "div",
+          {
+            className: "animate-globe-spin absolute h-full w-full rounded-full border border-[rgba(0,70,150,0.14)]",
+            style: {
+              background: "radial-gradient(circle at 35% 30%, rgba(30,142,171,0.08), transparent 60%)"
             },
-            i
-          )),
-          [20, 35, 50, 65, 80].map((cy, i) => /* @__PURE__ */ jsx("ellipse", { cx: "50", cy, rx: "49", ry: Math.abs(50 - cy) < 1 ? 49 : 12 - Math.abs(50 - cy) * 0.1, fill: "none", stroke: "rgba(0,70,150,0.1)", strokeWidth: "0.25" }, i)),
-          nodes.map((n, i) => /* @__PURE__ */ jsx("g", { children: nodes.slice(i + 1).map((m, j) => /* @__PURE__ */ jsx(
-            "line",
-            {
-              x1: n.cx,
-              y1: n.cy,
-              x2: m.cx,
-              y2: m.cy,
-              stroke: "rgba(30,142,171,0.22)",
-              strokeWidth: "0.25"
-            },
-            j
-          )) }, i)),
-          nodes.map((n, i) => /* @__PURE__ */ jsx(
-            "circle",
-            {
-              cx: n.cx,
-              cy: n.cy,
-              r: "1.4",
-              fill: i % 2 === 0 ? "#004696" : "#1e8eab",
-              className: "animate-node-glow",
-              style: { animationDelay: `${i * 0.4}s` }
-            },
-            i
-          ))
-        ] })
-      }
-    ),
-    /* @__PURE__ */ jsx("div", { className: "absolute h-full w-full rounded-full", style: { boxShadow: "inset 0 0 60px rgba(0,70,150,0.08)" } })
-  ] });
+            children: /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 100 100", className: "h-full w-full", children: [
+              /* @__PURE__ */ jsx(
+                "circle",
+                {
+                  cx: "50",
+                  cy: "50",
+                  r: "49",
+                  fill: "none",
+                  stroke: "rgba(0,70,150,0.16)",
+                  strokeWidth: "0.4"
+                }
+              ),
+              meridians.map((_, i) => /* @__PURE__ */ jsx(
+                "ellipse",
+                {
+                  cx: "50",
+                  cy: "50",
+                  rx: 49 * Math.abs(Math.cos(i * Math.PI / meridians.length)),
+                  ry: "49",
+                  fill: "none",
+                  stroke: "rgba(0,70,150,0.12)",
+                  strokeWidth: "0.3"
+                },
+                i
+              )),
+              [20, 35, 50, 65, 80].map((cy, i) => /* @__PURE__ */ jsx(
+                "ellipse",
+                {
+                  cx: "50",
+                  cy,
+                  rx: "49",
+                  ry: Math.abs(50 - cy) < 1 ? 49 : 12 - Math.abs(50 - cy) * 0.1,
+                  fill: "none",
+                  stroke: "rgba(0,70,150,0.1)",
+                  strokeWidth: "0.25"
+                },
+                i
+              )),
+              nodes.map((n, i) => /* @__PURE__ */ jsx("g", { children: nodes.slice(i + 1).map((m, j) => /* @__PURE__ */ jsx(
+                "line",
+                {
+                  x1: n.cx,
+                  y1: n.cy,
+                  x2: m.cx,
+                  y2: m.cy,
+                  stroke: "rgba(30,142,171,0.22)",
+                  strokeWidth: "0.25"
+                },
+                j
+              )) }, i)),
+              nodes.map((n, i) => /* @__PURE__ */ jsx(
+                "circle",
+                {
+                  cx: n.cx,
+                  cy: n.cy,
+                  r: "1.4",
+                  fill: i % 2 === 0 ? "#004696" : "#1e8eab",
+                  className: "animate-node-glow",
+                  style: { animationDelay: `${i * 0.4}s` }
+                },
+                i
+              ))
+            ] })
+          }
+        ),
+        /* @__PURE__ */ jsx(
+          "div",
+          {
+            className: "absolute h-full w-full rounded-full",
+            style: { boxShadow: "inset 0 0 60px rgba(0,70,150,0.08)" }
+          }
+        )
+      ]
+    }
+  );
 }
 const meta$7 = () => [{
   title: "Nexadigify — AI & Intelligent Technology"
@@ -1678,16 +1777,16 @@ const home = UNSAFE_withComponentProps(function Home() {
       }]],
       description: "We design and build intelligent digital systems that automate operations, transform data into insight, and create measurable business value."
     }), /* @__PURE__ */ jsx("section", {
-      className: "relative bg-white py-24 sm:py-32",
+      className: "relative bg-white py-16 sm:py-24 lg:py-32",
       children: /* @__PURE__ */ jsxs("div", {
-        className: "mx-auto max-w-7xl px-6 lg:px-8",
+        className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8",
         children: [/* @__PURE__ */ jsx(SectionHeader, {
           eyebrow: "What We Do",
           title: "Six disciplines,",
           highlight: "one intelligent system.",
           description: "We combine AI, data, and software engineering into a single team that ships end-to-end — not a patchwork of specialists."
         }), /* @__PURE__ */ jsx("div", {
-          className: "mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3",
+          className: "mt-10 sm:mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3",
           children: SERVICES$1.map((s, i) => /* @__PURE__ */ jsx(ServiceCard, {
             ...s,
             index: i
@@ -1695,11 +1794,11 @@ const home = UNSAFE_withComponentProps(function Home() {
         })]
       })
     }), /* @__PURE__ */ jsxs("section", {
-      className: "relative overflow-hidden bg-[#f7fafc] py-24 sm:py-32",
+      className: "relative overflow-hidden bg-[#f7fafc] py-16 sm:py-24 lg:py-32",
       children: [/* @__PURE__ */ jsx(AnimatedBackground, {
         variant: "subtle"
       }), /* @__PURE__ */ jsxs("div", {
-        className: "relative z-10 mx-auto max-w-7xl px-6 lg:px-8",
+        className: "relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8",
         children: [/* @__PURE__ */ jsx(SectionHeader, {
           align: "center",
           eyebrow: "Our Philosophy",
@@ -1709,16 +1808,16 @@ const home = UNSAFE_withComponentProps(function Home() {
           className: "mx-auto"
         }), /* @__PURE__ */ jsx(ScrollReveal, {
           delay: 0.1,
-          className: "mt-12 flex flex-wrap items-center justify-center gap-3",
+          className: "mt-8 sm:mt-12 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3",
           children: CAPABILITIES.map((c) => /* @__PURE__ */ jsx(CapabilityPill, {
             label: c
           }, c))
         })]
       })]
     }), /* @__PURE__ */ jsx("section", {
-      className: "relative bg-white py-24 sm:py-32",
+      className: "relative bg-white py-16 sm:py-24 lg:py-32",
       children: /* @__PURE__ */ jsxs("div", {
-        className: "mx-auto max-w-7xl px-6 lg:px-8",
+        className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8",
         children: [/* @__PURE__ */ jsx(SectionHeader, {
           align: "center",
           eyebrow: "Why Us",
@@ -1726,7 +1825,7 @@ const home = UNSAFE_withComponentProps(function Home() {
           highlight: "The Future.",
           className: "mx-auto"
         }), /* @__PURE__ */ jsx("div", {
-          className: "mt-14 grid grid-cols-1 gap-6 md:grid-cols-3",
+          className: "mt-10 sm:mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3",
           children: WHY_US.map((f, i) => /* @__PURE__ */ jsx(FeatureCard, {
             ...f,
             index: i
@@ -1734,9 +1833,9 @@ const home = UNSAFE_withComponentProps(function Home() {
         })]
       })
     }), /* @__PURE__ */ jsx("section", {
-      className: "relative overflow-hidden bg-[#0b1f33]/[0.02] py-24 sm:py-32",
+      className: "relative overflow-hidden bg-[#0b1f33]/[0.02] py-16 sm:py-24 lg:py-32",
       children: /* @__PURE__ */ jsxs("div", {
-        className: "mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 lg:grid-cols-2 lg:px-8",
+        className: "mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 sm:gap-14 lg:grid-cols-2 lg:gap-16 px-4 sm:px-6 lg:px-8",
         children: [/* @__PURE__ */ jsx(SectionHeader, {
           eyebrow: "Global Reach",
           title: "Deployed across",
@@ -1823,6 +1922,17 @@ const WHY_CHOOSE = [{
   title: "Long-Term Partnership",
   description: "We build relationships that outlast a single project."
 }];
+const LEADERSHIP = [{
+  name: "Shahab u Deen",
+  role: "Co-Founder & Director",
+  image: "/Shahab.png",
+  bio: ["Shahab u Deen is the Co-Founder and Director of Nexadigify, where he leads the technical vision behind every system the agency builds. A full-stack web developer at his core, he has spent his career at the intersection of code, AI, and growth — designing platforms that don't just function, but perform.", "His expertise spans agentic AI development, end-to-end web architecture, and digital marketing strategy, giving him a rare, complete view of how a product is built, automated, and taken to market. At Nexadigify, he drives the engineering standard the team builds to: production-grade systems, intelligently automated, and always tied back to measurable business outcomes.", "Shahab believes technology should work quietly in the background — solving real problems without adding complexity. That philosophy shapes everything from the agency's architecture decisions to the way it partners with clients."]
+}, {
+  name: "Salman Afridi",
+  role: "Co-Founder & CEO",
+  image: "/salman.png",
+  bio: ["Salman Afridi is the Co-Founder and CEO of Nexadigify, where he sets the agency's direction and drives its growth as a technology partner for businesses building AI-powered systems. A full-stack web developer by training, he brings a builder's perspective to leadership — every decision he makes about strategy, partnerships, and client relationships is grounded in a real understanding of how software gets built and shipped.", "Under his leadership, Nexadigify has grown into a team that treats engineering as a craft and client outcomes as the only real measure of success. Salman's focus is simple: build a company that clients trust with their most important systems, and back that trust with work that holds up in production."]
+}];
 const about = UNSAFE_withComponentProps(function About() {
   return /* @__PURE__ */ jsxs(Fragment, {
     children: [/* @__PURE__ */ jsx(Hero, {
@@ -1836,12 +1946,12 @@ const about = UNSAFE_withComponentProps(function About() {
       secondaryTo: "/careers",
       secondaryLabel: "Join Our Team"
     }), /* @__PURE__ */ jsxs("section", {
-      className: "relative overflow-hidden bg-white py-20 sm:py-28",
+      className: "relative overflow-hidden bg-white py-14 sm:py-20 lg:py-28",
       children: [/* @__PURE__ */ jsx(BackgroundParticles, {
         count: 10,
         className: "opacity-60"
       }), /* @__PURE__ */ jsxs("div", {
-        className: "relative z-10 mx-auto max-w-4xl px-6 lg:px-8",
+        className: "relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8",
         children: [/* @__PURE__ */ jsx(SectionHeader, {
           eyebrow: "Who We Are",
           title: "A team built around",
@@ -1850,18 +1960,18 @@ const about = UNSAFE_withComponentProps(function About() {
           className: "mx-auto"
         }), /* @__PURE__ */ jsx(ScrollReveal, {
           delay: 0.1,
-          className: "mt-8 text-center text-lg leading-relaxed text-[#526575]",
+          className: "mt-6 sm:mt-8 text-center text-base sm:text-lg leading-relaxed text-[#526575]",
           children: "We are engineers, data scientists, and product designers who believe the next generation of software is defined by how intelligently it operates — not just how it looks. We partner with enterprise teams to design and build systems that automate operations, transform data into insight, and create measurable business value."
         })]
       })]
     }), /* @__PURE__ */ jsxs("section", {
-      className: "relative overflow-hidden bg-[#f7fafc] py-20 sm:py-28",
+      className: "relative overflow-hidden bg-[#f7fafc] py-14 sm:py-20 lg:py-28",
       children: [/* @__PURE__ */ jsx(AnimatedBackground, {
         variant: "subtle"
       }), /* @__PURE__ */ jsx("div", {
-        className: "relative z-10 mx-auto max-w-7xl px-6 lg:px-8",
+        className: "relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8",
         children: /* @__PURE__ */ jsxs("div", {
-          className: "grid grid-cols-1 gap-14 lg:grid-cols-2",
+          className: "grid grid-cols-1 gap-10 sm:gap-14 lg:grid-cols-2",
           children: [/* @__PURE__ */ jsx(SectionHeader, {
             eyebrow: "Our Philosophy",
             title: "Intelligence should feel",
@@ -1876,18 +1986,18 @@ const about = UNSAFE_withComponentProps(function About() {
         })
       })]
     }), /* @__PURE__ */ jsx("section", {
-      className: "relative bg-white py-20 sm:py-28",
+      className: "relative bg-white py-14 sm:py-20 lg:py-28",
       children: /* @__PURE__ */ jsxs("div", {
-        className: "mx-auto max-w-7xl px-6 lg:px-8",
+        className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8",
         children: [/* @__PURE__ */ jsx(SectionHeader, {
           eyebrow: "Our Approach",
           title: "How a project",
           highlight: "comes to life."
         }), /* @__PURE__ */ jsx(ScrollRevealStagger, {
-          className: "mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5",
+          className: "mt-10 sm:mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5",
           children: APPROACH.map((a) => /* @__PURE__ */ jsx(ScrollRevealItem, {
             children: /* @__PURE__ */ jsxs("div", {
-              className: "h-full rounded-[22px] border border-[rgba(0,70,150,0.1)] bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(30,142,171,0.35)] hover:shadow-[0_16px_32px_rgba(0,70,150,0.1)]",
+              className: "h-full rounded-[22px] border border-[rgba(0,70,150,0.1)] bg-white p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(30,142,171,0.35)] hover:shadow-[0_16px_32px_rgba(0,70,150,0.1)]",
               children: [/* @__PURE__ */ jsx("span", {
                 className: "text-3xl font-extrabold text-[rgba(0,70,150,0.16)]",
                 children: a.step
@@ -1903,9 +2013,9 @@ const about = UNSAFE_withComponentProps(function About() {
         })]
       })
     }), /* @__PURE__ */ jsx("section", {
-      className: "relative bg-[#f3f8fa] py-20 sm:py-28",
+      className: "relative bg-[#f3f8fa] py-14 sm:py-20 lg:py-28",
       children: /* @__PURE__ */ jsxs("div", {
-        className: "mx-auto max-w-7xl px-6 lg:px-8",
+        className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8",
         children: [/* @__PURE__ */ jsx(SectionHeader, {
           eyebrow: "Why Clients Choose Us",
           title: "What sets us",
@@ -1913,10 +2023,10 @@ const about = UNSAFE_withComponentProps(function About() {
           align: "center",
           className: "mx-auto"
         }), /* @__PURE__ */ jsx(ScrollRevealStagger, {
-          className: "mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4",
+          className: "mt-10 sm:mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4",
           children: WHY_CHOOSE.map((w) => /* @__PURE__ */ jsx(ScrollRevealItem, {
             children: /* @__PURE__ */ jsxs("div", {
-              className: "h-full rounded-[22px] border border-[rgba(0,70,150,0.1)] bg-white p-6 text-center",
+              className: "h-full rounded-[22px] border border-[rgba(0,70,150,0.1)] bg-white p-5 sm:p-6 text-center",
               children: [/* @__PURE__ */ jsx("div", {
                 className: "mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-[#f3f8fa] text-[#004696]",
                 children: /* @__PURE__ */ jsx(w.icon, {
@@ -1931,6 +2041,51 @@ const about = UNSAFE_withComponentProps(function About() {
               })]
             })
           }, w.title))
+        })]
+      })
+    }), /* @__PURE__ */ jsx("section", {
+      className: "relative bg-white py-14 sm:py-20 lg:py-28",
+      children: /* @__PURE__ */ jsxs("div", {
+        className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8",
+        children: [/* @__PURE__ */ jsx(SectionHeader, {
+          align: "center",
+          eyebrow: "Leadership",
+          title: "The minds behind",
+          highlight: "Nexadigify.",
+          description: "Founded by engineers and builders who believe production intelligence should be accessible, robust, and tied directly to business value.",
+          className: "mx-auto"
+        }), /* @__PURE__ */ jsx("div", {
+          className: "mt-10 sm:mt-16 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10",
+          children: LEADERSHIP.map((leader) => /* @__PURE__ */ jsx(ScrollReveal, {
+            className: "group flex flex-col justify-between rounded-[24px] sm:rounded-[28px] border border-[rgba(0,70,150,0.1)] bg-white p-6 sm:p-8 lg:p-10 shadow-[0_4px_24px_rgba(0,70,150,0.04)] transition-all duration-300 hover:border-[rgba(30,142,171,0.35)] hover:shadow-[0_20px_40px_rgba(0,70,150,0.08)]",
+            children: /* @__PURE__ */ jsxs("div", {
+              children: [/* @__PURE__ */ jsxs("div", {
+                className: "flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-6 pb-6 border-b border-[rgba(0,70,150,0.08)]",
+                children: [/* @__PURE__ */ jsx("div", {
+                  className: "relative h-24 w-24 sm:h-28 sm:w-28 shrink-0 overflow-hidden rounded-2xl border border-[rgba(0,70,150,0.14)] bg-[#f3f8fa] shadow-sm",
+                  children: /* @__PURE__ */ jsx("img", {
+                    src: leader.image,
+                    alt: leader.name,
+                    className: "h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105",
+                    loading: "lazy"
+                  })
+                }), /* @__PURE__ */ jsxs("div", {
+                  children: [/* @__PURE__ */ jsx("span", {
+                    className: "inline-flex items-center rounded-full bg-[#f3f8fa] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#1e8eab]",
+                    children: leader.role
+                  }), /* @__PURE__ */ jsx("h3", {
+                    className: "mt-2 text-2xl sm:text-3xl font-extrabold text-[#0b1f33]",
+                    children: leader.name
+                  })]
+                })]
+              }), /* @__PURE__ */ jsx("div", {
+                className: "mt-6 space-y-4 text-sm sm:text-[15px] leading-relaxed text-[#526575]",
+                children: leader.bio.map((paragraph, idx) => /* @__PURE__ */ jsx("p", {
+                  children: paragraph
+                }, idx))
+              })]
+            })
+          }, leader.name))
         })]
       })
     }), /* @__PURE__ */ jsx(CTASection, {
@@ -1963,9 +2118,9 @@ function SolutionCard({
         Link,
         {
           to: `/solutions/${slug}`,
-          className: "group block h-full overflow-hidden rounded-[24px] border border-[rgba(0,70,150,0.1)] bg-white p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-[rgba(30,142,171,0.4)] hover:shadow-[0_24px_48px_rgba(0,70,150,0.12)]",
+          className: "group block h-full overflow-hidden rounded-[24px] border border-[rgba(0,70,150,0.1)] bg-white p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-[rgba(30,142,171,0.4)] hover:shadow-[0_24px_48px_rgba(0,70,150,0.12)]",
           children: [
-            svgIllustration && /* @__PURE__ */ jsx("div", { className: "mb-5 h-40 w-full overflow-hidden rounded-xl bg-[#0b0f1f] shadow-sm", children: /* @__PURE__ */ jsx(
+            svgIllustration && /* @__PURE__ */ jsx("div", { className: "mb-5 h-36 sm:h-40 w-full overflow-hidden rounded-xl bg-[#0b0f1f] shadow-sm", children: /* @__PURE__ */ jsx(
               "img",
               {
                 src: svgIllustration,
@@ -2008,15 +2163,15 @@ const index$1 = UNSAFE_withComponentProps(function SolutionsIndex() {
       secondaryTo: "/portfolio",
       secondaryLabel: "View Our Work"
     }), /* @__PURE__ */ jsx("section", {
-      className: "relative bg-white py-20 sm:py-28",
+      className: "relative bg-white py-14 sm:py-20 lg:py-28",
       children: /* @__PURE__ */ jsxs("div", {
-        className: "mx-auto max-w-7xl px-6 lg:px-8",
+        className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8",
         children: [/* @__PURE__ */ jsx(SectionHeader, {
           eyebrow: "Explore",
           title: "Everything we",
           highlight: "build."
         }), /* @__PURE__ */ jsx("div", {
-          className: "mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3",
+          className: "mt-10 sm:mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3",
           children: solutions.map((s, i) => /* @__PURE__ */ jsx(SolutionCard, {
             slug: s.slug,
             title: s.title,
@@ -2093,27 +2248,27 @@ const detail$1 = UNSAFE_withComponentProps(function SolutionDetail() {
       }]],
       description: solution.heroSub
     }), /* @__PURE__ */ jsx("section", {
-      className: "relative bg-white py-16 sm:py-20",
+      className: "relative bg-white py-12 sm:py-16 lg:py-20",
       children: /* @__PURE__ */ jsxs("div", {
-        className: "mx-auto max-w-7xl px-6 lg:px-8",
+        className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8",
         children: [/* @__PURE__ */ jsx(SectionHeader, {
           eyebrow: "Capabilities",
           title: "What this",
           highlight: "includes."
         }), /* @__PURE__ */ jsx(ScrollReveal, {
           delay: 0.1,
-          className: "mt-10 flex flex-wrap gap-3",
+          className: "mt-8 sm:mt-10 flex flex-wrap gap-2.5 sm:gap-3",
           children: solution.capabilities.map((c) => /* @__PURE__ */ jsx(CapabilityPill, {
             label: c
           }, c))
         })]
       })
     }), /* @__PURE__ */ jsx("section", {
-      className: "relative overflow-hidden bg-white py-8",
+      className: "relative overflow-hidden bg-white py-6 sm:py-8",
       children: /* @__PURE__ */ jsx("div", {
-        className: "mx-auto max-w-7xl px-6 lg:px-8",
+        className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8",
         children: /* @__PURE__ */ jsx(ScrollReveal, {
-          className: "overflow-hidden rounded-[28px] border border-[rgba(0,70,150,0.12)] bg-[#070912] shadow-[0_24px_54px_rgba(0,70,150,0.14)]",
+          className: "overflow-hidden rounded-[20px] sm:rounded-[28px] border border-[rgba(0,70,150,0.12)] bg-[#070912] shadow-[0_24px_54px_rgba(0,70,150,0.14)]",
           children: /* @__PURE__ */ jsx("img", {
             src: solution.svgIllustration,
             alt: `${solution.title} Architecture Blueprint`,
@@ -2123,22 +2278,22 @@ const detail$1 = UNSAFE_withComponentProps(function SolutionDetail() {
         })
       })
     }), /* @__PURE__ */ jsxs("section", {
-      className: "relative overflow-hidden bg-[#f7fafc] py-20 sm:py-28",
+      className: "relative overflow-hidden bg-[#f7fafc] py-14 sm:py-20 lg:py-28",
       children: [/* @__PURE__ */ jsx(AnimatedBackground, {
         variant: "subtle"
       }), /* @__PURE__ */ jsxs("div", {
-        className: "relative z-10 mx-auto max-w-7xl px-6 lg:px-8",
+        className: "relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8",
         children: [/* @__PURE__ */ jsx(SectionHeader, {
           eyebrow: "Process",
           title: "How we",
           highlight: "get there."
         }), /* @__PURE__ */ jsx(ScrollRevealStagger, {
-          className: "mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4",
+          className: "mt-10 sm:mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4",
           children: solution.process.map((p) => /* @__PURE__ */ jsx(ScrollRevealItem, {
             children: /* @__PURE__ */ jsxs("div", {
-              className: "h-full rounded-[24px] border border-[rgba(0,70,150,0.1)] bg-white p-7",
+              className: "h-full rounded-[22px] sm:rounded-[24px] border border-[rgba(0,70,150,0.1)] bg-white p-5 sm:p-7",
               children: [/* @__PURE__ */ jsx("span", {
-                className: "text-4xl font-extrabold text-[rgba(0,70,150,0.15)]",
+                className: "text-3xl sm:text-4xl font-extrabold text-[rgba(0,70,150,0.15)]",
                 children: p.step
               }), /* @__PURE__ */ jsx("h3", {
                 className: "mt-4 mb-2 text-lg font-bold text-[#0b1f33]",
@@ -2152,17 +2307,17 @@ const detail$1 = UNSAFE_withComponentProps(function SolutionDetail() {
         })]
       })]
     }), /* @__PURE__ */ jsx("section", {
-      className: "relative bg-white py-20 sm:py-28",
+      className: "relative bg-white py-14 sm:py-20 lg:py-28",
       children: /* @__PURE__ */ jsx("div", {
-        className: "mx-auto max-w-7xl px-6 lg:px-8",
+        className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8",
         children: /* @__PURE__ */ jsxs("div", {
-          className: "grid grid-cols-1 gap-16 lg:grid-cols-2",
+          className: "grid grid-cols-1 gap-10 sm:gap-14 lg:grid-cols-2 lg:gap-16",
           children: [/* @__PURE__ */ jsx(SectionHeader, {
             eyebrow: "Benefits",
             title: "Why it",
             highlight: "matters."
           }), /* @__PURE__ */ jsx(ScrollRevealStagger, {
-            className: "space-y-6",
+            className: "space-y-5 sm:space-y-6",
             children: solution.benefits.map((b) => /* @__PURE__ */ jsx(ScrollRevealItem, {
               children: /* @__PURE__ */ jsxs("div", {
                 className: "flex items-start gap-4",
@@ -2184,22 +2339,22 @@ const detail$1 = UNSAFE_withComponentProps(function SolutionDetail() {
         })
       })
     }), /* @__PURE__ */ jsx("section", {
-      className: "relative bg-[#f3f8fa] py-20 sm:py-28",
+      className: "relative bg-[#f3f8fa] py-14 sm:py-20 lg:py-28",
       children: /* @__PURE__ */ jsxs("div", {
-        className: "mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 lg:grid-cols-2 lg:px-8",
+        className: "mx-auto grid max-w-7xl grid-cols-1 gap-10 sm:gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8",
         children: [/* @__PURE__ */ jsxs(ScrollReveal, {
           children: [/* @__PURE__ */ jsx("div", {
-            className: "flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#004696] to-[#1e8eab] text-white",
+            className: "flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#004696] to-[#1e8eab] text-white",
             children: /* @__PURE__ */ jsx(Icon, {
-              size: 26
+              size: 24
             })
           }), /* @__PURE__ */ jsx("h3", {
-            className: "mt-6 text-2xl font-bold text-[#0b1f33]",
+            className: "mt-5 sm:mt-6 text-xl sm:text-2xl font-bold text-[#0b1f33]",
             children: "Use Cases"
           }), /* @__PURE__ */ jsx("ul", {
-            className: "mt-5 space-y-3",
+            className: "mt-4 sm:mt-5 space-y-3",
             children: solution.useCases.map((u) => /* @__PURE__ */ jsxs("li", {
-              className: "flex items-center gap-3 text-[#526575]",
+              className: "flex items-center gap-3 text-sm sm:text-base text-[#526575]",
               children: [/* @__PURE__ */ jsx("span", {
                 className: "h-1.5 w-1.5 rounded-full bg-[#1e8eab]"
               }), " ", u]
@@ -2208,32 +2363,32 @@ const detail$1 = UNSAFE_withComponentProps(function SolutionDetail() {
         }), /* @__PURE__ */ jsxs(ScrollReveal, {
           delay: 0.1,
           children: [/* @__PURE__ */ jsx("h3", {
-            className: "text-2xl font-bold text-[#0b1f33]",
+            className: "text-xl sm:text-2xl font-bold text-[#0b1f33]",
             children: "Technology Stack"
           }), /* @__PURE__ */ jsx("div", {
-            className: "mt-5 flex flex-wrap gap-3",
+            className: "mt-4 sm:mt-5 flex flex-wrap gap-2.5 sm:gap-3",
             children: solution.stack.map((tech) => /* @__PURE__ */ jsx("span", {
-              className: "rounded-xl border border-[rgba(0,70,150,0.14)] bg-white px-4 py-2 text-sm font-semibold text-[#004696]",
+              className: "rounded-xl border border-[rgba(0,70,150,0.14)] bg-white px-3.5 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold text-[#004696]",
               children: tech
             }, tech))
           })]
         })]
       })
     }), /* @__PURE__ */ jsx("section", {
-      className: "relative bg-white py-20 sm:py-28",
+      className: "relative bg-white py-14 sm:py-20 lg:py-28",
       children: /* @__PURE__ */ jsxs("div", {
-        className: "mx-auto max-w-7xl px-6 lg:px-8",
+        className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8",
         children: [/* @__PURE__ */ jsx(SectionHeader, {
           eyebrow: "Explore More",
           title: "Related",
           highlight: "solutions."
         }), /* @__PURE__ */ jsx("div", {
-          className: "mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3",
+          className: "mt-10 sm:mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3",
           children: related.map((s) => {
             const RIcon = s.icon;
             return /* @__PURE__ */ jsxs(Link, {
               to: `/solutions/${s.slug}`,
-              className: "group rounded-[20px] border border-[rgba(0,70,150,0.1)] bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(30,142,171,0.4)] hover:shadow-[0_16px_32px_rgba(0,70,150,0.1)]",
+              className: "group rounded-[20px] border border-[rgba(0,70,150,0.1)] bg-white p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(30,142,171,0.4)] hover:shadow-[0_16px_32px_rgba(0,70,150,0.1)]",
               children: [/* @__PURE__ */ jsx(RIcon, {
                 size: 22,
                 className: "text-[#004696]"
@@ -2291,7 +2446,7 @@ function PortfolioCard({
           to: `/portfolio/${slug}`,
           className: "group block overflow-hidden rounded-[24px] border border-[rgba(0,70,150,0.1)] bg-white transition-all duration-300 hover:-translate-y-1.5 hover:border-[rgba(30,142,171,0.4)] hover:shadow-[0_28px_56px_rgba(0,70,150,0.14)]",
           children: [
-            /* @__PURE__ */ jsxs("div", { className: "relative h-56 w-full overflow-hidden bg-[#0a0f1d]", children: [
+            /* @__PURE__ */ jsxs("div", { className: "relative h-48 sm:h-56 w-full overflow-hidden bg-[#0a0f1d]", children: [
               image ? /* @__PURE__ */ jsx(
                 "img",
                 {
@@ -2348,7 +2503,7 @@ function PortfolioCard({
               ] }),
               /* @__PURE__ */ jsx("div", { className: "absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-[#004696] opacity-0 shadow-md transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100", children: /* @__PURE__ */ jsx(ArrowUpRight, { size: 16 }) })
             ] }),
-            /* @__PURE__ */ jsxs("div", { className: "p-7", children: [
+            /* @__PURE__ */ jsxs("div", { className: "p-5 sm:p-7", children: [
               /* @__PURE__ */ jsx("span", { className: "text-xs font-semibold uppercase tracking-wide text-[#1e8eab]", children: category }),
               /* @__PURE__ */ jsx("h3", { className: "mt-2 mb-2 text-lg font-bold text-[#0b1f33]", children: title }),
               /* @__PURE__ */ jsx("p", { className: "mb-4 text-sm leading-relaxed text-[#526575]", children: description }),
@@ -2537,15 +2692,15 @@ const index = UNSAFE_withComponentProps(function PortfolioIndex() {
       primaryTo: "/contact",
       secondaryTo: "/solutions"
     }), /* @__PURE__ */ jsx("section", {
-      className: "relative bg-white py-16 sm:py-24",
+      className: "relative bg-white py-14 sm:py-20 lg:py-28",
       children: /* @__PURE__ */ jsxs("div", {
-        className: "mx-auto max-w-7xl px-6 lg:px-8",
+        className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8",
         children: [/* @__PURE__ */ jsx(SectionHeader, {
           eyebrow: "Case Studies",
           title: "Selected",
           highlight: "projects."
         }), /* @__PURE__ */ jsx("div", {
-          className: "mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3",
+          className: "mt-10 sm:mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3",
           children: portfolio.map((p, i) => /* @__PURE__ */ jsx(PortfolioCard, {
             slug: p.slug,
             category: p.category,
@@ -2573,12 +2728,12 @@ function CaseStudySection({
   children,
   eyebrow
 }) {
-  return /* @__PURE__ */ jsx(ScrollReveal, { className: "border-t border-[rgba(0,70,150,0.1)] py-14 first:border-t-0", children: /* @__PURE__ */ jsxs("div", { className: "grid gap-8 md:grid-cols-[220px_1fr]", children: [
+  return /* @__PURE__ */ jsx(ScrollReveal, { className: "border-t border-[rgba(0,70,150,0.1)] py-8 sm:py-12 md:py-14 first:border-t-0", children: /* @__PURE__ */ jsxs("div", { className: "grid gap-4 sm:gap-6 md:grid-cols-[200px_1fr] lg:grid-cols-[220px_1fr]", children: [
     /* @__PURE__ */ jsxs("div", { children: [
       eyebrow && /* @__PURE__ */ jsx("span", { className: "text-xs font-semibold uppercase tracking-[0.14em] text-[#1e8eab]", children: eyebrow }),
-      /* @__PURE__ */ jsx("h2", { className: "mt-2 text-2xl font-bold text-[#0b1f33]", children: title })
+      /* @__PURE__ */ jsx("h2", { className: "mt-1 sm:mt-2 text-xl sm:text-2xl font-bold text-[#0b1f33]", children: title })
     ] }),
-    /* @__PURE__ */ jsx("div", { className: "text-[17px] leading-relaxed text-[#526575]", children })
+    /* @__PURE__ */ jsx("div", { className: "text-[16px] sm:text-[17px] leading-relaxed text-[#526575]", children })
   ] }) });
 }
 function IndustryTag({ label }) {
@@ -2633,11 +2788,11 @@ const detail = UNSAFE_withComponentProps(function PortfolioDetail() {
   }).slice(0, 3);
   return /* @__PURE__ */ jsxs(Fragment, {
     children: [/* @__PURE__ */ jsxs("section", {
-      className: "relative overflow-hidden pt-36 pb-16 sm:pt-44 sm:pb-20",
+      className: "relative overflow-hidden pt-28 pb-12 sm:pt-36 sm:pb-16 lg:pt-40 lg:pb-20",
       children: [/* @__PURE__ */ jsx(AnimatedBackground, {
         variant: "section"
       }), /* @__PURE__ */ jsxs("div", {
-        className: "relative z-10 mx-auto max-w-4xl px-6 lg:px-8",
+        className: "relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8",
         children: [/* @__PURE__ */ jsxs(Link, {
           to: "/portfolio",
           className: "inline-flex items-center gap-2 text-sm font-semibold text-[#004696] transition-transform duration-200 hover:-translate-x-0.5",
@@ -2646,19 +2801,19 @@ const detail = UNSAFE_withComponentProps(function PortfolioDetail() {
           }), " Back to Portfolio"]
         }), /* @__PURE__ */ jsxs(ScrollReveal, {
           delay: 0.05,
-          className: "mt-8",
+          className: "mt-6 sm:mt-8",
           children: [/* @__PURE__ */ jsx(IndustryTag, {
             label: study.category
           }), /* @__PURE__ */ jsx("h1", {
-            className: "mt-5 text-[clamp(2rem,5vw,3.5rem)] font-extrabold leading-[1.05] tracking-tight text-[#0b1f33]",
+            className: "mt-4 sm:mt-5 text-[clamp(1.85rem,5vw,3.5rem)] font-extrabold leading-[1.08] tracking-tight text-[#0b1f33] break-words",
             children: study.title
           }), /* @__PURE__ */ jsx("p", {
-            className: "mt-5 max-w-2xl text-lg leading-relaxed text-[#526575]",
+            className: "mt-4 sm:mt-5 max-w-2xl text-base sm:text-lg leading-relaxed text-[#526575]",
             children: study.description
           })]
         }), /* @__PURE__ */ jsxs(ScrollReveal, {
           delay: 0.15,
-          className: "mt-10 grid grid-cols-2 gap-6 rounded-[24px] border border-[rgba(0,70,150,0.1)] bg-white p-6 sm:grid-cols-4",
+          className: "mt-8 sm:mt-10 grid grid-cols-2 gap-4 sm:gap-6 rounded-[20px] sm:rounded-[24px] border border-[rgba(0,70,150,0.1)] bg-white p-4 sm:p-6 sm:grid-cols-4",
           children: [/* @__PURE__ */ jsxs("div", {
             children: [/* @__PURE__ */ jsx("p", {
               className: "text-xs font-semibold uppercase tracking-wide text-[#718391]",
@@ -2686,7 +2841,7 @@ const detail = UNSAFE_withComponentProps(function PortfolioDetail() {
           }, r.label))]
         }), study.image && /* @__PURE__ */ jsx(ScrollReveal, {
           delay: 0.2,
-          className: "mt-10 overflow-hidden rounded-[24px] border border-[rgba(0,70,150,0.12)] bg-[#070912] shadow-[0_24px_54px_rgba(0,70,150,0.14)]",
+          className: "mt-8 sm:mt-10 overflow-hidden rounded-[20px] sm:rounded-[24px] border border-[rgba(0,70,150,0.12)] bg-[#070912] shadow-[0_24px_54px_rgba(0,70,150,0.14)]",
           children: /* @__PURE__ */ jsx("img", {
             src: study.image,
             alt: `${study.title} Architecture Blueprint`,
@@ -2698,7 +2853,7 @@ const detail = UNSAFE_withComponentProps(function PortfolioDetail() {
     }), /* @__PURE__ */ jsx("section", {
       className: "relative bg-white py-4",
       children: /* @__PURE__ */ jsxs("div", {
-        className: "mx-auto max-w-4xl px-6 lg:px-8",
+        className: "mx-auto max-w-4xl px-4 sm:px-6 lg:px-8",
         children: [/* @__PURE__ */ jsx(CaseStudySection, {
           eyebrow: "The Problem",
           title: "Challenge",
@@ -2727,9 +2882,9 @@ const detail = UNSAFE_withComponentProps(function PortfolioDetail() {
           eyebrow: "Stack",
           title: "Technology",
           children: /* @__PURE__ */ jsx("div", {
-            className: "flex flex-wrap gap-3",
+            className: "flex flex-wrap gap-2.5 sm:gap-3",
             children: study.technology.map((t) => /* @__PURE__ */ jsx("span", {
-              className: "rounded-xl border border-[rgba(0,70,150,0.14)] bg-[#f7fafc] px-4 py-2 text-sm font-semibold text-[#004696]",
+              className: "rounded-xl border border-[rgba(0,70,150,0.14)] bg-[#f7fafc] px-3.5 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold text-[#004696]",
               children: t
             }, t))
           })
@@ -2737,11 +2892,11 @@ const detail = UNSAFE_withComponentProps(function PortfolioDetail() {
           eyebrow: "The Outcome",
           title: "Results",
           children: /* @__PURE__ */ jsx("div", {
-            className: "grid grid-cols-1 gap-6 sm:grid-cols-3",
+            className: "grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6",
             children: study.results.map((r) => /* @__PURE__ */ jsxs("div", {
-              className: "rounded-[20px] border border-[rgba(0,70,150,0.1)] bg-[#f7fafc] p-6 text-center",
+              className: "rounded-[20px] border border-[rgba(0,70,150,0.1)] bg-[#f7fafc] p-5 sm:p-6 text-center",
               children: [/* @__PURE__ */ jsx("p", {
-                className: "text-3xl font-extrabold text-gradient-brand",
+                className: "text-2xl sm:text-3xl font-extrabold text-gradient-brand",
                 children: r.metric
               }), /* @__PURE__ */ jsx("p", {
                 className: "mt-1 text-sm text-[#526575]",
@@ -2753,7 +2908,7 @@ const detail = UNSAFE_withComponentProps(function PortfolioDetail() {
           eyebrow: "Visual Gallery",
           title: "Project Visuals",
           children: /* @__PURE__ */ jsx("div", {
-            className: "grid grid-cols-1 gap-4 sm:grid-cols-3",
+            className: "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3",
             children: study.gallery.map((g, i) => /* @__PURE__ */ jsxs("div", {
               className: "group relative aspect-[4/3] overflow-hidden rounded-2xl border border-[rgba(0,70,150,0.1)] bg-[#070912]",
               children: [/* @__PURE__ */ jsx("img", {
@@ -2773,17 +2928,17 @@ const detail = UNSAFE_withComponentProps(function PortfolioDetail() {
         })]
       })
     }), /* @__PURE__ */ jsx("section", {
-      className: "relative bg-[#f7fafc] py-20 sm:py-24 border-t border-[rgba(0,70,150,0.08)]",
+      className: "relative bg-[#f7fafc] py-14 sm:py-20 lg:py-24 border-t border-[rgba(0,70,150,0.08)]",
       children: /* @__PURE__ */ jsxs("div", {
-        className: "mx-auto max-w-7xl px-6 lg:px-8",
+        className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8",
         children: [/* @__PURE__ */ jsxs("div", {
-          className: "flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12",
+          className: "flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10 sm:mb-12",
           children: [/* @__PURE__ */ jsxs("div", {
             children: [/* @__PURE__ */ jsx("p", {
               className: "text-xs font-bold uppercase tracking-widest text-[#1e8eab]",
               children: "More Case Studies"
             }), /* @__PURE__ */ jsxs("h2", {
-              className: "mt-2 text-3xl font-extrabold tracking-tight text-[#0b1f33] sm:text-4xl",
+              className: "mt-2 text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#0b1f33]",
               children: ["Related ", /* @__PURE__ */ jsx("span", {
                 className: "text-gradient-brand",
                 children: "projects."
@@ -2797,7 +2952,7 @@ const detail = UNSAFE_withComponentProps(function PortfolioDetail() {
             })]
           })]
         }), /* @__PURE__ */ jsx("div", {
-          className: "grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3",
+          className: "grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3",
           children: relatedProjects.map((p, i) => /* @__PURE__ */ jsx(PortfolioCard, {
             slug: p.slug,
             category: p.category,
@@ -2899,14 +3054,14 @@ function ContactForm({ variant = "contact" }) {
       }
     );
   }
-  const inputClass = "w-full rounded-xl border border-[rgba(0,70,150,0.16)] bg-white px-4 py-3 text-[#0b1f33] placeholder:text-[#a8bccb] transition-colors duration-200 focus:border-[#1e8eab] focus:outline-none focus:ring-2 focus:ring-[rgba(30,142,171,0.18)]";
+  const inputClass = "w-full rounded-xl border border-[rgba(0,70,150,0.16)] bg-white px-4 py-3 text-base sm:text-sm text-[#0b1f33] placeholder:text-[#a8bccb] transition-colors duration-200 focus:border-[#1e8eab] focus:outline-none focus:ring-2 focus:ring-[rgba(30,142,171,0.18)]";
   const labelClass = "mb-1.5 block text-sm font-semibold text-[#0b1f33]";
   return /* @__PURE__ */ jsxs(
     "form",
     {
       name: formName,
       onSubmit: handleSubmit,
-      className: "rounded-[28px] border border-[rgba(0,70,150,0.1)] bg-white p-6 shadow-[0_16px_48px_rgba(0,70,150,0.08)] sm:p-10",
+      className: "rounded-[22px] sm:rounded-[28px] border border-[rgba(0,70,150,0.1)] bg-white p-5 sm:p-8 lg:p-10 shadow-[0_16px_48px_rgba(0,70,150,0.08)]",
       children: [
         /* @__PURE__ */ jsx("input", { type: "hidden", name: "form-name", value: formName }),
         /* @__PURE__ */ jsxs("div", { className: "grid gap-5 sm:grid-cols-2", children: [
@@ -3101,6 +3256,73 @@ function ContactForm({ variant = "contact" }) {
     }
   );
 }
+const meta$1 = () => [{
+  title: "Contact — Nexadigify"
+}, {
+  name: "description",
+  content: "Tell Nexadigify about your project — AI automation, agentic AI, custom AI development, data analytics, or web development."
+}];
+const CONTACT_DETAILS = [{
+  icon: Mail,
+  label: "hello@nexadigify.com"
+}, {
+  icon: Phone,
+  label: "+91 9876543210"
+}, {
+  icon: MapPin,
+  label: "Islamabad, Pakistan"
+}];
+const contact = UNSAFE_withComponentProps(function Contact() {
+  return /* @__PURE__ */ jsxs("section", {
+    className: "relative flex min-h-screen min-h-[100dvh] w-full flex-col justify-center overflow-hidden pt-28 pb-14 sm:pt-32 sm:pb-20",
+    children: [/* @__PURE__ */ jsx(AnimatedBackground, {
+      variant: "hero"
+    }), /* @__PURE__ */ jsxs("div", {
+      className: "relative z-10 mx-auto w-full grid max-w-7xl grid-cols-1 gap-10 sm:gap-12 px-4 sm:px-6 lg:grid-cols-[1fr_1.2fr] lg:gap-16 lg:px-8",
+      children: [/* @__PURE__ */ jsxs("div", {
+        children: [/* @__PURE__ */ jsxs("span", {
+          className: "mb-6 inline-flex items-center gap-2 rounded-full border border-[rgba(0,70,150,0.16)] bg-white/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-[#004696]",
+          children: [/* @__PURE__ */ jsx("span", {
+            className: "h-1.5 w-1.5 rounded-full bg-[#1e8eab]"
+          }), "Contact"]
+        }), /* @__PURE__ */ jsxs("h1", {
+          className: "text-[clamp(1.85rem,5vw,3.75rem)] font-extrabold leading-[1.08] tracking-tight text-[#0b1f33] break-words",
+          children: ["Let's build something", " ", /* @__PURE__ */ jsx("span", {
+            className: "text-gradient-brand",
+            children: "intelligent."
+          })]
+        }), /* @__PURE__ */ jsx("p", {
+          className: "mt-4 sm:mt-6 max-w-md text-base sm:text-lg leading-relaxed text-[#526575]",
+          children: "Tell us about your business and goals — a member of our team will follow up within one business day."
+        }), /* @__PURE__ */ jsx("div", {
+          className: "mt-8 sm:mt-10 space-y-4",
+          children: CONTACT_DETAILS.map((d) => /* @__PURE__ */ jsxs("div", {
+            className: "flex items-center gap-3 text-[#0b1f33]",
+            children: [/* @__PURE__ */ jsx("div", {
+              className: "flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#004696] shadow-[0_6px_16px_rgba(0,70,150,0.1)]",
+              children: /* @__PURE__ */ jsx(d.icon, {
+                size: 16
+              })
+            }), /* @__PURE__ */ jsx("span", {
+              className: "text-sm font-medium",
+              children: d.label
+            })]
+          }, d.label))
+        })]
+      }), /* @__PURE__ */ jsx(ScrollReveal, {
+        delay: 0.1,
+        children: /* @__PURE__ */ jsx(ContactForm, {
+          variant: "contact"
+        })
+      })]
+    })]
+  });
+});
+const route7 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: contact,
+  meta: meta$1
+}, Symbol.toStringTag, { value: "Module" }));
 const jobOpenings = [
   {
     id: "ai-engineer",
@@ -3211,152 +3433,198 @@ const jobOpenings = [
     ]
   }
 ];
-const meta$1 = () => [{
+const meta = () => [{
   title: "Careers — Nexadigify"
 }, {
   name: "description",
-  content: "Join Nexadigify and help build intelligent AI systems for enterprise clients. Explore open roles and apply today."
+  content: "Join Nexadigify and help build production-grade intelligent systems, autonomous agents, and enterprise AI platforms."
+}];
+const PERKS = [{
+  icon: Sparkles,
+  title: "AI-First Culture",
+  description: "Work with cutting-edge foundation models, modern agentic frameworks, and state-of-the-art tools every single day."
+}, {
+  icon: Globe2,
+  title: "Flexible Remote / Hybrid",
+  description: "Work from wherever you do your best work with flexible scheduling and asynchronous collaboration."
+}, {
+  icon: Zap,
+  title: "High-Impact Engineering",
+  description: "Ship systems that directly solve mission-critical operational challenges for real enterprise clients."
+}, {
+  icon: HeartHandshake,
+  title: "Growth & Learning",
+  description: "Generous conference, learning, and hardware stipends to support your continuous growth."
 }];
 const careers = UNSAFE_withComponentProps(function Careers() {
-  const [expanded, setExpanded] = useState(null);
+  const [selectedDept, setSelectedDept] = useState("All");
+  const [expandedJob, setExpandedJob] = useState(null);
+  const departments = ["All", ...Array.from(new Set(jobOpenings.map((j) => j.department)))];
+  const filteredJobs = selectedDept === "All" ? jobOpenings : jobOpenings.filter((j) => j.department === selectedDept);
   return /* @__PURE__ */ jsxs(Fragment, {
     children: [/* @__PURE__ */ jsx(Hero, {
       compact: true,
       eyebrow: "Careers",
-      titleLines: [["Build What"], [{
-        text: "Comes Next.",
+      titleLines: [["Build the future of"], [{
+        text: "intelligence.",
         highlight: true
       }]],
-      description: "Join a team of engineers, data scientists, and designers building the intelligent systems enterprise companies run on.",
+      description: "We're a team of engineers, data scientists, and designers passionate about engineering systems that genuinely think and deliver value.",
+      primaryLabel: "View Open Roles",
       primaryTo: "#openings",
-      primaryLabel: "View Openings",
-      secondaryTo: "/about",
-      secondaryLabel: "About Us"
+      secondaryLabel: "Why Join Us",
+      secondaryTo: "#why-us"
     }), /* @__PURE__ */ jsx("section", {
-      id: "openings",
-      className: "relative bg-white py-16 sm:py-24",
+      id: "why-us",
+      className: "relative bg-white py-14 sm:py-20 lg:py-28",
       children: /* @__PURE__ */ jsxs("div", {
-        className: "mx-auto max-w-4xl px-6 lg:px-8",
+        className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8",
         children: [/* @__PURE__ */ jsx(SectionHeader, {
-          eyebrow: "Open Positions",
-          title: "Current",
-          highlight: "openings."
+          align: "center",
+          eyebrow: "Why Nexadigify",
+          title: "Engineered for people who",
+          highlight: "love building.",
+          className: "mx-auto"
+        }), /* @__PURE__ */ jsx(ScrollRevealStagger, {
+          className: "mt-10 sm:mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4",
+          children: PERKS.map((p) => /* @__PURE__ */ jsx(ScrollRevealItem, {
+            children: /* @__PURE__ */ jsxs("div", {
+              className: "h-full rounded-[22px] border border-[rgba(0,70,150,0.1)] bg-white p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(30,142,171,0.35)] hover:shadow-[0_16px_32px_rgba(0,70,150,0.1)]",
+              children: [/* @__PURE__ */ jsx("div", {
+                className: "flex h-12 w-12 items-center justify-center rounded-2xl bg-[#f3f8fa] text-[#004696]",
+                children: /* @__PURE__ */ jsx(p.icon, {
+                  size: 22
+                })
+              }), /* @__PURE__ */ jsx("h3", {
+                className: "mt-4 mb-2 font-bold text-[#0b1f33]",
+                children: p.title
+              }), /* @__PURE__ */ jsx("p", {
+                className: "text-sm leading-relaxed text-[#526575]",
+                children: p.description
+              })]
+            })
+          }, p.title))
+        })]
+      })
+    }), /* @__PURE__ */ jsxs("section", {
+      id: "openings",
+      className: "relative overflow-hidden bg-[#f7fafc] py-14 sm:py-20 lg:py-28",
+      children: [/* @__PURE__ */ jsx(AnimatedBackground, {
+        variant: "subtle"
+      }), /* @__PURE__ */ jsxs("div", {
+        className: "relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8",
+        children: [/* @__PURE__ */ jsx(SectionHeader, {
+          eyebrow: "Open Roles",
+          title: "Find your",
+          highlight: "next mission.",
+          description: "Explore our current open positions. Don't see an exact match? Apply below through our general talent network."
         }), /* @__PURE__ */ jsx("div", {
-          className: "mt-12 space-y-4",
-          children: jobOpenings.map((job) => {
-            const isOpen = expanded === job.id;
-            return /* @__PURE__ */ jsx(ScrollReveal, {
-              children: /* @__PURE__ */ jsxs("div", {
-                className: "overflow-hidden rounded-[22px] border border-[rgba(0,70,150,0.1)] bg-white transition-colors duration-300 hover:border-[rgba(30,142,171,0.35)]",
-                children: [/* @__PURE__ */ jsxs("button", {
-                  className: "flex w-full items-center justify-between gap-4 px-6 py-5 text-left",
-                  onClick: () => setExpanded(isOpen ? null : job.id),
-                  "aria-expanded": isOpen,
+          className: "mt-8 flex flex-wrap gap-2 sm:gap-3",
+          children: departments.map((dept) => /* @__PURE__ */ jsx("button", {
+            onClick: () => setSelectedDept(dept),
+            className: `rounded-full px-4 py-2 text-xs sm:text-sm font-semibold transition-all duration-200 ${selectedDept === dept ? "bg-[#004696] text-white shadow-sm" : "border border-[rgba(0,70,150,0.16)] bg-white text-[#526575] hover:bg-[#f3f8fa] hover:text-[#004696]"}`,
+            children: dept
+          }, dept))
+        }), /* @__PURE__ */ jsx("div", {
+          className: "mt-8 sm:mt-10 space-y-4",
+          children: filteredJobs.map((job) => {
+            const isExpanded = expandedJob === job.id;
+            return /* @__PURE__ */ jsxs("div", {
+              className: "overflow-hidden rounded-[20px] sm:rounded-[24px] border border-[rgba(0,70,150,0.1)] bg-white transition-all duration-300 hover:border-[rgba(30,142,171,0.35)] hover:shadow-md",
+              children: [/* @__PURE__ */ jsxs("div", {
+                onClick: () => setExpandedJob(isExpanded ? null : job.id),
+                className: "flex cursor-pointer flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 sm:p-7 select-none",
+                children: [/* @__PURE__ */ jsxs("div", {
                   children: [/* @__PURE__ */ jsxs("div", {
-                    children: [/* @__PURE__ */ jsx("h3", {
-                      className: "text-lg font-bold text-[#0b1f33]",
-                      children: job.title
-                    }), /* @__PURE__ */ jsxs("div", {
-                      className: "mt-1.5 flex flex-wrap items-center gap-3 text-xs font-medium text-[#718391]",
-                      children: [/* @__PURE__ */ jsxs("span", {
-                        className: "inline-flex items-center gap-1",
-                        children: [/* @__PURE__ */ jsx(Briefcase, {
-                          size: 13
-                        }), " ", job.department]
-                      }), /* @__PURE__ */ jsxs("span", {
-                        className: "inline-flex items-center gap-1",
-                        children: [/* @__PURE__ */ jsx(MapPin, {
-                          size: 13
-                        }), " ", job.location]
-                      }), /* @__PURE__ */ jsx("span", {
-                        className: "rounded-full bg-[#f3f8fa] px-2.5 py-0.5 text-[#1e8eab]",
-                        children: job.type
-                      })]
+                    className: "flex flex-wrap items-center gap-2 mb-2",
+                    children: [/* @__PURE__ */ jsx("span", {
+                      className: "rounded-full bg-[#f3f8fa] px-3 py-1 text-xs font-semibold text-[#004696]",
+                      children: job.department
+                    }), /* @__PURE__ */ jsxs("span", {
+                      className: "inline-flex items-center gap-1 text-xs text-[#718391]",
+                      children: [/* @__PURE__ */ jsx(MapPin, {
+                        size: 12
+                      }), " ", job.location]
+                    }), /* @__PURE__ */ jsxs("span", {
+                      className: "inline-flex items-center gap-1 text-xs text-[#718391]",
+                      children: [/* @__PURE__ */ jsx(Clock, {
+                        size: 12
+                      }), " ", job.type]
                     })]
-                  }), /* @__PURE__ */ jsx(ChevronDown, {
-                    size: 20,
-                    className: `shrink-0 text-[#004696] transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`
+                  }), /* @__PURE__ */ jsx("h3", {
+                    className: "text-lg sm:text-xl font-bold text-[#0b1f33]",
+                    children: job.title
+                  }), /* @__PURE__ */ jsx("p", {
+                    className: "mt-1 text-sm text-[#526575]",
+                    children: job.description
                   })]
-                }), /* @__PURE__ */ jsx(AnimatePresence, {
-                  children: isOpen && /* @__PURE__ */ jsx(motion.div, {
-                    initial: {
-                      height: 0,
-                      opacity: 0
-                    },
-                    animate: {
-                      height: "auto",
-                      opacity: 1
-                    },
-                    exit: {
-                      height: 0,
-                      opacity: 0
-                    },
-                    transition: {
-                      duration: 0.3,
-                      ease: [0.16, 1, 0.3, 1]
-                    },
-                    className: "overflow-hidden",
-                    children: /* @__PURE__ */ jsxs("div", {
-                      className: "border-t border-[rgba(0,70,150,0.08)] px-6 py-6",
-                      children: [/* @__PURE__ */ jsx("p", {
-                        className: "text-[15px] leading-relaxed text-[#526575]",
-                        children: job.description
-                      }), /* @__PURE__ */ jsxs("div", {
-                        className: "mt-5 grid gap-6 sm:grid-cols-2",
-                        children: [/* @__PURE__ */ jsxs("div", {
-                          children: [/* @__PURE__ */ jsx("h4", {
-                            className: "mb-2 text-sm font-bold text-[#0b1f33]",
-                            children: "Responsibilities"
-                          }), /* @__PURE__ */ jsx("ul", {
-                            className: "space-y-2 text-sm text-[#526575]",
-                            children: job.responsibilities.map((r) => /* @__PURE__ */ jsxs("li", {
-                              className: "flex gap-2",
-                              children: [/* @__PURE__ */ jsx("span", {
-                                className: "mt-1.5 h-1 w-1 shrink-0 rounded-full bg-[#1e8eab]"
-                              }), " ", r]
-                            }, r))
-                          })]
-                        }), /* @__PURE__ */ jsxs("div", {
-                          children: [/* @__PURE__ */ jsx("h4", {
-                            className: "mb-2 text-sm font-bold text-[#0b1f33]",
-                            children: "Requirements"
-                          }), /* @__PURE__ */ jsx("ul", {
-                            className: "space-y-2 text-sm text-[#526575]",
-                            children: job.requirements.map((r) => /* @__PURE__ */ jsxs("li", {
-                              className: "flex gap-2",
-                              children: [/* @__PURE__ */ jsx("span", {
-                                className: "mt-1.5 h-1 w-1 shrink-0 rounded-full bg-[#1e8eab]"
-                              }), " ", r]
-                            }, r))
-                          })]
-                        })]
-                      }), /* @__PURE__ */ jsx("a", {
-                        href: "#apply",
-                        className: "mt-6 inline-flex items-center gap-2 rounded-full bg-[#004696] px-6 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:bg-[#1e8eab]",
-                        children: "Apply for this role"
-                      })]
+                }), /* @__PURE__ */ jsxs("div", {
+                  className: "flex items-center gap-3",
+                  children: [/* @__PURE__ */ jsx("a", {
+                    href: "#apply",
+                    onClick: (e) => e.stopPropagation(),
+                    className: "rounded-full bg-[#004696] px-5 py-2 text-xs sm:text-sm font-semibold text-white transition-colors hover:bg-[#1e8eab]",
+                    children: "Apply"
+                  }), /* @__PURE__ */ jsx("button", {
+                    "aria-label": "Toggle details",
+                    className: "flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(0,70,150,0.14)] text-[#004696]",
+                    children: /* @__PURE__ */ jsx(ChevronDown, {
+                      size: 16,
+                      className: `transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`
                     })
-                  })
+                  })]
                 })]
-              })
+              }), isExpanded && /* @__PURE__ */ jsx("div", {
+                className: "border-t border-[rgba(0,70,150,0.08)] bg-[#fcfdfe] p-5 sm:p-7",
+                children: /* @__PURE__ */ jsxs("div", {
+                  className: "grid grid-cols-1 gap-6 sm:grid-cols-2",
+                  children: [/* @__PURE__ */ jsxs("div", {
+                    children: [/* @__PURE__ */ jsx("h4", {
+                      className: "text-sm font-bold uppercase tracking-wider text-[#004696]",
+                      children: "Responsibilities"
+                    }), /* @__PURE__ */ jsx("ul", {
+                      className: "mt-3 space-y-2 text-sm text-[#526575]",
+                      children: job.responsibilities.map((r, i) => /* @__PURE__ */ jsxs("li", {
+                        className: "flex items-start gap-2",
+                        children: [/* @__PURE__ */ jsx("span", {
+                          className: "mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#1e8eab]"
+                        }), r]
+                      }, i))
+                    })]
+                  }), /* @__PURE__ */ jsxs("div", {
+                    children: [/* @__PURE__ */ jsx("h4", {
+                      className: "text-sm font-bold uppercase tracking-wider text-[#004696]",
+                      children: "Requirements"
+                    }), /* @__PURE__ */ jsx("ul", {
+                      className: "mt-3 space-y-2 text-sm text-[#526575]",
+                      children: job.requirements.map((req, i) => /* @__PURE__ */ jsxs("li", {
+                        className: "flex items-start gap-2",
+                        children: [/* @__PURE__ */ jsx("span", {
+                          className: "mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#004696]"
+                        }), req]
+                      }, i))
+                    })]
+                  })]
+                })
+              })]
             }, job.id);
           })
         })]
-      })
+      })]
     }), /* @__PURE__ */ jsx("section", {
       id: "apply",
-      className: "relative bg-[#f7fafc] py-20 sm:py-28",
+      className: "relative bg-white py-14 sm:py-20 lg:py-28",
       children: /* @__PURE__ */ jsxs("div", {
-        className: "mx-auto max-w-2xl px-6 lg:px-8",
+        className: "mx-auto max-w-4xl px-4 sm:px-6 lg:px-8",
         children: [/* @__PURE__ */ jsx(SectionHeader, {
-          eyebrow: "Apply",
-          title: "Tell us about",
-          highlight: "yourself.",
           align: "center",
+          eyebrow: "Apply Now",
+          title: "Join the",
+          highlight: "team.",
+          description: "Submit your application directly or tell us about your skills — we review all submissions with care.",
           className: "mx-auto"
-        }), /* @__PURE__ */ jsx(ScrollReveal, {
-          delay: 0.1,
-          className: "mt-10",
+        }), /* @__PURE__ */ jsx("div", {
+          className: "mt-10 sm:mt-12",
           children: /* @__PURE__ */ jsx(ContactForm, {
             variant: "careers"
           })
@@ -3365,79 +3633,12 @@ const careers = UNSAFE_withComponentProps(function Careers() {
     })]
   });
 });
-const route7 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: careers,
-  meta: meta$1
-}, Symbol.toStringTag, { value: "Module" }));
-const meta = () => [{
-  title: "Contact — Nexadigify"
-}, {
-  name: "description",
-  content: "Tell Nexadigify about your project — AI automation, agentic AI, custom AI development, data analytics, or web development."
-}];
-const CONTACT_DETAILS = [{
-  icon: Mail,
-  label: "hello@nexadigify.com"
-}, {
-  icon: Phone,
-  label: "+91 9876543210"
-}, {
-  icon: MapPin,
-  label: "Islamabad, Pakistan"
-}];
-const contact = UNSAFE_withComponentProps(function Contact() {
-  return /* @__PURE__ */ jsxs("section", {
-    className: "relative flex min-h-screen min-h-[100dvh] w-full flex-col justify-center overflow-hidden pt-24 pb-16 sm:pt-28 sm:pb-20",
-    children: [/* @__PURE__ */ jsx(AnimatedBackground, {
-      variant: "hero"
-    }), /* @__PURE__ */ jsxs("div", {
-      className: "relative z-10 mx-auto w-full grid max-w-7xl grid-cols-1 gap-16 px-6 lg:grid-cols-[1fr_1.2fr] lg:px-8",
-      children: [/* @__PURE__ */ jsxs("div", {
-        children: [/* @__PURE__ */ jsxs("span", {
-          className: "mb-6 inline-flex items-center gap-2 rounded-full border border-[rgba(0,70,150,0.16)] bg-white/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-[#004696]",
-          children: [/* @__PURE__ */ jsx("span", {
-            className: "h-1.5 w-1.5 rounded-full bg-[#1e8eab]"
-          }), "Contact"]
-        }), /* @__PURE__ */ jsxs("h1", {
-          className: "text-[clamp(2.2rem,5vw,3.75rem)] font-extrabold leading-[1.06] tracking-tight text-[#0b1f33]",
-          children: ["Let's build something", " ", /* @__PURE__ */ jsx("span", {
-            className: "text-gradient-brand",
-            children: "intelligent."
-          })]
-        }), /* @__PURE__ */ jsx("p", {
-          className: "mt-6 max-w-md text-lg leading-relaxed text-[#526575]",
-          children: "Tell us about your business and goals — a member of our team will follow up within one business day."
-        }), /* @__PURE__ */ jsx("div", {
-          className: "mt-10 space-y-4",
-          children: CONTACT_DETAILS.map((d) => /* @__PURE__ */ jsxs("div", {
-            className: "flex items-center gap-3 text-[#0b1f33]",
-            children: [/* @__PURE__ */ jsx("div", {
-              className: "flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#004696] shadow-[0_6px_16px_rgba(0,70,150,0.1)]",
-              children: /* @__PURE__ */ jsx(d.icon, {
-                size: 16
-              })
-            }), /* @__PURE__ */ jsx("span", {
-              className: "text-sm font-medium",
-              children: d.label
-            })]
-          }, d.label))
-        })]
-      }), /* @__PURE__ */ jsx(ScrollReveal, {
-        delay: 0.1,
-        children: /* @__PURE__ */ jsx(ContactForm, {
-          variant: "contact"
-        })
-      })]
-    })]
-  });
-});
 const route8 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: contact,
+  default: careers,
   meta
 }, Symbol.toStringTag, { value: "Module" }));
-const serverManifest = { "entry": { "module": "/assets/entry.client-CumgHwSh.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js"], "css": [] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": true, "module": "/assets/root-CK8k004L.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/solutions-gr_vGTtm.js", "/assets/chevron-down-BR73dhf9.js", "/assets/workflow-j394aVPG.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/home": { "id": "routes/home", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/home-M-XCYP0G.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-D3GzA7t1.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/arrow-up-right-DQenOPWu.js", "/assets/CapabilityPill-Bq2zShMu.js", "/assets/CTASection-Cusbx29I.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/workflow-j394aVPG.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/about": { "id": "routes/about", "parentId": "root", "path": "about", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/about-DfqZ7uxD.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-D3GzA7t1.js", "/assets/CTASection-Cusbx29I.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/arrow-right-B3CR_aBv.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/solutions/index": { "id": "routes/solutions/index", "parentId": "root", "path": "solutions", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/index-UJj7GBRN.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-D3GzA7t1.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/CTASection-Cusbx29I.js", "/assets/solutions-gr_vGTtm.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/workflow-j394aVPG.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/solutions/detail": { "id": "routes/solutions/detail", "parentId": "root", "path": "solutions/:slug", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": true, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/detail-NOOz6BjT.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-D3GzA7t1.js", "/assets/CapabilityPill-Bq2zShMu.js", "/assets/CTASection-Cusbx29I.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/solutions-gr_vGTtm.js", "/assets/circle-check-yQLdv0a9.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/workflow-j394aVPG.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/portfolio/index": { "id": "routes/portfolio/index", "parentId": "root", "path": "portfolio", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/index-fb5xUxaG.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-D3GzA7t1.js", "/assets/portfolio-kvTROtGu.js", "/assets/CTASection-Cusbx29I.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/arrow-up-right-DQenOPWu.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/portfolio/detail": { "id": "routes/portfolio/detail", "parentId": "root", "path": "portfolio/:slug", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": true, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/detail-ody0DrHH.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/portfolio-kvTROtGu.js", "/assets/CTASection-Cusbx29I.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/arrow-up-right-DQenOPWu.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/careers": { "id": "routes/careers", "parentId": "root", "path": "careers", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/careers-w3T3RZJv.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/SectionHeader-D3GzA7t1.js", "/assets/ContactForm-BkzTwGDz.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/chevron-down-BR73dhf9.js", "/assets/circle-check-yQLdv0a9.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/contact": { "id": "routes/contact", "parentId": "root", "path": "contact", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/contact-QGRi1eTF.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/ScrollReveal-BNoithEe.js", "/assets/ContactForm-BkzTwGDz.js", "/assets/arrow-right-B3CR_aBv.js", "/assets/circle-check-yQLdv0a9.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 } }, "url": "/assets/manifest-a38b8fa5.js", "version": "a38b8fa5", "sri": void 0 };
+const serverManifest = { "entry": { "module": "/assets/entry.client-CumgHwSh.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js"], "css": [] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": true, "module": "/assets/root-D_YLgNG-.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/arrow-right-IQB89q_J.js", "/assets/solutions-DGS5J_xd.js", "/assets/chevron-down-C-wnGQGG.js", "/assets/workflow-BZKWucxU.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/home": { "id": "routes/home", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/home-CmbTYer_.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-x1dTA1k2.js", "/assets/arrow-right-IQB89q_J.js", "/assets/arrow-up-right-CpFtQvYW.js", "/assets/CapabilityPill-Bq2zShMu.js", "/assets/CTASection-D1gSY9Ac.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/workflow-BZKWucxU.js", "/assets/sparkles-DoRaVLZ9.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/about": { "id": "routes/about", "parentId": "root", "path": "about", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/about-ByG5uHgg.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-x1dTA1k2.js", "/assets/CTASection-D1gSY9Ac.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/arrow-right-IQB89q_J.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/solutions/index": { "id": "routes/solutions/index", "parentId": "root", "path": "solutions", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/index-BJ_yamUF.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-x1dTA1k2.js", "/assets/arrow-right-IQB89q_J.js", "/assets/CTASection-D1gSY9Ac.js", "/assets/solutions-DGS5J_xd.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/workflow-BZKWucxU.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/solutions/detail": { "id": "routes/solutions/detail", "parentId": "root", "path": "solutions/:slug", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": true, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/detail-BjQqZh67.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-x1dTA1k2.js", "/assets/CapabilityPill-Bq2zShMu.js", "/assets/CTASection-D1gSY9Ac.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/solutions-DGS5J_xd.js", "/assets/circle-check-DOzy85Ul.js", "/assets/arrow-right-IQB89q_J.js", "/assets/workflow-BZKWucxU.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/portfolio/index": { "id": "routes/portfolio/index", "parentId": "root", "path": "portfolio", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/index-Cgacjmq7.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-x1dTA1k2.js", "/assets/portfolio-Bl4GiWbd.js", "/assets/CTASection-D1gSY9Ac.js", "/assets/arrow-right-IQB89q_J.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/arrow-up-right-CpFtQvYW.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/portfolio/detail": { "id": "routes/portfolio/detail", "parentId": "root", "path": "portfolio/:slug", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": true, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/detail-DlhM11cS.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/portfolio-Bl4GiWbd.js", "/assets/CTASection-D1gSY9Ac.js", "/assets/arrow-right-IQB89q_J.js", "/assets/arrow-up-right-CpFtQvYW.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/contact": { "id": "routes/contact", "parentId": "root", "path": "contact", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/contact-DmgKhtSo.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/ContactForm-Cyh4H_66.js", "/assets/arrow-right-IQB89q_J.js", "/assets/circle-check-DOzy85Ul.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/careers": { "id": "routes/careers", "parentId": "root", "path": "careers", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/careers-CVHpmOs3.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-x1dTA1k2.js", "/assets/ContactForm-Cyh4H_66.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/sparkles-DoRaVLZ9.js", "/assets/arrow-right-IQB89q_J.js", "/assets/chevron-down-C-wnGQGG.js", "/assets/circle-check-DOzy85Ul.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 } }, "url": "/assets/manifest-bb83d939.js", "version": "bb83d939", "sri": void 0 };
 const assetsBuildDirectory = "build/client";
 const basename = "/";
 const future = { "unstable_optimizeDeps": false, "v8_passThroughRequests": false, "v8_trailingSlashAwareDataRequests": false, "unstable_previewServerPrerendering": false, "v8_middleware": false, "v8_splitRouteModules": false, "v8_viteEnvironmentApi": false };
@@ -3504,18 +3705,18 @@ const routes = {
     caseSensitive: void 0,
     module: route6
   },
-  "routes/careers": {
-    id: "routes/careers",
-    parentId: "root",
-    path: "careers",
-    index: void 0,
-    caseSensitive: void 0,
-    module: route7
-  },
   "routes/contact": {
     id: "routes/contact",
     parentId: "root",
     path: "contact",
+    index: void 0,
+    caseSensitive: void 0,
+    module: route7
+  },
+  "routes/careers": {
+    id: "routes/careers",
+    parentId: "root",
+    path: "careers",
     index: void 0,
     caseSensitive: void 0,
     module: route8

@@ -29,14 +29,14 @@ export default function PortfolioIndex() {
         secondaryTo="/solutions"
       />
 
-      <section className="relative bg-white py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <section className="relative bg-white py-14 sm:py-20 lg:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             eyebrow="Case Studies"
             title="Selected"
             highlight="projects."
           />
-          <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 sm:mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {portfolio.map((p, i) => (
               <PortfolioCard
                 key={p.slug}

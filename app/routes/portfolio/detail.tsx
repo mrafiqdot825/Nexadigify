@@ -53,28 +53,28 @@ export default function PortfolioDetail() {
 
   return (
     <>
-      <section className="relative overflow-hidden pt-36 pb-16 sm:pt-44 sm:pb-20">
+      <section className="relative overflow-hidden pt-28 pb-12 sm:pt-36 sm:pb-16 lg:pt-40 lg:pb-20">
         <AnimatedBackground variant="section" />
-        <div className="relative z-10 mx-auto max-w-4xl px-6 lg:px-8">
+        <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <Link
             to="/portfolio"
             className="inline-flex items-center gap-2 text-sm font-semibold text-[#004696] transition-transform duration-200 hover:-translate-x-0.5"
           >
             <ArrowLeft size={16} /> Back to Portfolio
           </Link>
-          <ScrollReveal delay={0.05} className="mt-8">
+          <ScrollReveal delay={0.05} className="mt-6 sm:mt-8">
             <IndustryTag label={study.category} />
-            <h1 className="mt-5 text-[clamp(2rem,5vw,3.5rem)] font-extrabold leading-[1.05] tracking-tight text-[#0b1f33]">
+            <h1 className="mt-4 sm:mt-5 text-[clamp(1.85rem,5vw,3.5rem)] font-extrabold leading-[1.08] tracking-tight text-[#0b1f33] break-words">
               {study.title}
             </h1>
-            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-[#526575]">
+            <p className="mt-4 sm:mt-5 max-w-2xl text-base sm:text-lg leading-relaxed text-[#526575]">
               {study.description}
             </p>
           </ScrollReveal>
 
           <ScrollReveal
             delay={0.15}
-            className="mt-10 grid grid-cols-2 gap-6 rounded-[24px] border border-[rgba(0,70,150,0.1)] bg-white p-6 sm:grid-cols-4"
+            className="mt-8 sm:mt-10 grid grid-cols-2 gap-4 sm:gap-6 rounded-[20px] sm:rounded-[24px] border border-[rgba(0,70,150,0.1)] bg-white p-4 sm:p-6 sm:grid-cols-4"
           >
             <div>
               <p className="text-xs font-semibold uppercase tracking-wide text-[#718391]">
@@ -108,7 +108,7 @@ export default function PortfolioDetail() {
           {study.image && (
             <ScrollReveal
               delay={0.2}
-              className="mt-10 overflow-hidden rounded-[24px] border border-[rgba(0,70,150,0.12)] bg-[#070912] shadow-[0_24px_54px_rgba(0,70,150,0.14)]"
+              className="mt-8 sm:mt-10 overflow-hidden rounded-[20px] sm:rounded-[24px] border border-[rgba(0,70,150,0.12)] bg-[#070912] shadow-[0_24px_54px_rgba(0,70,150,0.14)]"
             >
               <img
                 src={study.image}
@@ -122,7 +122,7 @@ export default function PortfolioDetail() {
       </section>
 
       <section className="relative bg-white py-4">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <CaseStudySection eyebrow="The Problem" title="Challenge">
             <p>{study.challenge}</p>
           </CaseStudySection>
@@ -143,11 +143,11 @@ export default function PortfolioDetail() {
           </CaseStudySection>
 
           <CaseStudySection eyebrow="Stack" title="Technology">
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2.5 sm:gap-3">
               {study.technology.map((t) => (
                 <span
                   key={t}
-                  className="rounded-xl border border-[rgba(0,70,150,0.14)] bg-[#f7fafc] px-4 py-2 text-sm font-semibold text-[#004696]"
+                  className="rounded-xl border border-[rgba(0,70,150,0.14)] bg-[#f7fafc] px-3.5 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold text-[#004696]"
                 >
                   {t}
                 </span>
@@ -156,13 +156,13 @@ export default function PortfolioDetail() {
           </CaseStudySection>
 
           <CaseStudySection eyebrow="The Outcome" title="Results">
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6">
               {study.results.map((r) => (
                 <div
                   key={r.label}
-                  className="rounded-[20px] border border-[rgba(0,70,150,0.1)] bg-[#f7fafc] p-6 text-center"
+                  className="rounded-[20px] border border-[rgba(0,70,150,0.1)] bg-[#f7fafc] p-5 sm:p-6 text-center"
                 >
-                  <p className="text-3xl font-extrabold text-gradient-brand">
+                  <p className="text-2xl sm:text-3xl font-extrabold text-gradient-brand">
                     {r.metric}
                   </p>
                   <p className="mt-1 text-sm text-[#526575]">{r.label}</p>
@@ -172,7 +172,7 @@ export default function PortfolioDetail() {
           </CaseStudySection>
 
           <CaseStudySection eyebrow="Visual Gallery" title="Project Visuals">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {study.gallery.map((g, i) => (
                 <div
                   key={g}
@@ -197,14 +197,14 @@ export default function PortfolioDetail() {
       </section>
 
       {/* Related Projects Section */}
-      <section className="relative bg-[#f7fafc] py-20 sm:py-24 border-t border-[rgba(0,70,150,0.08)]">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12">
+      <section className="relative bg-[#f7fafc] py-14 sm:py-20 lg:py-24 border-t border-[rgba(0,70,150,0.08)]">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10 sm:mb-12">
             <div>
               <p className="text-xs font-bold uppercase tracking-widest text-[#1e8eab]">
                 More Case Studies
               </p>
-              <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#0b1f33] sm:text-4xl">
+              <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#0b1f33]">
                 Related <span className="text-gradient-brand">projects.</span>
               </h2>
             </div>
@@ -216,7 +216,7 @@ export default function PortfolioDetail() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {relatedProjects.map((p, i) => (
               <PortfolioCard
                 key={p.slug}

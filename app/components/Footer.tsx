@@ -35,6 +35,7 @@ const SOCIAL_LINKS = [
 const COMPANY_LINKS = [
   { label: "About", to: "/about" },
   { label: "Portfolio", to: "/portfolio" },
+  { label: "Careers", to: "/careers" },
   { label: "Contact", to: "/contact" },
 ];
 
@@ -43,8 +44,8 @@ export function Footer() {
     <footer className="relative overflow-hidden border-t border-[rgba(0,70,150,0.1)] bg-white">
       <div className="animate-gradient-line h-[2px] w-full bg-gradient-to-r from-[#004696] via-[#1e8eab] to-[#004696]" />
 
-      <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-5">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-5 lg:gap-12">
           <div className="sm:col-span-2 lg:col-span-2">
             <Logo />
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-[#526575]">
@@ -58,7 +59,7 @@ export function Footer() {
                   key={item.name}
                   href={item.href}
                   aria-label={item.name}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(0,70,150,0.14)] text-[#004696] transition-colors duration-200 hover:border-[#1e8eab] hover:bg-[#f3f8fa]"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-[rgba(0,70,150,0.14)] text-[#004696] transition-colors duration-200 hover:border-[#1e8eab] hover:bg-[#f3f8fa]"
                 >
                   {item.icon}
                 </a>
@@ -114,12 +115,12 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-[rgba(0,70,150,0.08)] pt-8 text-sm text-[#718391] sm:flex-row">
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-[rgba(0,70,150,0.08)] pt-8 text-center sm:text-left text-sm text-[#718391] sm:flex-row">
           <p>
             &copy; {new Date().getFullYear()} Nexadigify AI. All rights
             reserved.
           </p>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap justify-center gap-6">
             <a href="#" className="transition-colors hover:text-[#1e8eab]">
               Privacy Policy
             </a>

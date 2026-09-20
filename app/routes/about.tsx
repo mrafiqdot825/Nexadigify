@@ -77,6 +77,28 @@ const WHY_CHOOSE = [
   },
 ];
 
+const LEADERSHIP = [
+  {
+    name: "Shahab u Deen",
+    role: "Co-Founder & Director",
+    image: "/Shahab.png",
+    bio: [
+      "Shahab u Deen is the Co-Founder and Director of Nexadigify, where he leads the technical vision behind every system the agency builds. A full-stack web developer at his core, he has spent his career at the intersection of code, AI, and growth — designing platforms that don't just function, but perform.",
+      "His expertise spans agentic AI development, end-to-end web architecture, and digital marketing strategy, giving him a rare, complete view of how a product is built, automated, and taken to market. At Nexadigify, he drives the engineering standard the team builds to: production-grade systems, intelligently automated, and always tied back to measurable business outcomes.",
+      "Shahab believes technology should work quietly in the background — solving real problems without adding complexity. That philosophy shapes everything from the agency's architecture decisions to the way it partners with clients.",
+    ],
+  },
+  {
+    name: "Salman Afridi",
+    role: "Co-Founder & CEO",
+    image: "/salman.png",
+    bio: [
+      "Salman Afridi is the Co-Founder and CEO of Nexadigify, where he sets the agency's direction and drives its growth as a technology partner for businesses building AI-powered systems. A full-stack web developer by training, he brings a builder's perspective to leadership — every decision he makes about strategy, partnerships, and client relationships is grounded in a real understanding of how software gets built and shipped.",
+      "Under his leadership, Nexadigify has grown into a team that treats engineering as a craft and client outcomes as the only real measure of success. Salman's focus is simple: build a company that clients trust with their most important systems, and back that trust with work that holds up in production.",
+    ],
+  },
+];
+
 export default function About() {
   return (
     <>
@@ -93,9 +115,9 @@ export default function About() {
       />
 
       {/* Who We Are */}
-      <section className="relative overflow-hidden bg-white py-20 sm:py-28">
+      <section className="relative overflow-hidden bg-white py-14 sm:py-20 lg:py-28">
         <BackgroundParticles count={10} className="opacity-60" />
-        <div className="relative z-10 mx-auto max-w-4xl px-6 lg:px-8">
+        <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             eyebrow="Who We Are"
             title="A team built around"
@@ -105,7 +127,7 @@ export default function About() {
           />
           <ScrollReveal
             delay={0.1}
-            className="mt-8 text-center text-lg leading-relaxed text-[#526575]"
+            className="mt-6 sm:mt-8 text-center text-base sm:text-lg leading-relaxed text-[#526575]"
           >
             We are engineers, data scientists, and product designers who believe
             the next generation of software is defined by how intelligently it
@@ -117,10 +139,10 @@ export default function About() {
       </section>
 
       {/* Philosophy */}
-      <section className="relative overflow-hidden bg-[#f7fafc] py-20 sm:py-28">
+      <section className="relative overflow-hidden bg-[#f7fafc] py-14 sm:py-20 lg:py-28">
         <AnimatedBackground variant="subtle" />
-        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-14 lg:grid-cols-2">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-10 sm:gap-14 lg:grid-cols-2">
             <SectionHeader
               eyebrow="Our Philosophy"
               title="Intelligence should feel"
@@ -138,17 +160,17 @@ export default function About() {
       </section>
 
       {/* Our Approach */}
-      <section className="relative bg-white py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <section className="relative bg-white py-14 sm:py-20 lg:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             eyebrow="Our Approach"
             title="How a project"
             highlight="comes to life."
           />
-          <ScrollRevealStagger className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5">
+          <ScrollRevealStagger className="mt-10 sm:mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
             {APPROACH.map((a) => (
               <ScrollRevealItem key={a.step}>
-                <div className="h-full rounded-[22px] border border-[rgba(0,70,150,0.1)] bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(30,142,171,0.35)] hover:shadow-[0_16px_32px_rgba(0,70,150,0.1)]">
+                <div className="h-full rounded-[22px] border border-[rgba(0,70,150,0.1)] bg-white p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(30,142,171,0.35)] hover:shadow-[0_16px_32px_rgba(0,70,150,0.1)]">
                   <span className="text-3xl font-extrabold text-[rgba(0,70,150,0.16)]">
                     {a.step}
                   </span>
@@ -166,8 +188,8 @@ export default function About() {
       </section>
 
       {/* Why Clients Choose Us */}
-      <section className="relative bg-[#f3f8fa] py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <section className="relative bg-[#f3f8fa] py-14 sm:py-20 lg:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             eyebrow="Why Clients Choose Us"
             title="What sets us"
@@ -175,10 +197,10 @@ export default function About() {
             align="center"
             className="mx-auto"
           />
-          <ScrollRevealStagger className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <ScrollRevealStagger className="mt-10 sm:mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {WHY_CHOOSE.map((w) => (
               <ScrollRevealItem key={w.title}>
-                <div className="h-full rounded-[22px] border border-[rgba(0,70,150,0.1)] bg-white p-6 text-center">
+                <div className="h-full rounded-[22px] border border-[rgba(0,70,150,0.1)] bg-white p-5 sm:p-6 text-center">
                   <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-[#f3f8fa] text-[#004696]">
                     <w.icon size={22} />
                   </div>
@@ -192,6 +214,56 @@ export default function About() {
               </ScrollRevealItem>
             ))}
           </ScrollRevealStagger>
+        </div>
+      </section>
+
+      {/* Leadership */}
+      <section className="relative bg-white py-14 sm:py-20 lg:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            align="center"
+            eyebrow="Leadership"
+            title="The minds behind"
+            highlight="Nexadigify."
+            description="Founded by engineers and builders who believe production intelligence should be accessible, robust, and tied directly to business value."
+            className="mx-auto"
+          />
+
+          <div className="mt-10 sm:mt-16 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10">
+            {LEADERSHIP.map((leader) => (
+              <ScrollReveal
+                key={leader.name}
+                className="group flex flex-col justify-between rounded-[24px] sm:rounded-[28px] border border-[rgba(0,70,150,0.1)] bg-white p-6 sm:p-8 lg:p-10 shadow-[0_4px_24px_rgba(0,70,150,0.04)] transition-all duration-300 hover:border-[rgba(30,142,171,0.35)] hover:shadow-[0_20px_40px_rgba(0,70,150,0.08)]"
+              >
+                <div>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-6 pb-6 border-b border-[rgba(0,70,150,0.08)]">
+                    <div className="relative h-24 w-24 sm:h-28 sm:w-28 shrink-0 overflow-hidden rounded-2xl border border-[rgba(0,70,150,0.14)] bg-[#f3f8fa] shadow-sm">
+                      <img
+                        src={leader.image}
+                        alt={leader.name}
+                        className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div>
+                      <span className="inline-flex items-center rounded-full bg-[#f3f8fa] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#1e8eab]">
+                        {leader.role}
+                      </span>
+                      <h3 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#0b1f33]">
+                        {leader.name}
+                      </h3>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 space-y-4 text-sm sm:text-[15px] leading-relaxed text-[#526575]">
+                    {leader.bio.map((paragraph, idx) => (
+                      <p key={idx}>{paragraph}</p>
+                    ))}
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </section>
 

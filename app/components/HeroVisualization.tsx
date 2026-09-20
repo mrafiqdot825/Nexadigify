@@ -12,14 +12,17 @@ export function HeroVisualization() {
     { angle: 150, ring: 2 },
     { angle: 240, ring: 2 },
     { angle: 330, ring: 2 },
-  ]
+  ];
 
   return (
-    <div className="relative mx-auto flex h-[380px] w-[380px] items-center justify-center sm:h-[460px] sm:w-[460px]">
+    <div className="relative mx-auto flex h-[270px] w-[270px] min-[380px]:h-[320px] min-[380px]:w-[320px] sm:h-[400px] sm:w-[400px] lg:h-[460px] lg:w-[460px] max-w-full aspect-square items-center justify-center">
       {/* Soft glow field */}
       <div
-        className="absolute h-full w-full rounded-full blur-3xl"
-        style={{ background: 'radial-gradient(circle, rgba(30,142,171,0.18), transparent 65%)' }}
+        className="absolute h-full w-full rounded-full blur-2xl sm:blur-3xl"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(30,142,171,0.18), transparent 65%)",
+        }}
       />
 
       {/* Outer ring */}
@@ -34,7 +37,7 @@ export function HeroVisualization() {
           .map((n, i) => (
             <span
               key={i}
-              className="absolute h-2.5 w-2.5 rounded-full bg-[#004696] shadow-[0_0_12px_rgba(0,70,150,0.6)]"
+              className="absolute h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full bg-[#004696] shadow-[0_0_12px_rgba(0,70,150,0.6)]"
               style={{
                 top: `${50 + 49 * Math.sin((n.angle * Math.PI) / 180)}%`,
                 left: `${50 + 49 * Math.cos((n.angle * Math.PI) / 180)}%`,
@@ -48,7 +51,7 @@ export function HeroVisualization() {
           .map((n, i) => (
             <span
               key={i}
-              className="absolute h-2 w-2 rounded-full bg-[#1e8eab] shadow-[0_0_10px_rgba(30,142,171,0.6)]"
+              className="absolute h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-[#1e8eab] shadow-[0_0_10px_rgba(30,142,171,0.6)]"
               style={{
                 top: `${50 + 49 * Math.sin((n.angle * Math.PI) / 180)}%`,
                 left: `${50 + 49 * Math.cos((n.angle * Math.PI) / 180)}%`,
@@ -59,7 +62,14 @@ export function HeroVisualization() {
 
       {/* Connection lines */}
       <svg className="absolute h-full w-full" viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="46" fill="none" stroke="rgba(0,70,150,0.08)" strokeWidth="0.3" />
+        <circle
+          cx="50"
+          cy="50"
+          r="46"
+          fill="none"
+          stroke="rgba(0,70,150,0.08)"
+          strokeWidth="0.3"
+        />
         {[15, 85, 45, 130, 200, 260].map((a, i) => (
           <line
             key={i}
@@ -75,10 +85,10 @@ export function HeroVisualization() {
       </svg>
 
       {/* Core */}
-      <div className="animate-core-pulse relative z-10 flex h-28 w-28 items-center justify-center rounded-full bg-gradient-to-br from-[#004696] to-[#1e8eab] shadow-[0_0_60px_rgba(30,142,171,0.55)] sm:h-32 sm:w-32">
+      <div className="animate-core-pulse relative z-10 flex h-20 w-20 min-[380px]:h-24 min-[380px]:w-24 sm:h-28 sm:w-28 lg:h-32 lg:w-32 items-center justify-center rounded-full bg-gradient-to-br from-[#004696] to-[#1e8eab] shadow-[0_0_40px_rgba(30,142,171,0.45)] sm:shadow-[0_0_60px_rgba(30,142,171,0.55)]">
         <div className="absolute h-full w-full rounded-full bg-white/10 blur-sm" />
-        <div className="h-14 w-14 rounded-full bg-white/90 shadow-[0_0_30px_rgba(255,255,255,0.8)] sm:h-16 sm:w-16" />
+        <div className="h-10 w-10 min-[380px]:h-12 min-[380px]:w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 rounded-full bg-white/90 shadow-[0_0_20px_rgba(255,255,255,0.7)] sm:shadow-[0_0_30px_rgba(255,255,255,0.8)]" />
       </div>
     </div>
-  )
+  );
 }

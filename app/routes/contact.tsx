@@ -21,24 +21,24 @@ const CONTACT_DETAILS = [
 
 export default function Contact() {
   return (
-    <section className="relative flex min-h-screen min-h-[100dvh] w-full flex-col justify-center overflow-hidden pt-24 pb-16 sm:pt-28 sm:pb-20">
+    <section className="relative flex min-h-screen min-h-[100dvh] w-full flex-col justify-center overflow-hidden pt-28 pb-14 sm:pt-32 sm:pb-20">
       <AnimatedBackground variant="hero" />
-      <div className="relative z-10 mx-auto w-full grid max-w-7xl grid-cols-1 gap-16 px-6 lg:grid-cols-[1fr_1.2fr] lg:px-8">
+      <div className="relative z-10 mx-auto w-full grid max-w-7xl grid-cols-1 gap-10 sm:gap-12 px-4 sm:px-6 lg:grid-cols-[1fr_1.2fr] lg:gap-16 lg:px-8">
         <div>
           <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-[rgba(0,70,150,0.16)] bg-white/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-[#004696]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#1e8eab]" />
             Contact
           </span>
-          <h1 className="text-[clamp(2.2rem,5vw,3.75rem)] font-extrabold leading-[1.06] tracking-tight text-[#0b1f33]">
+          <h1 className="text-[clamp(1.85rem,5vw,3.75rem)] font-extrabold leading-[1.08] tracking-tight text-[#0b1f33] break-words">
             Let's build something{" "}
             <span className="text-gradient-brand">intelligent.</span>
           </h1>
-          <p className="mt-6 max-w-md text-lg leading-relaxed text-[#526575]">
+          <p className="mt-4 sm:mt-6 max-w-md text-base sm:text-lg leading-relaxed text-[#526575]">
             Tell us about your business and goals — a member of our team will
             follow up within one business day.
           </p>
 
-          <div className="mt-10 space-y-4">
+          <div className="mt-8 sm:mt-10 space-y-4">
             {CONTACT_DETAILS.map((d) => (
               <div
                 key={d.label}

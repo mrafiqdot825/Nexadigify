@@ -38,7 +38,7 @@ export function PortfolioCard({
         to={`/portfolio/${slug}`}
         className="group block overflow-hidden rounded-[24px] border border-[rgba(0,70,150,0.1)] bg-white transition-all duration-300 hover:-translate-y-1.5 hover:border-[rgba(30,142,171,0.4)] hover:shadow-[0_28px_56px_rgba(0,70,150,0.14)]"
       >
-        <div className="relative h-56 w-full overflow-hidden bg-[#0a0f1d]">
+        <div className="relative h-48 sm:h-56 w-full overflow-hidden bg-[#0a0f1d]">
           {image ? (
             <img
               src={image}
@@ -85,7 +85,7 @@ export function PortfolioCard({
             <ArrowUpRight size={16} />
           </div>
         </div>
-        <div className="p-7">
+        <div className="p-5 sm:p-7">
           <span className="text-xs font-semibold uppercase tracking-wide text-[#1e8eab]">
             {category}
           </span>

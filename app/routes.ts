@@ -8,4 +8,5 @@ export default [
   route("portfolio", "routes/portfolio/index.tsx"),
   route("portfolio/:slug", "routes/portfolio/detail.tsx"),
   route("contact", "routes/contact.tsx"),
+  route("careers", "routes/careers.tsx"),
 ] satisfies RouteConfig;

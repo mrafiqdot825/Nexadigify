@@ -29,10 +29,10 @@ export function SolutionCard({
     >
       <Link
         to={`/solutions/${slug}`}
-        className="group block h-full overflow-hidden rounded-[24px] border border-[rgba(0,70,150,0.1)] bg-white p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-[rgba(30,142,171,0.4)] hover:shadow-[0_24px_48px_rgba(0,70,150,0.12)]"
+        className="group block h-full overflow-hidden rounded-[24px] border border-[rgba(0,70,150,0.1)] bg-white p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-[rgba(30,142,171,0.4)] hover:shadow-[0_24px_48px_rgba(0,70,150,0.12)]"
       >
         {svgIllustration && (
-          <div className="mb-5 h-40 w-full overflow-hidden rounded-xl bg-[#0b0f1f] shadow-sm">
+          <div className="mb-5 h-36 sm:h-40 w-full overflow-hidden rounded-xl bg-[#0b0f1f] shadow-sm">
             <img
               src={svgIllustration}
               alt={title}

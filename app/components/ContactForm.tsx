@@ -99,14 +99,14 @@ export function ContactForm({ variant = "contact" }: ContactFormProps) {
   }
 
   const inputClass =
-    "w-full rounded-xl border border-[rgba(0,70,150,0.16)] bg-white px-4 py-3 text-[#0b1f33] placeholder:text-[#a8bccb] transition-colors duration-200 focus:border-[#1e8eab] focus:outline-none focus:ring-2 focus:ring-[rgba(30,142,171,0.18)]";
+    "w-full rounded-xl border border-[rgba(0,70,150,0.16)] bg-white px-4 py-3 text-base sm:text-sm text-[#0b1f33] placeholder:text-[#a8bccb] transition-colors duration-200 focus:border-[#1e8eab] focus:outline-none focus:ring-2 focus:ring-[rgba(30,142,171,0.18)]";
   const labelClass = "mb-1.5 block text-sm font-semibold text-[#0b1f33]";
 
   return (
     <form
       name={formName}
       onSubmit={handleSubmit}
-      className="rounded-[28px] border border-[rgba(0,70,150,0.1)] bg-white p-6 shadow-[0_16px_48px_rgba(0,70,150,0.08)] sm:p-10"
+      className="rounded-[22px] sm:rounded-[28px] border border-[rgba(0,70,150,0.1)] bg-white p-5 sm:p-8 lg:p-10 shadow-[0_16px_48px_rgba(0,70,150,0.08)]"
     >
       <input type="hidden" name="form-name" value={formName} />
 
