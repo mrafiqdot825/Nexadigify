@@ -137,10 +137,11 @@ export default function Home() {
           ],
         ]}
         description="We design and build intelligent digital systems that automate operations, transform data into insight, and create measurable business value."
+        showTechMarquee
       />
 
       {/* What We Do */}
-      <section className="relative bg-white py-16 sm:py-24 lg:py-32">
+      <section className="relative bg-white py-10 sm:py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             eyebrow="What We Do"
@@ -148,7 +149,7 @@ export default function Home() {
             highlight="one intelligent system."
             description="We combine AI, data, and software engineering into a single team that ships end-to-end — not a patchwork of specialists."
           />
-          <div className="mt-10 sm:mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 sm:mt-12 lg:mt-14 grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {SERVICES.map((s, i) => (
               <ServiceCard key={s.title} {...s} index={i} />
             ))}
@@ -157,7 +158,7 @@ export default function Home() {
       </section>
 
       {/* AI First */}
-      <section className="relative overflow-hidden bg-[#f7fafc] py-16 sm:py-24 lg:py-32">
+      <section className="relative overflow-hidden bg-[#f7fafc] py-10 sm:py-20 lg:py-28">
         <AnimatedBackground variant="subtle" />
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
@@ -170,7 +171,7 @@ export default function Home() {
           />
           <ScrollReveal
             delay={0.1}
-            className="mt-8 sm:mt-12 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3"
+            className="mt-6 sm:mt-10 lg:mt-12 flex flex-wrap items-center justify-center gap-2 sm:gap-3"
           >
             {CAPABILITIES.map((c) => (
               <CapabilityPill key={c} label={c} />
@@ -180,7 +181,7 @@ export default function Home() {
       </section>
 
       {/* Why Us */}
-      <section className="relative bg-white py-16 sm:py-24 lg:py-32">
+      <section className="relative bg-white py-10 sm:py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
             align="center"
@@ -189,7 +190,7 @@ export default function Home() {
             highlight="The Future."
             className="mx-auto"
           />
-          <div className="mt-10 sm:mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 sm:mt-12 lg:mt-14 grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {WHY_US.map((f, i) => (
               <FeatureCard key={f.title} {...f} index={i} />
             ))}
@@ -198,8 +199,8 @@ export default function Home() {
       </section>
 
       {/* Global Reach */}
-      <section className="relative overflow-hidden bg-[#0b1f33]/[0.02] py-16 sm:py-24 lg:py-32">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 sm:gap-14 lg:grid-cols-2 lg:gap-16 px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-[#0b1f33]/[0.02] py-10 sm:py-20 lg:py-28">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-6 sm:gap-12 lg:grid-cols-2 lg:gap-16 px-4 sm:px-6 lg:px-8">
           <SectionHeader
             eyebrow="Global Reach"
             title="Deployed across"

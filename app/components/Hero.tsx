@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import type { ReactNode } from "react";
 import { AnimatedBackground } from "./AnimatedBackground";
 import { HeroVisualization } from "./HeroVisualization";
+import { TechIconsMarquee } from "./TechIconsMarquee";
 
 function HeroButton({
   to,
@@ -38,6 +39,7 @@ interface HeroProps {
   secondaryTo?: string;
   compact?: boolean;
   showVisualization?: boolean;
+  showTechMarquee?: boolean;
 }
 
 export function Hero({
@@ -50,16 +52,18 @@ export function Hero({
   secondaryTo = "/solutions",
   compact = false,
   showVisualization,
+  showTechMarquee,
 }: HeroProps) {
   const renderVisualization = showVisualization ?? !compact;
+  const renderTechMarquee = showTechMarquee ?? !compact;
 
   return (
-    <section className="relative flex min-h-screen min-h-[100dvh] w-full flex-col justify-center overflow-hidden pt-28 pb-14 sm:pt-32 sm:pb-20">
+    <section className="relative flex w-full flex-col overflow-hidden pt-20 pb-8 sm:pt-28 sm:pb-14 lg:min-h-screen lg:min-h-[100dvh] lg:justify-center lg:pt-32 lg:pb-20">
       <AnimatedBackground variant="hero" />
       <div
         className={`relative z-10 mx-auto w-full px-4 sm:px-6 lg:px-8 ${
           renderVisualization
-            ? "grid max-w-7xl grid-cols-1 items-center gap-10 sm:gap-14 lg:grid-cols-2 lg:gap-16"
+            ? "grid max-w-7xl grid-cols-1 items-center gap-6 sm:gap-10 lg:grid-cols-2 lg:gap-16"
             : "max-w-4xl"
         }`}
       >
@@ -69,7 +73,7 @@ export function Hero({
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="mb-6 inline-flex items-center gap-2 rounded-full border border-[rgba(0,70,150,0.16)] bg-white/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-[#004696] backdrop-blur-sm"
+              className="mb-4 sm:mb-6 inline-flex items-center gap-2 rounded-full border border-[rgba(0,70,150,0.16)] bg-white/80 px-3.5 py-1 sm:px-4 sm:py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-[#004696] backdrop-blur-sm"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-[#1e8eab]" />
               {eyebrow}
@@ -112,7 +116,7 @@ export function Hero({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4 }}
-            className="mt-6 sm:mt-7 max-w-lg text-base sm:text-lg leading-relaxed text-[#526575]"
+            className="mt-4 sm:mt-7 max-w-lg text-base sm:text-lg leading-relaxed text-[#526575]"
           >
             {description}
           </motion.p>
@@ -121,7 +125,7 @@ export function Hero({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.55 }}
-            className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4 w-full sm:w-auto"
+            className="mt-6 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto"
           >
             <HeroButton
               to={primaryTo}
@@ -153,25 +157,37 @@ export function Hero({
         )}
       </div>
 
-      {/* Subtle scroll prompt */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.7 }}
-        className="pointer-events-none absolute bottom-5 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1.5 select-none sm:flex"
-        aria-hidden="true"
-      >
-        <span className="text-[10px] font-semibold uppercase tracking-widest text-[#718391]/80">
-          Scroll
-        </span>
-        <div className="flex h-4 w-2.5 items-start justify-center rounded-full border border-[rgba(0,70,150,0.22)] p-0.5">
-          <motion.div
-            animate={{ y: [0, 5, 0] }}
-            transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
-            className="h-1 w-1 rounded-full bg-[#1e8eab]"
-          />
+      {renderTechMarquee && (
+        <div className="relative z-10 mt-8 sm:mt-12 lg:mt-16 w-full">
+          <TechIconsMarquee />
         </div>
-      </motion.div>
+      )}
+
+      {/* Subtle scroll prompt */}
+      {!renderTechMarquee && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
+          className="pointer-events-none absolute bottom-5 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1.5 select-none sm:flex"
+          aria-hidden="true"
+        >
+          <span className="text-[10px] font-semibold uppercase tracking-widest text-[#718391]/80">
+            Scroll
+          </span>
+          <div className="flex h-4 w-2.5 items-start justify-center rounded-full border border-[rgba(0,70,150,0.22)] p-0.5">
+            <motion.div
+              animate={{ y: [0, 5, 0] }}
+              transition={{
+                repeat: Infinity,
+                duration: 1.6,
+                ease: "easeInOut",
+              }}
+              className="h-1 w-1 rounded-full bg-[#1e8eab]"
+            />
+          </div>
+        </motion.div>
+      )}
     </section>
   );
 }

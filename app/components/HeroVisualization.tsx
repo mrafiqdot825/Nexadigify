@@ -15,7 +15,7 @@ export function HeroVisualization() {
   ];
 
   return (
-    <div className="relative mx-auto flex h-[270px] w-[270px] min-[380px]:h-[320px] min-[380px]:w-[320px] sm:h-[400px] sm:w-[400px] lg:h-[460px] lg:w-[460px] max-w-full aspect-square items-center justify-center">
+    <div className="relative mx-auto flex h-[250px] w-[250px] min-[380px]:h-[290px] min-[380px]:w-[290px] sm:h-[380px] sm:w-[380px] lg:h-[460px] lg:w-[460px] max-w-full aspect-square items-center justify-center">
       {/* Soft glow field */}
       <div
         className="absolute h-full w-full rounded-full blur-2xl sm:blur-3xl"

@@ -450,6 +450,7 @@ function MegaMenu({ onNavigate }) {
   );
 }
 const NAV_LINKS$1 = [
+  { label: "Home", to: "/" },
   { label: "About", to: "/about" },
   { label: "Portfolio", to: "/portfolio" },
   { label: "Careers", to: "/careers" },
@@ -474,109 +475,149 @@ function MobileNavigation({
     /* @__PURE__ */ jsx(
       motion.div,
       {
-        className: "fixed inset-0 z-[55] bg-[#0b1f33]/30 backdrop-blur-sm lg:hidden",
+        className: "fixed inset-0 z-[55] bg-[#0b1f33]/40 backdrop-blur-sm lg:hidden",
         initial: { opacity: 0 },
         animate: { opacity: 1 },
         exit: { opacity: 0 },
-        onClick: onClose
+        onClick: onClose,
+        "aria-hidden": "true"
       }
     ),
     /* @__PURE__ */ jsxs(
       motion.div,
       {
-        className: "fixed inset-y-0 right-0 z-[60] flex w-full max-w-sm flex-col bg-white shadow-2xl lg:hidden",
+        className: "fixed inset-y-0 right-0 z-[60] flex h-full h-[100dvh] max-h-[100dvh] w-full max-w-[340px] sm:max-w-sm flex-col bg-white shadow-2xl overscroll-contain lg:hidden",
         initial: { x: "100%" },
         animate: { x: 0 },
         exit: { x: "100%" },
-        transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
+        transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] },
         children: [
-          /* @__PURE__ */ jsxs("div", { className: "flex items-center justify-between border-b border-[rgba(0,70,150,0.1)] px-6 py-5", children: [
-            /* @__PURE__ */ jsx("span", { className: "text-lg font-bold text-[#0b1f33]", children: "Menu" }),
+          /* @__PURE__ */ jsxs("div", { className: "flex h-20 shrink-0 items-center justify-between border-b border-[rgba(0,70,150,0.1)] px-5 sm:px-6", children: [
+            /* @__PURE__ */ jsxs(
+              Link,
+              {
+                to: "/",
+                onClick: onClose,
+                className: "flex items-center gap-2",
+                "aria-label": "Nexadigify Home",
+                children: [
+                  /* @__PURE__ */ jsx("img", { src: "/Logo.png", alt: "Nexadigify", className: "h-8 w-auto" }),
+                  /* @__PURE__ */ jsxs("span", { className: "flex items-center text-xl font-extrabold tracking-tight select-none", children: [
+                    /* @__PURE__ */ jsx("span", { className: "text-[#004696]", children: "Nexa" }),
+                    /* @__PURE__ */ jsx("span", { className: "text-[#1e8eab]", children: "digify" })
+                  ] })
+                ]
+              }
+            ),
             /* @__PURE__ */ jsx(
               "button",
               {
                 "aria-label": "Close menu",
                 onClick: onClose,
                 className: "flex h-11 w-11 items-center justify-center rounded-full border border-[rgba(0,70,150,0.14)] text-[#0b1f33] transition-colors hover:bg-[#f3f8fa]",
-                children: /* @__PURE__ */ jsx(X, { size: 18 })
+                children: /* @__PURE__ */ jsx(X, { size: 20 })
               }
             )
           ] }),
-          /* @__PURE__ */ jsxs(
+          /* @__PURE__ */ jsx(
             "nav",
             {
-              className: "flex-1 overflow-y-auto px-6 py-6",
-              "aria-label": "Mobile primary",
-              children: [
-                /* @__PURE__ */ jsxs(
-                  "button",
+              className: "flex-1 overflow-y-auto overscroll-contain px-5 py-4 sm:px-6",
+              "aria-label": "Mobile primary navigation",
+              children: /* @__PURE__ */ jsxs("div", { className: "flex flex-col space-y-1", children: [
+                /* @__PURE__ */ jsx(
+                  NavLink,
                   {
-                    className: "flex w-full items-center justify-between py-3 text-left text-base font-semibold text-[#0b1f33]",
-                    onClick: () => setSolutionsExpanded((v) => !v),
-                    "aria-expanded": solutionsExpanded,
-                    children: [
-                      "Solutions",
-                      /* @__PURE__ */ jsx(
-                        ChevronDown,
-                        {
-                          size: 18,
-                          className: `transition-transform duration-300 ${solutionsExpanded ? "rotate-180" : ""}`
-                        }
-                      )
-                    ]
+                    to: "/",
+                    end: true,
+                    onClick: onClose,
+                    className: ({ isActive }) => `flex items-center rounded-xl px-3 py-3 text-base font-semibold transition-colors ${isActive ? "bg-[#f3f8fa] text-[#004696]" : "text-[#0b1f33] hover:bg-[#f3f8fa] hover:text-[#004696]"}`,
+                    children: "Home"
                   }
                 ),
-                /* @__PURE__ */ jsx(AnimatePresence, { children: solutionsExpanded && /* @__PURE__ */ jsx(
-                  motion.div,
-                  {
-                    initial: { height: 0, opacity: 0 },
-                    animate: { height: "auto", opacity: 1 },
-                    exit: { height: 0, opacity: 0 },
-                    className: "overflow-hidden",
-                    children: /* @__PURE__ */ jsxs("div", { className: "flex flex-col gap-1 py-1 pl-2", children: [
-                      solutions.map((s) => /* @__PURE__ */ jsx(
-                        Link,
-                        {
-                          to: `/solutions/${s.slug}`,
-                          onClick: onClose,
-                          className: "rounded-lg px-3 py-2.5 text-sm font-medium text-[#526575] transition-colors hover:bg-[#f3f8fa] hover:text-[#004696]",
-                          children: s.navTitle
-                        },
-                        s.slug
-                      )),
-                      /* @__PURE__ */ jsx(
-                        Link,
-                        {
-                          to: "/solutions",
-                          onClick: onClose,
-                          className: "rounded-lg px-3 py-2.5 text-sm font-semibold text-[#004696] hover:bg-[#f3f8fa]",
-                          children: "View all solutions"
-                        }
-                      )
-                    ] })
-                  }
-                ) }),
-                /* @__PURE__ */ jsx("div", { className: "mt-2 h-px bg-[rgba(0,70,150,0.1)]" }),
-                NAV_LINKS$1.map((link) => /* @__PURE__ */ jsx(
-                  Link,
+                /* @__PURE__ */ jsxs("div", { className: "rounded-2xl border border-[rgba(0,70,150,0.1)] bg-[#f7fafc]/70 p-2", children: [
+                  /* @__PURE__ */ jsxs(
+                    "button",
+                    {
+                      className: "flex w-full items-center justify-between px-3 py-2.5 text-left text-base font-semibold text-[#0b1f33] transition-colors hover:text-[#004696]",
+                      onClick: () => setSolutionsExpanded((v) => !v),
+                      "aria-expanded": solutionsExpanded,
+                      children: [
+                        /* @__PURE__ */ jsx("span", { children: "Solutions" }),
+                        /* @__PURE__ */ jsx(
+                          ChevronDown,
+                          {
+                            size: 18,
+                            className: `text-[#526575] transition-transform duration-300 ${solutionsExpanded ? "rotate-180" : ""}`
+                          }
+                        )
+                      ]
+                    }
+                  ),
+                  /* @__PURE__ */ jsx(AnimatePresence, { initial: false, children: solutionsExpanded && /* @__PURE__ */ jsx(
+                    motion.div,
+                    {
+                      initial: { height: 0, opacity: 0 },
+                      animate: { height: "auto", opacity: 1 },
+                      exit: { height: 0, opacity: 0 },
+                      transition: { duration: 0.25 },
+                      className: "overflow-hidden",
+                      children: /* @__PURE__ */ jsxs("div", { className: "mt-1 flex flex-col space-y-1 border-t border-[rgba(0,70,150,0.08)] pt-2", children: [
+                        solutions.map((s) => {
+                          const Icon = s.icon;
+                          return /* @__PURE__ */ jsxs(
+                            NavLink,
+                            {
+                              to: `/solutions/${s.slug}`,
+                              onClick: onClose,
+                              className: ({ isActive }) => `group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors ${isActive ? "bg-white text-[#004696] shadow-xs" : "text-[#526575] hover:bg-white hover:text-[#004696]"}`,
+                              children: [
+                                /* @__PURE__ */ jsx("div", { className: "flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[rgba(0,70,150,0.1)] bg-white text-[#004696] transition-colors group-hover:bg-[#1e8eab] group-hover:text-white", children: /* @__PURE__ */ jsx(Icon, { size: 16 }) }),
+                                /* @__PURE__ */ jsx("span", { className: "truncate", children: s.navTitle })
+                              ]
+                            },
+                            s.slug
+                          );
+                        }),
+                        /* @__PURE__ */ jsxs(
+                          Link,
+                          {
+                            to: "/solutions",
+                            onClick: onClose,
+                            className: "mt-1 flex items-center justify-between rounded-xl px-3 py-2.5 text-xs font-bold uppercase tracking-wider text-[#004696] hover:bg-white",
+                            children: [
+                              /* @__PURE__ */ jsx("span", { children: "View all solutions" }),
+                              /* @__PURE__ */ jsx(ArrowRight, { size: 14 })
+                            ]
+                          }
+                        )
+                      ] })
+                    }
+                  ) })
+                ] }),
+                NAV_LINKS$1.slice(1).map((link) => /* @__PURE__ */ jsx(
+                  NavLink,
                   {
                     to: link.to,
                     onClick: onClose,
-                    className: "block py-3 text-base font-semibold text-[#0b1f33] transition-colors hover:text-[#004696]",
+                    className: ({ isActive }) => `flex items-center rounded-xl px-3 py-3 text-base font-semibold transition-colors ${isActive ? "bg-[#f3f8fa] text-[#004696]" : "text-[#0b1f33] hover:bg-[#f3f8fa] hover:text-[#004696]"}`,
                     children: link.label
                   },
                   link.to
                 ))
-              ]
+              ] })
             }
           ),
-          /* @__PURE__ */ jsx("div", { className: "border-t border-[rgba(0,70,150,0.1)] p-6", children: /* @__PURE__ */ jsx(
+          /* @__PURE__ */ jsx("div", { className: "shrink-0 border-t border-[rgba(0,70,150,0.1)] bg-white p-5 sm:p-6 pb-[max(1.25rem,env(safe-area-inset-bottom))]", children: /* @__PURE__ */ jsxs(
             Link,
             {
               to: "/contact",
               onClick: onClose,
-              className: "flex w-full items-center justify-center rounded-full bg-[#004696] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(0,70,150,0.25)] transition-colors hover:bg-[#1e8eab]",
-              children: "Let's Talk"
+              className: "flex w-full items-center justify-center gap-2 rounded-full bg-[#004696] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(0,70,150,0.25)] transition-colors hover:bg-[#1e8eab]",
+              children: [
+                "Let's Talk",
+                /* @__PURE__ */ jsx(ArrowRight, { size: 16 })
+              ]
             }
           ) })
         ]
@@ -633,12 +674,12 @@ function Navbar() {
   const scheduleClose = () => {
     closeTimer.current = setTimeout(() => setSolutionsOpen(false), 120);
   };
-  return /* @__PURE__ */ jsxs(
-    "header",
-    {
-      className: `fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled ? "border-b border-[rgba(0,70,150,0.1)] bg-white/90 shadow-[0_4px_24px_rgba(0,70,150,0.06)] backdrop-blur-md" : "border-b border-transparent bg-white/60 backdrop-blur-sm"}`,
-      children: [
-        /* @__PURE__ */ jsxs(
+  return /* @__PURE__ */ jsxs(Fragment, { children: [
+    /* @__PURE__ */ jsx(
+      "header",
+      {
+        className: `fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled ? "border-b border-[rgba(0,70,150,0.1)] bg-white/90 shadow-[0_4px_24px_rgba(0,70,150,0.06)] backdrop-blur-md" : "border-b border-transparent bg-white/60 backdrop-blur-sm"}`,
+        children: /* @__PURE__ */ jsxs(
           "nav",
           {
             className: "mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8",
@@ -708,17 +749,17 @@ function Navbar() {
               ] })
             ]
           }
-        ),
-        /* @__PURE__ */ jsx(
-          MobileNavigation,
-          {
-            open: mobileOpen,
-            onClose: () => setMobileOpen(false)
-          }
         )
-      ]
-    }
-  );
+      }
+    ),
+    /* @__PURE__ */ jsx(
+      MobileNavigation,
+      {
+        open: mobileOpen,
+        onClose: () => setMobileOpen(false)
+      }
+    )
+  ] });
 }
 const SOCIAL_LINKS = [
   {
@@ -873,7 +914,7 @@ function PageTransition({ children }) {
     location.pathname
   ) });
 }
-const stylesheet = "/assets/app-Bs7jeKrK.css";
+const stylesheet = "/assets/app-CjMlnFKr.css";
 const links = () => [{
   rel: "stylesheet",
   href: stylesheet
@@ -1134,7 +1175,7 @@ function HeroVisualization() {
     { angle: 240, ring: 2 },
     { angle: 330, ring: 2 }
   ];
-  return /* @__PURE__ */ jsxs("div", { className: "relative mx-auto flex h-[270px] w-[270px] min-[380px]:h-[320px] min-[380px]:w-[320px] sm:h-[400px] sm:w-[400px] lg:h-[460px] lg:w-[460px] max-w-full aspect-square items-center justify-center", children: [
+  return /* @__PURE__ */ jsxs("div", { className: "relative mx-auto flex h-[250px] w-[250px] min-[380px]:h-[290px] min-[380px]:w-[290px] sm:h-[380px] sm:w-[380px] lg:h-[460px] lg:w-[460px] max-w-full aspect-square items-center justify-center", children: [
     /* @__PURE__ */ jsx(
       "div",
       {
@@ -1200,6 +1241,255 @@ function HeroVisualization() {
     ] })
   ] });
 }
+function ReactIcon({ className = "h-7 w-7 sm:h-8 sm:w-8" }) {
+  return /* @__PURE__ */ jsxs(
+    "svg",
+    {
+      viewBox: "-11.5 -10.23174 23 20.46348",
+      fill: "none",
+      className,
+      "aria-hidden": "true",
+      children: [
+        /* @__PURE__ */ jsx("circle", { cx: "0", cy: "0", r: "2.05", fill: "currentColor" }),
+        /* @__PURE__ */ jsxs("g", { stroke: "currentColor", strokeWidth: "1", children: [
+          /* @__PURE__ */ jsx("ellipse", { rx: "11", ry: "4.2" }),
+          /* @__PURE__ */ jsx("ellipse", { rx: "11", ry: "4.2", transform: "rotate(60)" }),
+          /* @__PURE__ */ jsx("ellipse", { rx: "11", ry: "4.2", transform: "rotate(120)" })
+        ] })
+      ]
+    }
+  );
+}
+function NextjsIcon({ className = "h-7 w-7 sm:h-8 sm:w-8" }) {
+  return /* @__PURE__ */ jsxs(
+    "svg",
+    {
+      viewBox: "0 0 24 24",
+      fill: "none",
+      className,
+      "aria-hidden": "true",
+      children: [
+        /* @__PURE__ */ jsx("circle", { cx: "12", cy: "12", r: "11", fill: "currentColor" }),
+        /* @__PURE__ */ jsx(
+          "path",
+          {
+            d: "M15.7 17.5L9.3 8.3H7.6V16.3H9.2V10.5L15 17.7C15.2 17.6 15.5 17.5 15.7 17.5Z",
+            fill: "white"
+          }
+        ),
+        /* @__PURE__ */ jsx("rect", { x: "15.1", y: "8.3", width: "1.6", height: "5.8", fill: "white" })
+      ]
+    }
+  );
+}
+function TypeScriptIcon({
+  className = "h-7 w-7 sm:h-8 sm:w-8"
+}) {
+  return /* @__PURE__ */ jsxs(
+    "svg",
+    {
+      viewBox: "0 0 24 24",
+      fill: "none",
+      className,
+      "aria-hidden": "true",
+      children: [
+        /* @__PURE__ */ jsx(
+          "rect",
+          {
+            x: "1.5",
+            y: "1.5",
+            width: "21",
+            height: "21",
+            rx: "4",
+            fill: "currentColor",
+            fillOpacity: "0.1",
+            stroke: "currentColor",
+            strokeWidth: "1.5"
+          }
+        ),
+        /* @__PURE__ */ jsx(
+          "path",
+          {
+            d: "M5.5 9h5.5m-2.75 0v7.5",
+            stroke: "currentColor",
+            strokeWidth: "1.8",
+            strokeLinecap: "round"
+          }
+        ),
+        /* @__PURE__ */ jsx(
+          "path",
+          {
+            d: "M14 14.5c.7.7 1.6 1 2.5 1 1.2 0 2-.5 2-1.4 0-1.8-4-1.2-4-3.4 0-1.2 1-2 2.5-2 1.1 0 1.9.4 2.5.9",
+            fill: "none",
+            stroke: "currentColor",
+            strokeWidth: "1.8",
+            strokeLinecap: "round"
+          }
+        )
+      ]
+    }
+  );
+}
+function PythonIcon({ className = "h-7 w-7 sm:h-8 sm:w-8" }) {
+  return /* @__PURE__ */ jsx(
+    "svg",
+    {
+      viewBox: "0 0 24 24",
+      fill: "currentColor",
+      className,
+      "aria-hidden": "true",
+      children: /* @__PURE__ */ jsx("path", { d: "M11.91 2c-4.22 0-3.95 1.83-3.95 1.83l.01 1.9h4.03v.57H6.38S3.5 6.02 3.5 10.23c0 4.22 2.52 4.07 2.52 4.07h1.5v-2.12s-.08-2.52 2.48-2.52h4.27s2.4-.04 2.4-2.36V4.4s.37-2.4-4.76-2.4zm-2.17 1.25a.8.8 0 1 1 0 1.6.8.8 0 0 1 0-1.6zm2.35 18.75c4.22 0 3.95-1.83 3.95-1.83l-.01-1.9H12v-.57h5.62s2.88.28 2.88-3.93c0-4.22-2.52-4.07-2.52-4.07h-1.5v2.12s.08 2.52-2.48 2.52H9.73s-2.4.04-2.4 2.36V19.6s-.37 2.4 4.76 2.4zm2.17-1.25a.8.8 0 1 1 0-1.6.8.8 0 0 1 0 1.6z" })
+    }
+  );
+}
+function TailwindIcon({ className = "h-7 w-7 sm:h-8 sm:w-8" }) {
+  return /* @__PURE__ */ jsx(
+    "svg",
+    {
+      viewBox: "0 0 24 24",
+      fill: "currentColor",
+      className,
+      "aria-hidden": "true",
+      children: /* @__PURE__ */ jsx("path", { d: "M12 6c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.9.2 1.6.9 2.3 1.6 1.1 1.2 2.5 2.6 5.5 2.6 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.9-.2-1.6-.9-2.3-1.6C16.3 7.4 15 6 12 6zm-6 6c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.9.2 1.6.9 2.3 1.6 1.1 1.2 2.5 2.6 5.5 2.6 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.9-.2-1.6-.9-2.3-1.6C10.3 13.4 9 12 6 12z" })
+    }
+  );
+}
+function NodeIcon({ className = "h-7 w-7 sm:h-8 sm:w-8" }) {
+  return /* @__PURE__ */ jsxs(
+    "svg",
+    {
+      viewBox: "0 0 24 24",
+      fill: "currentColor",
+      className,
+      "aria-hidden": "true",
+      children: [
+        /* @__PURE__ */ jsx("path", { d: "M12 2l8.8 5.1v10.2L12 22.4 3.2 17.3V7.1L12 2zm0 2.2L5.2 8.1v7.8L12 19.8l6.8-3.9V8.1L12 4.2z" }),
+        /* @__PURE__ */ jsx(
+          "path",
+          {
+            d: "M11 7.8h2v8.4h-2zm-2.8 1.8h1.8v6.6H8.2zm5.6 0h1.8v6.6h-1.8z",
+            opacity: "0.8"
+          }
+        )
+      ]
+    }
+  );
+}
+function DockerIcon({ className = "h-7 w-7 sm:h-8 sm:w-8" }) {
+  return /* @__PURE__ */ jsx(
+    "svg",
+    {
+      viewBox: "0 0 24 24",
+      fill: "currentColor",
+      className,
+      "aria-hidden": "true",
+      children: /* @__PURE__ */ jsx("path", { d: "M13.98 9.38h-1.84V7.54h1.84v1.84zm-2.25 0H9.89V7.54h1.84v1.84zm-2.26 0H7.63V7.54h1.84v1.84zm6.77 0h-1.84V7.54h1.84v1.84zm-4.51-2.26H9.89V5.28h1.84v1.84zm2.25 0h-1.84V5.28h1.84v1.84zm2.26 0h-1.84V5.28h1.84v1.84zM24 10.6a6.8 6.8 0 0 1-2.3 2.57c.1.72.06 1.44-.12 2.15a6.47 6.47 0 0 1-3.66 4.41c-3.1 1.44-6.8.96-9.84-.4a10.87 10.87 0 0 1-4.7-4.48c-.28-.5-.5-1.04-.6-1.6-.3-.08-.55-.2-.77-.38a3.15 3.15 0 0 1-.95-1.4 3.03 3.03 0 0 1 .58-2.6 3.6 3.6 0 0 1 2.37-1.1c.3 0 .6.04.88.13.25-.97.87-1.8 1.74-2.3.16.8.63 1.5 1.3 1.96h7.62c.7-.6 1.6-.9 2.55-.9.9 0 1.7.3 2.36.8a5.1 5.1 0 0 1 3.53 3.15z" })
+    }
+  );
+}
+function PostgresIcon({ className = "h-7 w-7 sm:h-8 sm:w-8" }) {
+  return /* @__PURE__ */ jsx(
+    "svg",
+    {
+      viewBox: "0 0 24 24",
+      fill: "currentColor",
+      className,
+      "aria-hidden": "true",
+      children: /* @__PURE__ */ jsx("path", { d: "M12.22 2c-.67 0-1.32.06-1.95.18-.32.06-.63.15-.93.26C8.2 2.85 7.37 3.5 6.78 4.3c-.6.82-.93 1.83-.93 2.94 0 .42.06.84.18 1.25.12.4.3.77.54 1.1.25.35.56.66.92.93-.05.42-.08.85-.08 1.3 0 .75.1 1.48.28 2.18.18.7.45 1.35.8 1.95.34.6.76 1.13 1.23 1.58.48.45 1.02.82 1.6 1.1.58.28 1.2.48 1.84.58.65.1 1.32.14 2 .14.7 0 1.38-.05 2.03-.15.65-.1 1.27-.3 1.84-.58.58-.28 1.1-.65 1.56-1.1.47-.45.87-.98 1.2-1.58.33-.6.58-1.25.75-1.95.17-.7.26-1.43.26-2.18 0-.45-.03-.88-.08-1.3.36-.27.67-.58.92-.93.24-.33.42-.7.54-1.1.12-.41.18-.83.18-1.25 0-1.11-.33-2.12-.93-2.94-.59-.8-1.42-1.45-2.56-1.86-.3-.11-.61-.2-.93-.26-.63-.12-1.28-.18-1.95-.18zm-2.5 4.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zm5 0a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 11c1.5 0 2.5 1.2 2.5 2.8 0 1.7-1 3.2-2.5 3.2s-2.5-1.5-2.5-3.2c0-1.6 1-2.8 2.5-2.8z" })
+    }
+  );
+}
+function OpenAIIcon({ className = "h-7 w-7 sm:h-8 sm:w-8" }) {
+  return /* @__PURE__ */ jsx(
+    "svg",
+    {
+      viewBox: "0 0 24 24",
+      fill: "currentColor",
+      className,
+      "aria-hidden": "true",
+      children: /* @__PURE__ */ jsx("path", { d: "M22.28 9.82a5.98 5.98 0 0 0-.52-4.91 6.05 6.05 0 0 0-6.51-2.9A6.06 6.06 0 0 0 10.7.35a6.05 6.05 0 0 0-5.75 4.17 6.05 6.05 0 0 0-4.14 3.01 6.06 6.06 0 0 0 .76 7.07 5.98 5.98 0 0 0 .52 4.91 6.05 6.05 0 0 0 6.51 2.9A6.06 6.06 0 0 0 13.3 23.65a6.05 6.05 0 0 0 5.75-4.17 6.05 6.05 0 0 0 4.14-3.01 6.06 6.06 0 0 0-.76-7.07l-.15.42zm-7.65 11.83a4.03 4.03 0 0 1-2.61-.96l.16-.09 4.33-2.5a1.01 1.01 0 0 0 .51-.88v-6.1l1.83 1.05a.11.11 0 0 1 .06.09v5.04a4.05 4.05 0 0 1-4.28 4.35zm-9.35-3.83a4.03 4.03 0 0 1-.48-2.74l.16.1 4.33 2.5a1.01 1.01 0 0 0 1.02 0l5.28-3.05v2.1a.11.11 0 0 1-.05.1l-4.36 2.52a4.05 4.05 0 0 1-5.9-1.53zm-1.7-8.99a4.03 4.03 0 0 1 2.13-1.78l-.01.18v5a1.01 1.01 0 0 0 .51.88l5.28 3.05-1.83 1.06a.11.11 0 0 1-.1 0l-4.36-2.52a4.05 4.05 0 0 1-1.62-5.87zm13.14-2.55l-4.33 2.5a1.01 1.01 0 0 0-.51.88v6.1l-1.83-1.05a.11.11 0 0 1-.06-.09V9.58a4.05 4.05 0 0 1 6.89-2.82l-.16.09zm3.08 5.6a4.03 4.03 0 0 1 .48 2.74l-.16-.1-4.33-2.5a1.01 1.01 0 0 0-1.02 0l-5.28 3.05v-2.1a.11.11 0 0 1 .05-.1l4.36-2.52a4.05 4.05 0 0 1 5.9 1.53zm-3.64-1.25l-2.45-1.41a1.01 1.01 0 0 0-1.02 0l-2.45 1.41v-2.82a.11.11 0 0 1 .05-.1l4.36-2.52a4.05 4.05 0 0 1 1.51 6.86v-1.42z" })
+    }
+  );
+}
+function PyTorchIcon({ className = "h-7 w-7 sm:h-8 sm:w-8" }) {
+  return /* @__PURE__ */ jsx(
+    "svg",
+    {
+      viewBox: "0 0 24 24",
+      fill: "currentColor",
+      className,
+      "aria-hidden": "true",
+      children: /* @__PURE__ */ jsx("path", { d: "M13.5 2.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-1.8 3.6a.6.6 0 0 0-.8.2L8.2 10.9a6 6 0 0 0 2.4 8.2 6 6 0 0 0 8.2-2.4 6 6 0 0 0-2.4-8.2l-1.1 1.1a4.5 4.5 0 1 1-5.3 7.2 4.5 4.5 0 0 1 2.3-5.9l1.6-2.7a.6.6 0 0 0-.2-.8z" })
+    }
+  );
+}
+function GraphQLIcon({ className = "h-7 w-7 sm:h-8 sm:w-8" }) {
+  return /* @__PURE__ */ jsxs(
+    "svg",
+    {
+      viewBox: "0 0 24 24",
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: "1.6",
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      className,
+      "aria-hidden": "true",
+      children: [
+        /* @__PURE__ */ jsx("polygon", { points: "12 2 21 7 21 17 12 22 3 17 3 7" }),
+        /* @__PURE__ */ jsx("polygon", { points: "12 6 18 17 6 17" }),
+        /* @__PURE__ */ jsx("circle", { cx: "12", cy: "2", r: "1.5", fill: "currentColor" }),
+        /* @__PURE__ */ jsx("circle", { cx: "21", cy: "7", r: "1.5", fill: "currentColor" }),
+        /* @__PURE__ */ jsx("circle", { cx: "21", cy: "17", r: "1.5", fill: "currentColor" }),
+        /* @__PURE__ */ jsx("circle", { cx: "12", cy: "22", r: "1.5", fill: "currentColor" }),
+        /* @__PURE__ */ jsx("circle", { cx: "3", cy: "17", r: "1.5", fill: "currentColor" }),
+        /* @__PURE__ */ jsx("circle", { cx: "3", cy: "7", r: "1.5", fill: "currentColor" })
+      ]
+    }
+  );
+}
+function AWSIcon({ className = "h-7 w-7 sm:h-8 sm:w-8" }) {
+  return /* @__PURE__ */ jsx(
+    "svg",
+    {
+      viewBox: "0 0 24 24",
+      fill: "currentColor",
+      className,
+      "aria-hidden": "true",
+      children: /* @__PURE__ */ jsx("path", { d: "M6.8 11.2c-.3 0-.6.1-.7.4-.2.2-.2.5-.2.9 0 .4.1.7.2.9.2.2.4.4.7.4.3 0 .6-.1.8-.4.2-.2.3-.5.3-.9 0-.4-.1-.7-.3-.9-.2-.3-.5-.4-.8-.4zm-2.4 1.3c0-.9.3-1.6.8-2.1.6-.5 1.3-.8 2.2-.8.8 0 1.4.2 1.8.6V9.8c0-.6-.1-1-.4-1.2-.3-.2-.7-.3-1.3-.3-.4 0-.9.1-1.3.2-.4.1-.7.3-1 .5l-.5-.9c.4-.3.9-.5 1.4-.7.6-.2 1.1-.3 1.7-.3 1 0 1.8.3 2.3.8.5.5.7 1.3.7 2.3v4.6h-1.2l-.1-.7c-.4.5-1.1.8-2 .8-.9 0-1.6-.3-2.2-.8-.6-.6-.9-1.3-.9-2.3zm8.9 2.3l-1.9-5.9h1.3l1.3 4.4 1.2-4.4h1.3l1.2 4.4 1.3-4.4h1.3l-1.9 5.9h-1.3l-1.2-4.3-1.2 4.3h-1.5zm-8.8 5.6c4.6 2.4 10.3 2.4 15.3-.5.3-.2.6.1.4.4-4.8 3.5-11.2 3.5-16.1.6-.3-.2-.1-.6.4-.5zm15.8-.8c.4-.1.7.3.5.7-.3.5-.9 1.1-1.6 1.3-.2.1-.4 0-.4-.2-.1-.3.2-.5.4-.7.4-.3.8-.8 1.1-1.1z" })
+    }
+  );
+}
+const TECH_ICONS = [
+  { name: "React", Icon: ReactIcon },
+  { name: "Next.js", Icon: NextjsIcon },
+  { name: "TypeScript", Icon: TypeScriptIcon },
+  { name: "Python", Icon: PythonIcon },
+  { name: "Tailwind CSS", Icon: TailwindIcon },
+  { name: "Node.js", Icon: NodeIcon },
+  { name: "Docker", Icon: DockerIcon },
+  { name: "PostgreSQL", Icon: PostgresIcon },
+  { name: "OpenAI", Icon: OpenAIIcon },
+  { name: "PyTorch", Icon: PyTorchIcon },
+  { name: "GraphQL", Icon: GraphQLIcon },
+  { name: "Amazon Web Services", Icon: AWSIcon }
+];
+function TechIconsMarquee() {
+  const duplicatedIcons = [...TECH_ICONS, ...TECH_ICONS];
+  return /* @__PURE__ */ jsx("div", { className: "relative w-full overflow-hidden py-3 sm:py-4", children: /* @__PURE__ */ jsx("div", { className: "relative mx-auto w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]", children: /* @__PURE__ */ jsx("div", { className: "flex w-max animate-marquee items-center gap-10 sm:gap-14 lg:gap-16 hover:[animation-play-state:paused]", children: duplicatedIcons.map((tech, index2) => {
+    const IconComponent = tech.Icon;
+    return /* @__PURE__ */ jsx(
+      "div",
+      {
+        title: tech.name,
+        "aria-label": tech.name,
+        className: "group flex shrink-0 items-center justify-center text-[#526575]/50 transition-all duration-300 hover:scale-115 hover:text-[#004696]",
+        children: /* @__PURE__ */ jsx(IconComponent, { className: "h-7 w-7 sm:h-8 sm:w-8 transition-colors duration-300" })
+      },
+      `${tech.name}-${index2}`
+    );
+  }) }) }) });
+}
 function HeroButton({
   to,
   className,
@@ -1219,15 +1509,17 @@ function Hero({
   secondaryLabel = "Explore Solutions",
   secondaryTo = "/solutions",
   compact = false,
-  showVisualization
+  showVisualization,
+  showTechMarquee
 }) {
   const renderVisualization = showVisualization ?? !compact;
-  return /* @__PURE__ */ jsxs("section", { className: "relative flex min-h-screen min-h-[100dvh] w-full flex-col justify-center overflow-hidden pt-28 pb-14 sm:pt-32 sm:pb-20", children: [
+  const renderTechMarquee = showTechMarquee ?? !compact;
+  return /* @__PURE__ */ jsxs("section", { className: "relative flex w-full flex-col overflow-hidden pt-20 pb-8 sm:pt-28 sm:pb-14 lg:min-h-screen lg:min-h-[100dvh] lg:justify-center lg:pt-32 lg:pb-20", children: [
     /* @__PURE__ */ jsx(AnimatedBackground, { variant: "hero" }),
     /* @__PURE__ */ jsxs(
       "div",
       {
-        className: `relative z-10 mx-auto w-full px-4 sm:px-6 lg:px-8 ${renderVisualization ? "grid max-w-7xl grid-cols-1 items-center gap-10 sm:gap-14 lg:grid-cols-2 lg:gap-16" : "max-w-4xl"}`,
+        className: `relative z-10 mx-auto w-full px-4 sm:px-6 lg:px-8 ${renderVisualization ? "grid max-w-7xl grid-cols-1 items-center gap-6 sm:gap-10 lg:grid-cols-2 lg:gap-16" : "max-w-4xl"}`,
         children: [
           /* @__PURE__ */ jsxs("div", { className: renderVisualization ? void 0 : "max-w-3xl", children: [
             eyebrow && /* @__PURE__ */ jsxs(
@@ -1236,7 +1528,7 @@ function Hero({
                 initial: { opacity: 0, y: 10 },
                 animate: { opacity: 1, y: 0 },
                 transition: { duration: 0.6 },
-                className: "mb-6 inline-flex items-center gap-2 rounded-full border border-[rgba(0,70,150,0.16)] bg-white/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-[#004696] backdrop-blur-sm",
+                className: "mb-4 sm:mb-6 inline-flex items-center gap-2 rounded-full border border-[rgba(0,70,150,0.16)] bg-white/80 px-3.5 py-1 sm:px-4 sm:py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-[#004696] backdrop-blur-sm",
                 children: [
                   /* @__PURE__ */ jsx("span", { className: "h-1.5 w-1.5 rounded-full bg-[#1e8eab]" }),
                   eyebrow
@@ -1278,7 +1570,7 @@ function Hero({
                 initial: { opacity: 0, y: 20 },
                 animate: { opacity: 1, y: 0 },
                 transition: { duration: 0.7, delay: 0.4 },
-                className: "mt-6 sm:mt-7 max-w-lg text-base sm:text-lg leading-relaxed text-[#526575]",
+                className: "mt-4 sm:mt-7 max-w-lg text-base sm:text-lg leading-relaxed text-[#526575]",
                 children: description
               }
             ),
@@ -1288,7 +1580,7 @@ function Hero({
                 initial: { opacity: 0, y: 20 },
                 animate: { opacity: 1, y: 0 },
                 transition: { duration: 0.7, delay: 0.55 },
-                className: "mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4 w-full sm:w-auto",
+                className: "mt-6 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto",
                 children: [
                   /* @__PURE__ */ jsxs(
                     HeroButton,
@@ -1331,7 +1623,8 @@ function Hero({
         ]
       }
     ),
-    /* @__PURE__ */ jsxs(
+    renderTechMarquee && /* @__PURE__ */ jsx("div", { className: "relative z-10 mt-8 sm:mt-12 lg:mt-16 w-full", children: /* @__PURE__ */ jsx(TechIconsMarquee, {}) }),
+    !renderTechMarquee && /* @__PURE__ */ jsxs(
       motion.div,
       {
         initial: { opacity: 0 },
@@ -1345,7 +1638,11 @@ function Hero({
             motion.div,
             {
               animate: { y: [0, 5, 0] },
-              transition: { repeat: Infinity, duration: 1.6, ease: "easeInOut" },
+              transition: {
+                repeat: Infinity,
+                duration: 1.6,
+                ease: "easeInOut"
+              },
               className: "h-1 w-1 rounded-full bg-[#1e8eab]"
             }
           ) })
@@ -1426,7 +1723,7 @@ function SectionHeader({
         className
       ),
       children: [
-        eyebrow && /* @__PURE__ */ jsxs("span", { className: "mb-4 inline-flex items-center gap-2 rounded-full border border-[rgba(0,70,150,0.16)] bg-white/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-[#004696]", children: [
+        eyebrow && /* @__PURE__ */ jsxs("span", { className: "mb-3 sm:mb-4 inline-flex items-center gap-2 rounded-full border border-[rgba(0,70,150,0.16)] bg-white/70 px-3.5 py-1 sm:px-4 sm:py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-[#004696]", children: [
           /* @__PURE__ */ jsx("span", { className: "h-1.5 w-1.5 rounded-full bg-[#1e8eab]" }),
           eyebrow
         ] }),
@@ -1437,7 +1734,7 @@ function SectionHeader({
             highlight
           ] })
         ] }),
-        description && /* @__PURE__ */ jsx("p", { className: "mt-4 sm:mt-5 text-base sm:text-lg leading-relaxed text-[#526575]", children: description })
+        description && /* @__PURE__ */ jsx("p", { className: "mt-3 sm:mt-5 text-base sm:text-lg leading-relaxed text-[#526575]", children: description })
       ]
     }
   );
@@ -1554,7 +1851,7 @@ function CTASection({
   secondaryLabel = "Explore Solutions",
   secondaryTo = "/solutions"
 }) {
-  return /* @__PURE__ */ jsx("section", { className: "relative overflow-hidden bg-[#f7fafc] py-10", children: /* @__PURE__ */ jsxs("div", { className: "relative isolate mx-3 overflow-hidden rounded-[24px] sm:rounded-[32px] border border-[rgba(0,70,150,0.12)] bg-white px-5 py-12 sm:px-8 sm:py-16 md:px-12 md:py-20 shadow-[0_20px_60px_rgba(0,70,150,0.08)] sm:mx-6 md:mx-auto md:max-w-6xl", children: [
+  return /* @__PURE__ */ jsx("section", { className: "relative overflow-hidden bg-[#f7fafc] py-6 sm:py-10", children: /* @__PURE__ */ jsxs("div", { className: "relative isolate mx-3 overflow-hidden rounded-[24px] sm:rounded-[32px] border border-[rgba(0,70,150,0.12)] bg-white px-5 py-8 sm:px-8 sm:py-16 md:px-12 md:py-20 shadow-[0_20px_60px_rgba(0,70,150,0.08)] sm:mx-6 md:mx-auto md:max-w-6xl", children: [
     /* @__PURE__ */ jsx(AnimatedBackground, { variant: "cta" }),
     /* @__PURE__ */ jsxs(ScrollReveal, { className: "relative z-10 mx-auto max-w-2xl text-center", children: [
       /* @__PURE__ */ jsxs("h2", { className: "text-[clamp(1.75rem,4.5vw,3.25rem)] font-extrabold leading-[1.12] tracking-tight text-[#0b1f33] break-words", children: [
@@ -1564,8 +1861,8 @@ function CTASection({
           highlight
         ] })
       ] }),
-      description && /* @__PURE__ */ jsx("p", { className: "mx-auto mt-4 sm:mt-5 max-w-xl text-base sm:text-lg leading-relaxed text-[#526575]", children: description }),
-      /* @__PURE__ */ jsxs("div", { className: "mt-8 sm:mt-9 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3.5 sm:gap-4 w-full sm:w-auto", children: [
+      description && /* @__PURE__ */ jsx("p", { className: "mx-auto mt-3 sm:mt-5 max-w-xl text-base sm:text-lg leading-relaxed text-[#526575]", children: description }),
+      /* @__PURE__ */ jsxs("div", { className: "mt-6 sm:mt-9 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3.5 sm:gap-4 w-full sm:w-auto", children: [
         /* @__PURE__ */ jsxs(
           Link,
           {
@@ -1775,9 +2072,10 @@ const home = UNSAFE_withComponentProps(function Home() {
         text: "Intelligence.",
         highlight: true
       }]],
-      description: "We design and build intelligent digital systems that automate operations, transform data into insight, and create measurable business value."
+      description: "We design and build intelligent digital systems that automate operations, transform data into insight, and create measurable business value.",
+      showTechMarquee: true
     }), /* @__PURE__ */ jsx("section", {
-      className: "relative bg-white py-16 sm:py-24 lg:py-32",
+      className: "relative bg-white py-10 sm:py-20 lg:py-28",
       children: /* @__PURE__ */ jsxs("div", {
         className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8",
         children: [/* @__PURE__ */ jsx(SectionHeader, {
@@ -1786,7 +2084,7 @@ const home = UNSAFE_withComponentProps(function Home() {
           highlight: "one intelligent system.",
           description: "We combine AI, data, and software engineering into a single team that ships end-to-end — not a patchwork of specialists."
         }), /* @__PURE__ */ jsx("div", {
-          className: "mt-10 sm:mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3",
+          className: "mt-8 sm:mt-12 lg:mt-14 grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3",
           children: SERVICES$1.map((s, i) => /* @__PURE__ */ jsx(ServiceCard, {
             ...s,
             index: i
@@ -1794,7 +2092,7 @@ const home = UNSAFE_withComponentProps(function Home() {
         })]
       })
     }), /* @__PURE__ */ jsxs("section", {
-      className: "relative overflow-hidden bg-[#f7fafc] py-16 sm:py-24 lg:py-32",
+      className: "relative overflow-hidden bg-[#f7fafc] py-10 sm:py-20 lg:py-28",
       children: [/* @__PURE__ */ jsx(AnimatedBackground, {
         variant: "subtle"
       }), /* @__PURE__ */ jsxs("div", {
@@ -1808,14 +2106,14 @@ const home = UNSAFE_withComponentProps(function Home() {
           className: "mx-auto"
         }), /* @__PURE__ */ jsx(ScrollReveal, {
           delay: 0.1,
-          className: "mt-8 sm:mt-12 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3",
+          className: "mt-6 sm:mt-10 lg:mt-12 flex flex-wrap items-center justify-center gap-2 sm:gap-3",
           children: CAPABILITIES.map((c) => /* @__PURE__ */ jsx(CapabilityPill, {
             label: c
           }, c))
         })]
       })]
     }), /* @__PURE__ */ jsx("section", {
-      className: "relative bg-white py-16 sm:py-24 lg:py-32",
+      className: "relative bg-white py-10 sm:py-20 lg:py-28",
       children: /* @__PURE__ */ jsxs("div", {
         className: "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8",
         children: [/* @__PURE__ */ jsx(SectionHeader, {
@@ -1825,7 +2123,7 @@ const home = UNSAFE_withComponentProps(function Home() {
           highlight: "The Future.",
           className: "mx-auto"
         }), /* @__PURE__ */ jsx("div", {
-          className: "mt-10 sm:mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3",
+          className: "mt-8 sm:mt-12 lg:mt-14 grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3",
           children: WHY_US.map((f, i) => /* @__PURE__ */ jsx(FeatureCard, {
             ...f,
             index: i
@@ -1833,9 +2131,9 @@ const home = UNSAFE_withComponentProps(function Home() {
         })]
       })
     }), /* @__PURE__ */ jsx("section", {
-      className: "relative overflow-hidden bg-[#0b1f33]/[0.02] py-16 sm:py-24 lg:py-32",
+      className: "relative overflow-hidden bg-[#0b1f33]/[0.02] py-10 sm:py-20 lg:py-28",
       children: /* @__PURE__ */ jsxs("div", {
-        className: "mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 sm:gap-14 lg:grid-cols-2 lg:gap-16 px-4 sm:px-6 lg:px-8",
+        className: "mx-auto grid max-w-7xl grid-cols-1 items-center gap-6 sm:gap-12 lg:grid-cols-2 lg:gap-16 px-4 sm:px-6 lg:px-8",
         children: [/* @__PURE__ */ jsx(SectionHeader, {
           eyebrow: "Global Reach",
           title: "Deployed across",
@@ -3638,7 +3936,7 @@ const route8 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProper
   default: careers,
   meta
 }, Symbol.toStringTag, { value: "Module" }));
-const serverManifest = { "entry": { "module": "/assets/entry.client-CumgHwSh.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js"], "css": [] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": true, "module": "/assets/root-D_YLgNG-.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/arrow-right-IQB89q_J.js", "/assets/solutions-DGS5J_xd.js", "/assets/chevron-down-C-wnGQGG.js", "/assets/workflow-BZKWucxU.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/home": { "id": "routes/home", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/home-CmbTYer_.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-x1dTA1k2.js", "/assets/arrow-right-IQB89q_J.js", "/assets/arrow-up-right-CpFtQvYW.js", "/assets/CapabilityPill-Bq2zShMu.js", "/assets/CTASection-D1gSY9Ac.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/workflow-BZKWucxU.js", "/assets/sparkles-DoRaVLZ9.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/about": { "id": "routes/about", "parentId": "root", "path": "about", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/about-ByG5uHgg.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-x1dTA1k2.js", "/assets/CTASection-D1gSY9Ac.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/arrow-right-IQB89q_J.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/solutions/index": { "id": "routes/solutions/index", "parentId": "root", "path": "solutions", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/index-BJ_yamUF.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-x1dTA1k2.js", "/assets/arrow-right-IQB89q_J.js", "/assets/CTASection-D1gSY9Ac.js", "/assets/solutions-DGS5J_xd.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/workflow-BZKWucxU.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/solutions/detail": { "id": "routes/solutions/detail", "parentId": "root", "path": "solutions/:slug", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": true, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/detail-BjQqZh67.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-x1dTA1k2.js", "/assets/CapabilityPill-Bq2zShMu.js", "/assets/CTASection-D1gSY9Ac.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/solutions-DGS5J_xd.js", "/assets/circle-check-DOzy85Ul.js", "/assets/arrow-right-IQB89q_J.js", "/assets/workflow-BZKWucxU.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/portfolio/index": { "id": "routes/portfolio/index", "parentId": "root", "path": "portfolio", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/index-Cgacjmq7.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-x1dTA1k2.js", "/assets/portfolio-Bl4GiWbd.js", "/assets/CTASection-D1gSY9Ac.js", "/assets/arrow-right-IQB89q_J.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/arrow-up-right-CpFtQvYW.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/portfolio/detail": { "id": "routes/portfolio/detail", "parentId": "root", "path": "portfolio/:slug", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": true, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/detail-DlhM11cS.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/portfolio-Bl4GiWbd.js", "/assets/CTASection-D1gSY9Ac.js", "/assets/arrow-right-IQB89q_J.js", "/assets/arrow-up-right-CpFtQvYW.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/contact": { "id": "routes/contact", "parentId": "root", "path": "contact", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/contact-DmgKhtSo.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/ContactForm-Cyh4H_66.js", "/assets/arrow-right-IQB89q_J.js", "/assets/circle-check-DOzy85Ul.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/careers": { "id": "routes/careers", "parentId": "root", "path": "careers", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/careers-CVHpmOs3.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-x1dTA1k2.js", "/assets/ContactForm-Cyh4H_66.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/sparkles-DoRaVLZ9.js", "/assets/arrow-right-IQB89q_J.js", "/assets/chevron-down-C-wnGQGG.js", "/assets/circle-check-DOzy85Ul.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 } }, "url": "/assets/manifest-bb83d939.js", "version": "bb83d939", "sri": void 0 };
+const serverManifest = { "entry": { "module": "/assets/entry.client-CumgHwSh.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js"], "css": [] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": true, "module": "/assets/root-C6_Uob3e.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/arrow-right-IQB89q_J.js", "/assets/solutions-DGS5J_xd.js", "/assets/chevron-down-C-wnGQGG.js", "/assets/workflow-BZKWucxU.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/home": { "id": "routes/home", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/home-BEGuiMpE.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CKJzDo60.js", "/assets/arrow-right-IQB89q_J.js", "/assets/arrow-up-right-CpFtQvYW.js", "/assets/CapabilityPill-Bq2zShMu.js", "/assets/CTASection-BlFs3cYz.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/workflow-BZKWucxU.js", "/assets/sparkles-DoRaVLZ9.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/about": { "id": "routes/about", "parentId": "root", "path": "about", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/about-CkwlxxCm.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CKJzDo60.js", "/assets/CTASection-BlFs3cYz.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/arrow-right-IQB89q_J.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/solutions/index": { "id": "routes/solutions/index", "parentId": "root", "path": "solutions", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/index-D-VqNYmz.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CKJzDo60.js", "/assets/arrow-right-IQB89q_J.js", "/assets/CTASection-BlFs3cYz.js", "/assets/solutions-DGS5J_xd.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/workflow-BZKWucxU.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/solutions/detail": { "id": "routes/solutions/detail", "parentId": "root", "path": "solutions/:slug", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": true, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/detail-DKy8vdjL.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CKJzDo60.js", "/assets/CapabilityPill-Bq2zShMu.js", "/assets/CTASection-BlFs3cYz.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/solutions-DGS5J_xd.js", "/assets/circle-check-DOzy85Ul.js", "/assets/arrow-right-IQB89q_J.js", "/assets/workflow-BZKWucxU.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/portfolio/index": { "id": "routes/portfolio/index", "parentId": "root", "path": "portfolio", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/index-BHyH3t8r.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CKJzDo60.js", "/assets/portfolio-Bl4GiWbd.js", "/assets/CTASection-BlFs3cYz.js", "/assets/arrow-right-IQB89q_J.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/arrow-up-right-CpFtQvYW.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/portfolio/detail": { "id": "routes/portfolio/detail", "parentId": "root", "path": "portfolio/:slug", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": true, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/detail-KgI_5l11.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/portfolio-Bl4GiWbd.js", "/assets/CTASection-BlFs3cYz.js", "/assets/arrow-right-IQB89q_J.js", "/assets/arrow-up-right-CpFtQvYW.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/contact": { "id": "routes/contact", "parentId": "root", "path": "contact", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/contact-DmgKhtSo.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/ContactForm-Cyh4H_66.js", "/assets/arrow-right-IQB89q_J.js", "/assets/circle-check-DOzy85Ul.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/careers": { "id": "routes/careers", "parentId": "root", "path": "careers", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/careers-HZxbmXB9.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CKJzDo60.js", "/assets/ContactForm-Cyh4H_66.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/sparkles-DoRaVLZ9.js", "/assets/arrow-right-IQB89q_J.js", "/assets/chevron-down-C-wnGQGG.js", "/assets/circle-check-DOzy85Ul.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 } }, "url": "/assets/manifest-305cb646.js", "version": "305cb646", "sri": void 0 };
 const assetsBuildDirectory = "build/client";
 const basename = "/";
 const future = { "unstable_optimizeDeps": false, "v8_passThroughRequests": false, "v8_trailingSlashAwareDataRequests": false, "unstable_previewServerPrerendering": false, "v8_middleware": false, "v8_splitRouteModules": false, "v8_viteEnvironmentApi": false };
