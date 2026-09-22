@@ -15,7 +15,7 @@ export const meta: MetaFunction = () => [
 
 const CONTACT_DETAILS = [
   { icon: Mail, label: "hello@nexadigify.com" },
-  { icon: Phone, label: "+91 9876543210" },
+  { icon: Phone, label: "+92 310 2344440" },
   { icon: MapPin, label: "Islamabad, Pakistan" },
 ];
 

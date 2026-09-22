@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { AnimatePresence } from "motion/react";
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { MegaMenu } from "./MegaMenu";
 import { MobileNavigation } from "./MobileNavigation";
 
@@ -114,18 +114,13 @@ export function Navbar() {
           </div>
 
           <div className="flex items-center gap-3">
-            <Link
-              to="/contact"
-              className="hidden rounded-full bg-[#004696] px-5 py-2.5 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(0,70,150,0.25)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1e8eab] sm:inline-flex"
-            >
-              Let's Talk
-            </Link>
             <button
               className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[rgba(0,70,150,0.14)] text-[#0b1f33] transition-colors hover:bg-[#f3f8fa] lg:hidden"
-              aria-label="Open menu"
-              onClick={() => setMobileOpen(true)}
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileOpen}
+              onClick={() => setMobileOpen((v) => !v)}
             >
-              <Menu size={20} />
+              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </nav>

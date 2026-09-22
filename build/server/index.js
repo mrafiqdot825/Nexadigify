@@ -6,7 +6,7 @@ import { isbot } from "isbot";
 import { renderToPipeableStream } from "react-dom/server";
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useScroll, useSpring } from "motion/react";
-import { Workflow, BrainCircuit, Bot, BarChart3, Code2, ArrowRight, X, ChevronDown, Menu, ArrowUpRight, Sparkles, Layers, Rocket, Target, Lightbulb, Compass, Users, CheckCircle2, ArrowLeft, Upload, Mail, Phone, MapPin, Globe2, Zap, HeartHandshake, Clock } from "lucide-react";
+import { Workflow, BrainCircuit, Bot, BarChart3, Code2, ArrowRight, ChevronDown, X, Menu, ArrowUpRight, Sparkles, Layers, Rocket, Target, Lightbulb, Compass, Users, CheckCircle2, ArrowLeft, Upload, Mail, Phone, MapPin, Globe2, Zap, HeartHandshake, Clock } from "lucide-react";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 const streamTimeout = 5e3;
@@ -471,156 +471,129 @@ function MobileNavigation({
       document.body.style.overflow = "";
     };
   }, [open]);
-  return /* @__PURE__ */ jsx(AnimatePresence, { children: open && /* @__PURE__ */ jsxs(Fragment, { children: [
+  return /* @__PURE__ */ jsx(AnimatePresence, { children: open && /* @__PURE__ */ jsxs("div", { className: "fixed inset-x-0 top-20 bottom-0 z-40 lg:hidden", children: [
     /* @__PURE__ */ jsx(
       motion.div,
       {
-        className: "fixed inset-0 z-[55] bg-[#0b1f33]/40 backdrop-blur-sm lg:hidden",
+        className: "absolute inset-0 bg-[#0b1f33]/30 backdrop-blur-xs",
         initial: { opacity: 0 },
         animate: { opacity: 1 },
         exit: { opacity: 0 },
+        transition: { duration: 0.2 },
         onClick: onClose,
         "aria-hidden": "true"
       }
     ),
-    /* @__PURE__ */ jsxs(
+    /* @__PURE__ */ jsx(
       motion.div,
       {
-        className: "fixed inset-y-0 right-0 z-[60] flex h-full h-[100dvh] max-h-[100dvh] w-full max-w-[340px] sm:max-w-sm flex-col bg-white shadow-2xl overscroll-contain lg:hidden",
-        initial: { x: "100%" },
-        animate: { x: 0 },
-        exit: { x: "100%" },
-        transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] },
-        children: [
-          /* @__PURE__ */ jsxs("div", { className: "flex h-20 shrink-0 items-center justify-between border-b border-[rgba(0,70,150,0.1)] px-5 sm:px-6", children: [
-            /* @__PURE__ */ jsxs(
-              Link,
-              {
-                to: "/",
-                onClick: onClose,
-                className: "flex items-center gap-2",
-                "aria-label": "Nexadigify Home",
-                children: [
-                  /* @__PURE__ */ jsx("img", { src: "/Logo.png", alt: "Nexadigify", className: "h-8 w-auto" }),
-                  /* @__PURE__ */ jsxs("span", { className: "flex items-center text-xl font-extrabold tracking-tight select-none", children: [
-                    /* @__PURE__ */ jsx("span", { className: "text-[#004696]", children: "Nexa" }),
-                    /* @__PURE__ */ jsx("span", { className: "text-[#1e8eab]", children: "digify" })
-                  ] })
-                ]
-              }
-            ),
-            /* @__PURE__ */ jsx(
-              "button",
-              {
-                "aria-label": "Close menu",
-                onClick: onClose,
-                className: "flex h-11 w-11 items-center justify-center rounded-full border border-[rgba(0,70,150,0.14)] text-[#0b1f33] transition-colors hover:bg-[#f3f8fa]",
-                children: /* @__PURE__ */ jsx(X, { size: 20 })
-              }
-            )
-          ] }),
-          /* @__PURE__ */ jsx(
-            "nav",
-            {
-              className: "flex-1 overflow-y-auto overscroll-contain px-5 py-4 sm:px-6",
-              "aria-label": "Mobile primary navigation",
-              children: /* @__PURE__ */ jsxs("div", { className: "flex flex-col space-y-1", children: [
-                /* @__PURE__ */ jsx(
-                  NavLink,
+        className: "relative z-10 flex max-h-[calc(100dvh-5rem)] w-full flex-col overflow-y-auto overscroll-contain rounded-b-3xl border-b border-[rgba(0,70,150,0.12)] bg-white/95 px-4 pt-3 pb-6 shadow-[0_24px_48px_rgba(0,70,150,0.14)] backdrop-blur-xl sm:px-6",
+        initial: { opacity: 0, y: -12 },
+        animate: { opacity: 1, y: 0 },
+        exit: { opacity: 0, y: -12 },
+        transition: { duration: 0.22, ease: [0.16, 1, 0.3, 1] },
+        children: /* @__PURE__ */ jsxs(
+          "nav",
+          {
+            className: "flex flex-col space-y-1.5",
+            "aria-label": "Mobile primary navigation",
+            children: [
+              /* @__PURE__ */ jsx(
+                NavLink,
+                {
+                  to: "/",
+                  end: true,
+                  onClick: onClose,
+                  className: ({ isActive }) => `flex items-center rounded-xl px-3.5 py-2.5 text-base font-semibold transition-colors ${isActive ? "bg-[#f3f8fa] text-[#004696]" : "text-[#0b1f33] hover:bg-[#f3f8fa] hover:text-[#004696]"}`,
+                  children: "Home"
+                }
+              ),
+              /* @__PURE__ */ jsxs("div", { className: "rounded-2xl border border-[rgba(0,70,150,0.1)] bg-[#f7fafc]/80 p-2", children: [
+                /* @__PURE__ */ jsxs(
+                  "button",
                   {
-                    to: "/",
-                    end: true,
-                    onClick: onClose,
-                    className: ({ isActive }) => `flex items-center rounded-xl px-3 py-3 text-base font-semibold transition-colors ${isActive ? "bg-[#f3f8fa] text-[#004696]" : "text-[#0b1f33] hover:bg-[#f3f8fa] hover:text-[#004696]"}`,
-                    children: "Home"
+                    type: "button",
+                    className: "flex w-full items-center justify-between px-3 py-2 text-left text-base font-semibold text-[#0b1f33] transition-colors hover:text-[#004696]",
+                    onClick: () => setSolutionsExpanded((v) => !v),
+                    "aria-expanded": solutionsExpanded,
+                    children: [
+                      /* @__PURE__ */ jsx("span", { children: "Solutions" }),
+                      /* @__PURE__ */ jsx(
+                        ChevronDown,
+                        {
+                          size: 18,
+                          className: `text-[#526575] transition-transform duration-300 ${solutionsExpanded ? "rotate-180 text-[#004696]" : ""}`
+                        }
+                      )
+                    ]
                   }
                 ),
-                /* @__PURE__ */ jsxs("div", { className: "rounded-2xl border border-[rgba(0,70,150,0.1)] bg-[#f7fafc]/70 p-2", children: [
-                  /* @__PURE__ */ jsxs(
-                    "button",
-                    {
-                      className: "flex w-full items-center justify-between px-3 py-2.5 text-left text-base font-semibold text-[#0b1f33] transition-colors hover:text-[#004696]",
-                      onClick: () => setSolutionsExpanded((v) => !v),
-                      "aria-expanded": solutionsExpanded,
-                      children: [
-                        /* @__PURE__ */ jsx("span", { children: "Solutions" }),
-                        /* @__PURE__ */ jsx(
-                          ChevronDown,
-                          {
-                            size: 18,
-                            className: `text-[#526575] transition-transform duration-300 ${solutionsExpanded ? "rotate-180" : ""}`
-                          }
-                        )
-                      ]
-                    }
-                  ),
-                  /* @__PURE__ */ jsx(AnimatePresence, { initial: false, children: solutionsExpanded && /* @__PURE__ */ jsx(
-                    motion.div,
-                    {
-                      initial: { height: 0, opacity: 0 },
-                      animate: { height: "auto", opacity: 1 },
-                      exit: { height: 0, opacity: 0 },
-                      transition: { duration: 0.25 },
-                      className: "overflow-hidden",
-                      children: /* @__PURE__ */ jsxs("div", { className: "mt-1 flex flex-col space-y-1 border-t border-[rgba(0,70,150,0.08)] pt-2", children: [
-                        solutions.map((s) => {
-                          const Icon = s.icon;
-                          return /* @__PURE__ */ jsxs(
-                            NavLink,
-                            {
-                              to: `/solutions/${s.slug}`,
-                              onClick: onClose,
-                              className: ({ isActive }) => `group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors ${isActive ? "bg-white text-[#004696] shadow-xs" : "text-[#526575] hover:bg-white hover:text-[#004696]"}`,
-                              children: [
-                                /* @__PURE__ */ jsx("div", { className: "flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[rgba(0,70,150,0.1)] bg-white text-[#004696] transition-colors group-hover:bg-[#1e8eab] group-hover:text-white", children: /* @__PURE__ */ jsx(Icon, { size: 16 }) }),
-                                /* @__PURE__ */ jsx("span", { className: "truncate", children: s.navTitle })
-                              ]
-                            },
-                            s.slug
-                          );
-                        }),
-                        /* @__PURE__ */ jsxs(
-                          Link,
-                          {
-                            to: "/solutions",
-                            onClick: onClose,
-                            className: "mt-1 flex items-center justify-between rounded-xl px-3 py-2.5 text-xs font-bold uppercase tracking-wider text-[#004696] hover:bg-white",
-                            children: [
-                              /* @__PURE__ */ jsx("span", { children: "View all solutions" }),
-                              /* @__PURE__ */ jsx(ArrowRight, { size: 14 })
-                            ]
-                          }
-                        )
-                      ] })
-                    }
-                  ) })
-                ] }),
-                NAV_LINKS$1.slice(1).map((link) => /* @__PURE__ */ jsx(
-                  NavLink,
+                /* @__PURE__ */ jsx(AnimatePresence, { initial: false, children: solutionsExpanded && /* @__PURE__ */ jsx(
+                  motion.div,
                   {
-                    to: link.to,
-                    onClick: onClose,
-                    className: ({ isActive }) => `flex items-center rounded-xl px-3 py-3 text-base font-semibold transition-colors ${isActive ? "bg-[#f3f8fa] text-[#004696]" : "text-[#0b1f33] hover:bg-[#f3f8fa] hover:text-[#004696]"}`,
-                    children: link.label
-                  },
-                  link.to
-                ))
-              ] })
-            }
-          ),
-          /* @__PURE__ */ jsx("div", { className: "shrink-0 border-t border-[rgba(0,70,150,0.1)] bg-white p-5 sm:p-6 pb-[max(1.25rem,env(safe-area-inset-bottom))]", children: /* @__PURE__ */ jsxs(
-            Link,
-            {
-              to: "/contact",
-              onClick: onClose,
-              className: "flex w-full items-center justify-center gap-2 rounded-full bg-[#004696] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(0,70,150,0.25)] transition-colors hover:bg-[#1e8eab]",
-              children: [
-                "Let's Talk",
-                /* @__PURE__ */ jsx(ArrowRight, { size: 16 })
-              ]
-            }
-          ) })
-        ]
+                    initial: { height: 0, opacity: 0 },
+                    animate: { height: "auto", opacity: 1 },
+                    exit: { height: 0, opacity: 0 },
+                    transition: { duration: 0.22 },
+                    className: "overflow-hidden",
+                    children: /* @__PURE__ */ jsxs("div", { className: "mt-1 flex flex-col space-y-1 border-t border-[rgba(0,70,150,0.08)] pt-2", children: [
+                      solutions.map((s) => {
+                        const Icon = s.icon;
+                        return /* @__PURE__ */ jsxs(
+                          NavLink,
+                          {
+                            to: `/solutions/${s.slug}`,
+                            onClick: onClose,
+                            className: ({ isActive }) => `group flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium transition-colors ${isActive ? "bg-white text-[#004696] shadow-xs" : "text-[#526575] hover:bg-white hover:text-[#004696]"}`,
+                            children: [
+                              /* @__PURE__ */ jsx("div", { className: "flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[rgba(0,70,150,0.1)] bg-white text-[#004696] transition-colors group-hover:bg-[#1e8eab] group-hover:text-white", children: /* @__PURE__ */ jsx(Icon, { size: 16 }) }),
+                              /* @__PURE__ */ jsx("span", { className: "truncate", children: s.navTitle })
+                            ]
+                          },
+                          s.slug
+                        );
+                      }),
+                      /* @__PURE__ */ jsxs(
+                        Link,
+                        {
+                          to: "/solutions",
+                          onClick: onClose,
+                          className: "mt-1 flex items-center justify-between rounded-xl px-3 py-2 text-xs font-bold uppercase tracking-wider text-[#004696] hover:bg-white",
+                          children: [
+                            /* @__PURE__ */ jsx("span", { children: "View all solutions" }),
+                            /* @__PURE__ */ jsx(ArrowRight, { size: 14 })
+                          ]
+                        }
+                      )
+                    ] })
+                  }
+                ) })
+              ] }),
+              NAV_LINKS$1.slice(1).map((link) => /* @__PURE__ */ jsx(
+                NavLink,
+                {
+                  to: link.to,
+                  onClick: onClose,
+                  className: ({ isActive }) => `flex items-center rounded-xl px-3.5 py-2.5 text-base font-semibold transition-colors ${isActive ? "bg-[#f3f8fa] text-[#004696]" : "text-[#0b1f33] hover:bg-[#f3f8fa] hover:text-[#004696]"}`,
+                  children: link.label
+                },
+                link.to
+              )),
+              /* @__PURE__ */ jsx("div", { className: "pt-2", children: /* @__PURE__ */ jsxs(
+                Link,
+                {
+                  to: "/contact",
+                  onClick: onClose,
+                  className: "flex w-full items-center justify-center gap-2 rounded-full bg-[#004696] px-6 py-3 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(0,70,150,0.25)] transition-colors hover:bg-[#1e8eab]",
+                  children: [
+                    "Let's Talk",
+                    /* @__PURE__ */ jsx(ArrowRight, { size: 16 })
+                  ]
+                }
+              ) })
+            ]
+          }
+        )
       }
     )
   ] }) });
@@ -728,25 +701,16 @@ function Navbar() {
                   link.to
                 ))
               ] }),
-              /* @__PURE__ */ jsxs("div", { className: "flex items-center gap-3", children: [
-                /* @__PURE__ */ jsx(
-                  Link,
-                  {
-                    to: "/contact",
-                    className: "hidden rounded-full bg-[#004696] px-5 py-2.5 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(0,70,150,0.25)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1e8eab] sm:inline-flex",
-                    children: "Let's Talk"
-                  }
-                ),
-                /* @__PURE__ */ jsx(
-                  "button",
-                  {
-                    className: "inline-flex h-11 w-11 items-center justify-center rounded-full border border-[rgba(0,70,150,0.14)] text-[#0b1f33] transition-colors hover:bg-[#f3f8fa] lg:hidden",
-                    "aria-label": "Open menu",
-                    onClick: () => setMobileOpen(true),
-                    children: /* @__PURE__ */ jsx(Menu, { size: 20 })
-                  }
-                )
-              ] })
+              /* @__PURE__ */ jsx("div", { className: "flex items-center gap-3", children: /* @__PURE__ */ jsx(
+                "button",
+                {
+                  className: "inline-flex h-11 w-11 items-center justify-center rounded-full border border-[rgba(0,70,150,0.14)] text-[#0b1f33] transition-colors hover:bg-[#f3f8fa] lg:hidden",
+                  "aria-label": mobileOpen ? "Close menu" : "Open menu",
+                  "aria-expanded": mobileOpen,
+                  onClick: () => setMobileOpen((v) => !v),
+                  children: mobileOpen ? /* @__PURE__ */ jsx(X, { size: 20 }) : /* @__PURE__ */ jsx(Menu, { size: 20 })
+                }
+              ) })
             ]
           }
         )
@@ -764,8 +728,13 @@ function Navbar() {
 const SOCIAL_LINKS = [
   {
     name: "LinkedIn",
-    href: "#",
+    href: "https://www.linkedin.com/company/nexadigify%C2%AE/",
     icon: /* @__PURE__ */ jsx("svg", { width: "16", height: "16", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ jsx("path", { d: "M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" }) })
+  },
+  {
+    name: "WhatsApp",
+    href: "https://wa.me/923102344440",
+    icon: /* @__PURE__ */ jsx("svg", { width: "16", height: "16", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ jsx("path", { d: "M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" }) })
   },
   {
     name: "X",
@@ -797,6 +766,8 @@ function Footer() {
             {
               href: item.href,
               "aria-label": item.name,
+              target: item.href.startsWith("http") ? "_blank" : void 0,
+              rel: item.href.startsWith("http") ? "noopener noreferrer" : void 0,
               className: "flex h-10 w-10 items-center justify-center rounded-full border border-[rgba(0,70,150,0.14)] text-[#004696] transition-colors duration-200 hover:border-[#1e8eab] hover:bg-[#f3f8fa]",
               children: item.icon
             },
@@ -828,8 +799,24 @@ function Footer() {
         /* @__PURE__ */ jsxs("div", { children: [
           /* @__PURE__ */ jsx("h3", { className: "mb-4 text-sm font-bold uppercase tracking-wide text-[#004696]", children: "Connect" }),
           /* @__PURE__ */ jsxs("ul", { className: "space-y-2.5 text-sm text-[#526575]", children: [
-            /* @__PURE__ */ jsx("li", { children: "hello@nexadigify.com" }),
-            /* @__PURE__ */ jsx("li", { children: "+92 51 1234567" }),
+            /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx(
+              "a",
+              {
+                href: "mailto:hello@nexadigify.com",
+                className: "transition-colors hover:text-[#1e8eab]",
+                children: "hello@nexadigify.com"
+              }
+            ) }),
+            /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx(
+              "a",
+              {
+                href: "https://wa.me/923102344440",
+                target: "_blank",
+                rel: "noopener noreferrer",
+                className: "transition-colors hover:text-[#1e8eab]",
+                children: "+92 310 2344440 (WhatsApp)"
+              }
+            ) }),
             /* @__PURE__ */ jsx("li", { children: "Islamabad, Pakistan" })
           ] })
         ] })
@@ -914,7 +901,7 @@ function PageTransition({ children }) {
     location.pathname
   ) });
 }
-const stylesheet = "/assets/app-CjMlnFKr.css";
+const stylesheet = "/assets/app-CX4zuaPh.css";
 const links = () => [{
   rel: "stylesheet",
   href: stylesheet
@@ -2224,11 +2211,13 @@ const LEADERSHIP = [{
   name: "Shahab u Deen",
   role: "Co-Founder & Director",
   image: "/Shahab.png",
+  linkedin: "https://www.linkedin.com/in/shahab-u-deen-7535ab34a",
   bio: ["Shahab u Deen is the Co-Founder and Director of Nexadigify, where he leads the technical vision behind every system the agency builds. A full-stack web developer at his core, he has spent his career at the intersection of code, AI, and growth — designing platforms that don't just function, but perform.", "His expertise spans agentic AI development, end-to-end web architecture, and digital marketing strategy, giving him a rare, complete view of how a product is built, automated, and taken to market. At Nexadigify, he drives the engineering standard the team builds to: production-grade systems, intelligently automated, and always tied back to measurable business outcomes.", "Shahab believes technology should work quietly in the background — solving real problems without adding complexity. That philosophy shapes everything from the agency's architecture decisions to the way it partners with clients."]
 }, {
   name: "Salman Afridi",
   role: "Co-Founder & CEO",
   image: "/salman.png",
+  linkedin: "https://www.linkedin.com/in/salman-afridi-3363a931a?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
   bio: ["Salman Afridi is the Co-Founder and CEO of Nexadigify, where he sets the agency's direction and drives its growth as a technology partner for businesses building AI-powered systems. A full-stack web developer by training, he brings a builder's perspective to leadership — every decision he makes about strategy, partnerships, and client relationships is grounded in a real understanding of how software gets built and shipped.", "Under his leadership, Nexadigify has grown into a team that treats engineering as a craft and client outcomes as the only real measure of success. Salman's focus is simple: build a company that clients trust with their most important systems, and back that trust with work that holds up in production."]
 }];
 const about = UNSAFE_withComponentProps(function About() {
@@ -2368,9 +2357,28 @@ const about = UNSAFE_withComponentProps(function About() {
                     loading: "lazy"
                   })
                 }), /* @__PURE__ */ jsxs("div", {
-                  children: [/* @__PURE__ */ jsx("span", {
-                    className: "inline-flex items-center rounded-full bg-[#f3f8fa] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#1e8eab]",
-                    children: leader.role
+                  className: "flex-1 min-w-0",
+                  children: [/* @__PURE__ */ jsxs("div", {
+                    className: "flex items-center justify-between gap-2",
+                    children: [/* @__PURE__ */ jsx("span", {
+                      className: "inline-flex items-center rounded-full bg-[#f3f8fa] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#1e8eab]",
+                      children: leader.role
+                    }), leader.linkedin && /* @__PURE__ */ jsx("a", {
+                      href: leader.linkedin,
+                      target: "_blank",
+                      rel: "noopener noreferrer",
+                      "aria-label": `${leader.name} on LinkedIn`,
+                      className: "inline-flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(0,70,150,0.14)] text-[#004696] transition-all duration-200 hover:border-[#1e8eab] hover:bg-[#1e8eab] hover:text-white",
+                      children: /* @__PURE__ */ jsx("svg", {
+                        width: "15",
+                        height: "15",
+                        viewBox: "0 0 24 24",
+                        fill: "currentColor",
+                        children: /* @__PURE__ */ jsx("path", {
+                          d: "M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"
+                        })
+                      })
+                    })]
                   }), /* @__PURE__ */ jsx("h3", {
                     className: "mt-2 text-2xl sm:text-3xl font-extrabold text-[#0b1f33]",
                     children: leader.name
@@ -3565,7 +3573,7 @@ const CONTACT_DETAILS = [{
   label: "hello@nexadigify.com"
 }, {
   icon: Phone,
-  label: "+91 9876543210"
+  label: "+92 310 2344440"
 }, {
   icon: MapPin,
   label: "Islamabad, Pakistan"
@@ -3936,7 +3944,7 @@ const route8 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProper
   default: careers,
   meta
 }, Symbol.toStringTag, { value: "Module" }));
-const serverManifest = { "entry": { "module": "/assets/entry.client-CumgHwSh.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js"], "css": [] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": true, "module": "/assets/root-C6_Uob3e.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/arrow-right-IQB89q_J.js", "/assets/solutions-DGS5J_xd.js", "/assets/chevron-down-C-wnGQGG.js", "/assets/workflow-BZKWucxU.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/home": { "id": "routes/home", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/home-BEGuiMpE.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CKJzDo60.js", "/assets/arrow-right-IQB89q_J.js", "/assets/arrow-up-right-CpFtQvYW.js", "/assets/CapabilityPill-Bq2zShMu.js", "/assets/CTASection-BlFs3cYz.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/workflow-BZKWucxU.js", "/assets/sparkles-DoRaVLZ9.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/about": { "id": "routes/about", "parentId": "root", "path": "about", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/about-CkwlxxCm.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CKJzDo60.js", "/assets/CTASection-BlFs3cYz.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/arrow-right-IQB89q_J.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/solutions/index": { "id": "routes/solutions/index", "parentId": "root", "path": "solutions", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/index-D-VqNYmz.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CKJzDo60.js", "/assets/arrow-right-IQB89q_J.js", "/assets/CTASection-BlFs3cYz.js", "/assets/solutions-DGS5J_xd.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/workflow-BZKWucxU.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/solutions/detail": { "id": "routes/solutions/detail", "parentId": "root", "path": "solutions/:slug", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": true, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/detail-DKy8vdjL.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CKJzDo60.js", "/assets/CapabilityPill-Bq2zShMu.js", "/assets/CTASection-BlFs3cYz.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/solutions-DGS5J_xd.js", "/assets/circle-check-DOzy85Ul.js", "/assets/arrow-right-IQB89q_J.js", "/assets/workflow-BZKWucxU.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/portfolio/index": { "id": "routes/portfolio/index", "parentId": "root", "path": "portfolio", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/index-BHyH3t8r.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CKJzDo60.js", "/assets/portfolio-Bl4GiWbd.js", "/assets/CTASection-BlFs3cYz.js", "/assets/arrow-right-IQB89q_J.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/arrow-up-right-CpFtQvYW.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/portfolio/detail": { "id": "routes/portfolio/detail", "parentId": "root", "path": "portfolio/:slug", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": true, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/detail-KgI_5l11.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/portfolio-Bl4GiWbd.js", "/assets/CTASection-BlFs3cYz.js", "/assets/arrow-right-IQB89q_J.js", "/assets/arrow-up-right-CpFtQvYW.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/contact": { "id": "routes/contact", "parentId": "root", "path": "contact", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/contact-DmgKhtSo.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/ContactForm-Cyh4H_66.js", "/assets/arrow-right-IQB89q_J.js", "/assets/circle-check-DOzy85Ul.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/careers": { "id": "routes/careers", "parentId": "root", "path": "careers", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/careers-HZxbmXB9.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CKJzDo60.js", "/assets/ContactForm-Cyh4H_66.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/sparkles-DoRaVLZ9.js", "/assets/arrow-right-IQB89q_J.js", "/assets/chevron-down-C-wnGQGG.js", "/assets/circle-check-DOzy85Ul.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 } }, "url": "/assets/manifest-305cb646.js", "version": "305cb646", "sri": void 0 };
+const serverManifest = { "entry": { "module": "/assets/entry.client-CumgHwSh.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js"], "css": [] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": true, "module": "/assets/root-D09y7Bv1.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/arrow-right-IQB89q_J.js", "/assets/solutions-DGS5J_xd.js", "/assets/chevron-down-C-wnGQGG.js", "/assets/workflow-BZKWucxU.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/home": { "id": "routes/home", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/home-BEGuiMpE.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CKJzDo60.js", "/assets/arrow-right-IQB89q_J.js", "/assets/arrow-up-right-CpFtQvYW.js", "/assets/CapabilityPill-Bq2zShMu.js", "/assets/CTASection-BlFs3cYz.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/workflow-BZKWucxU.js", "/assets/sparkles-DoRaVLZ9.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/about": { "id": "routes/about", "parentId": "root", "path": "about", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/about-CUC3OmFG.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CKJzDo60.js", "/assets/CTASection-BlFs3cYz.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/arrow-right-IQB89q_J.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/solutions/index": { "id": "routes/solutions/index", "parentId": "root", "path": "solutions", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/index-D-VqNYmz.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CKJzDo60.js", "/assets/arrow-right-IQB89q_J.js", "/assets/CTASection-BlFs3cYz.js", "/assets/solutions-DGS5J_xd.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/workflow-BZKWucxU.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/solutions/detail": { "id": "routes/solutions/detail", "parentId": "root", "path": "solutions/:slug", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": true, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/detail-DKy8vdjL.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CKJzDo60.js", "/assets/CapabilityPill-Bq2zShMu.js", "/assets/CTASection-BlFs3cYz.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/solutions-DGS5J_xd.js", "/assets/circle-check-DOzy85Ul.js", "/assets/arrow-right-IQB89q_J.js", "/assets/workflow-BZKWucxU.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/portfolio/index": { "id": "routes/portfolio/index", "parentId": "root", "path": "portfolio", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/index-BHyH3t8r.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CKJzDo60.js", "/assets/portfolio-Bl4GiWbd.js", "/assets/CTASection-BlFs3cYz.js", "/assets/arrow-right-IQB89q_J.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/arrow-up-right-CpFtQvYW.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/portfolio/detail": { "id": "routes/portfolio/detail", "parentId": "root", "path": "portfolio/:slug", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": true, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/detail-KgI_5l11.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/portfolio-Bl4GiWbd.js", "/assets/CTASection-BlFs3cYz.js", "/assets/arrow-right-IQB89q_J.js", "/assets/arrow-up-right-CpFtQvYW.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/contact": { "id": "routes/contact", "parentId": "root", "path": "contact", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/contact-VDwrDmQF.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/ContactForm-Cyh4H_66.js", "/assets/arrow-right-IQB89q_J.js", "/assets/circle-check-DOzy85Ul.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/careers": { "id": "routes/careers", "parentId": "root", "path": "careers", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/careers-HZxbmXB9.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CKJzDo60.js", "/assets/ContactForm-Cyh4H_66.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/sparkles-DoRaVLZ9.js", "/assets/arrow-right-IQB89q_J.js", "/assets/chevron-down-C-wnGQGG.js", "/assets/circle-check-DOzy85Ul.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 } }, "url": "/assets/manifest-c77b360c.js", "version": "c77b360c", "sri": void 0 };
 const assetsBuildDirectory = "build/client";
 const basename = "/";
 const future = { "unstable_optimizeDeps": false, "v8_passThroughRequests": false, "v8_trailingSlashAwareDataRequests": false, "unstable_previewServerPrerendering": false, "v8_middleware": false, "v8_splitRouteModules": false, "v8_viteEnvironmentApi": false };
