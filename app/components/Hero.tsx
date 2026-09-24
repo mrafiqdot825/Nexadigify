@@ -58,12 +58,12 @@ export function Hero({
   const renderTechMarquee = showTechMarquee ?? !compact;
 
   return (
-    <section className="relative flex w-full flex-col overflow-hidden pt-20 pb-8 sm:pt-28 sm:pb-14 lg:min-h-screen lg:min-h-[100dvh] lg:justify-center lg:pt-32 lg:pb-20">
+    <section className="relative flex w-full flex-col overflow-hidden pt-24 pb-10 sm:pt-28 sm:pb-14 lg:min-h-screen lg:min-h-[100dvh] lg:justify-center lg:pt-32 lg:pb-20">
       <AnimatedBackground variant="hero" />
       <div
         className={`relative z-10 mx-auto w-full px-4 sm:px-6 lg:px-8 ${
           renderVisualization
-            ? "grid max-w-7xl grid-cols-1 items-center gap-6 sm:gap-10 lg:grid-cols-2 lg:gap-16"
+            ? "grid max-w-7xl grid-cols-1 items-center gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-16"
             : "max-w-4xl"
         }`}
       >
@@ -73,14 +73,14 @@ export function Hero({
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="mb-4 sm:mb-6 inline-flex items-center gap-2 rounded-full border border-[rgba(0,70,150,0.16)] bg-white/80 px-3.5 py-1 sm:px-4 sm:py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-[#004696] backdrop-blur-sm"
+              className="mb-5 sm:mb-6 inline-flex items-center gap-3 rounded-full border border-[rgba(0,70,150,0.2)] bg-white/95 px-5 py-2.5 text-sm sm:text-base font-bold uppercase tracking-[0.14em] text-[#004696] shadow-xs backdrop-blur-md"
             >
-              <span className="h-1.5 w-1.5 rounded-full bg-[#1e8eab]" />
+              <span className="h-3 w-3 rounded-full bg-[#1e8eab] animate-pulse" />
               {eyebrow}
             </motion.span>
           )}
 
-          <h1 className="text-[clamp(1.9rem,5.5vw,4.2rem)] font-extrabold leading-[1.08] tracking-tight text-[#0b1f33] break-words">
+          <h1 className="text-[2.85rem] min-[380px]:text-[3.35rem] min-[430px]:text-[3.75rem] sm:text-[4rem] lg:text-[4.4rem] font-black leading-[1.04] tracking-tight text-[#0b1f33] break-words">
             {titleLines.map((line, i) => (
               <motion.span
                 key={i}
@@ -116,7 +116,7 @@ export function Hero({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4 }}
-            className="mt-4 sm:mt-7 max-w-lg text-base sm:text-lg leading-relaxed text-[#526575]"
+            className="mt-6 sm:mt-8 max-w-xl text-[19px] min-[380px]:text-[21px] sm:text-[22px] font-normal leading-relaxed text-[#3e5263]"
           >
             {description}
           </motion.p>
@@ -125,21 +125,21 @@ export function Hero({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.55 }}
-            className="mt-6 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto"
+            className="mt-8 sm:mt-11 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto"
           >
             <HeroButton
               to={primaryTo}
-              className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#004696] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(0,70,150,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1e8eab] hover:shadow-[0_16px_32px_rgba(30,142,171,0.32)]"
+              className="group inline-flex items-center justify-center gap-3 rounded-full bg-[#004696] px-9 py-5 text-[18px] sm:text-[19px] font-bold text-white shadow-[0_16px_36px_rgba(0,70,150,0.36)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1e8eab] hover:shadow-[0_20px_40px_rgba(30,142,171,0.4)] active:scale-[0.98]"
             >
               {primaryLabel}
               <ArrowRight
-                size={16}
+                size={22}
                 className="transition-transform duration-300 group-hover:translate-x-1"
               />
             </HeroButton>
             <HeroButton
               to={secondaryTo}
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-[rgba(0,70,150,0.28)] bg-white px-7 py-3.5 text-sm font-semibold text-[#004696] transition-all duration-300 hover:border-[#1e8eab] hover:bg-[#f3f8fa]"
+              className="inline-flex items-center justify-center gap-3 rounded-full border-2 border-[rgba(0,70,150,0.26)] bg-white px-9 py-5 text-[18px] sm:text-[19px] font-bold text-[#004696] shadow-sm backdrop-blur-xs transition-all duration-300 hover:border-[#1e8eab] hover:bg-[#f3f8fa] active:scale-[0.98]"
             >
               {secondaryLabel}
             </HeroButton>

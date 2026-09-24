@@ -15,13 +15,13 @@ export function HeroVisualization() {
   ];
 
   return (
-    <div className="relative mx-auto flex h-[250px] w-[250px] min-[380px]:h-[290px] min-[380px]:w-[290px] sm:h-[380px] sm:w-[380px] lg:h-[460px] lg:w-[460px] max-w-full aspect-square items-center justify-center">
+    <div className="relative mx-auto flex h-[320px] w-[320px] min-[370px]:h-[350px] min-[370px]:w-[350px] min-[420px]:h-[385px] min-[420px]:w-[385px] sm:h-[420px] sm:w-[420px] lg:h-[480px] lg:w-[480px] max-w-full aspect-square items-center justify-center">
       {/* Soft glow field */}
       <div
         className="absolute h-full w-full rounded-full blur-2xl sm:blur-3xl"
         style={{
           background:
-            "radial-gradient(circle, rgba(30,142,171,0.18), transparent 65%)",
+            "radial-gradient(circle, rgba(30,142,171,0.24), rgba(0,70,150,0.1) 45%, transparent 70%)",
         }}
       />
 

@@ -228,10 +228,10 @@ export function TechIconsMarquee() {
   const duplicatedIcons = [...TECH_ICONS, ...TECH_ICONS];
 
   return (
-    <div className="relative w-full overflow-hidden py-3 sm:py-4">
+    <div className="relative w-full overflow-hidden py-4 sm:py-6">
       {/* Edge fade masks */}
       <div className="relative mx-auto w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-        <div className="flex w-max animate-marquee items-center gap-10 sm:gap-14 lg:gap-16 hover:[animation-play-state:paused]">
+        <div className="flex w-max animate-marquee items-center gap-6 sm:gap-8 lg:gap-10 hover:[animation-play-state:paused]">
           {duplicatedIcons.map((tech, index) => {
             const IconComponent = tech.Icon;
             return (
@@ -239,9 +239,9 @@ export function TechIconsMarquee() {
                 key={`${tech.name}-${index}`}
                 title={tech.name}
                 aria-label={tech.name}
-                className="group flex shrink-0 items-center justify-center text-[#526575]/50 transition-all duration-300 hover:scale-115 hover:text-[#004696]"
+                className="group flex shrink-0 items-center justify-center rounded-2xl border border-[rgba(0,70,150,0.12)] bg-white/75 p-3 shadow-xs backdrop-blur-xs text-[#004696]/80 transition-all duration-300 hover:scale-110 hover:border-[#1e8eab] hover:bg-white hover:text-[#004696] hover:shadow-md sm:p-3.5"
               >
-                <IconComponent className="h-7 w-7 sm:h-8 sm:w-8 transition-colors duration-300" />
+                <IconComponent className="h-10 w-10 sm:h-12 sm:w-12 transition-colors duration-300" />
               </div>
             );
           })}

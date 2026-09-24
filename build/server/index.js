@@ -735,16 +735,6 @@ const SOCIAL_LINKS = [
     name: "WhatsApp",
     href: "https://wa.me/923102344440",
     icon: /* @__PURE__ */ jsx("svg", { width: "16", height: "16", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ jsx("path", { d: "M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" }) })
-  },
-  {
-    name: "X",
-    href: "#",
-    icon: /* @__PURE__ */ jsx("svg", { width: "15", height: "15", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ jsx("path", { d: "M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" }) })
-  },
-  {
-    name: "GitHub",
-    href: "#",
-    icon: /* @__PURE__ */ jsx("svg", { width: "16", height: "16", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ jsx("path", { d: "M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z" }) })
   }
 ];
 const COMPANY_LINKS = [
@@ -901,7 +891,7 @@ function PageTransition({ children }) {
     location.pathname
   ) });
 }
-const stylesheet = "/assets/app-CX4zuaPh.css";
+const stylesheet = "/assets/app-CcsuztI4.css";
 const links = () => [{
   rel: "stylesheet",
   href: stylesheet
@@ -1162,13 +1152,13 @@ function HeroVisualization() {
     { angle: 240, ring: 2 },
     { angle: 330, ring: 2 }
   ];
-  return /* @__PURE__ */ jsxs("div", { className: "relative mx-auto flex h-[250px] w-[250px] min-[380px]:h-[290px] min-[380px]:w-[290px] sm:h-[380px] sm:w-[380px] lg:h-[460px] lg:w-[460px] max-w-full aspect-square items-center justify-center", children: [
+  return /* @__PURE__ */ jsxs("div", { className: "relative mx-auto flex h-[320px] w-[320px] min-[370px]:h-[350px] min-[370px]:w-[350px] min-[420px]:h-[385px] min-[420px]:w-[385px] sm:h-[420px] sm:w-[420px] lg:h-[480px] lg:w-[480px] max-w-full aspect-square items-center justify-center", children: [
     /* @__PURE__ */ jsx(
       "div",
       {
         className: "absolute h-full w-full rounded-full blur-2xl sm:blur-3xl",
         style: {
-          background: "radial-gradient(circle, rgba(30,142,171,0.18), transparent 65%)"
+          background: "radial-gradient(circle, rgba(30,142,171,0.24), rgba(0,70,150,0.1) 45%, transparent 70%)"
         }
       }
     ),
@@ -1463,15 +1453,15 @@ const TECH_ICONS = [
 ];
 function TechIconsMarquee() {
   const duplicatedIcons = [...TECH_ICONS, ...TECH_ICONS];
-  return /* @__PURE__ */ jsx("div", { className: "relative w-full overflow-hidden py-3 sm:py-4", children: /* @__PURE__ */ jsx("div", { className: "relative mx-auto w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]", children: /* @__PURE__ */ jsx("div", { className: "flex w-max animate-marquee items-center gap-10 sm:gap-14 lg:gap-16 hover:[animation-play-state:paused]", children: duplicatedIcons.map((tech, index2) => {
+  return /* @__PURE__ */ jsx("div", { className: "relative w-full overflow-hidden py-4 sm:py-6", children: /* @__PURE__ */ jsx("div", { className: "relative mx-auto w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]", children: /* @__PURE__ */ jsx("div", { className: "flex w-max animate-marquee items-center gap-6 sm:gap-8 lg:gap-10 hover:[animation-play-state:paused]", children: duplicatedIcons.map((tech, index2) => {
     const IconComponent = tech.Icon;
     return /* @__PURE__ */ jsx(
       "div",
       {
         title: tech.name,
         "aria-label": tech.name,
-        className: "group flex shrink-0 items-center justify-center text-[#526575]/50 transition-all duration-300 hover:scale-115 hover:text-[#004696]",
-        children: /* @__PURE__ */ jsx(IconComponent, { className: "h-7 w-7 sm:h-8 sm:w-8 transition-colors duration-300" })
+        className: "group flex shrink-0 items-center justify-center rounded-2xl border border-[rgba(0,70,150,0.12)] bg-white/75 p-3 shadow-xs backdrop-blur-xs text-[#004696]/80 transition-all duration-300 hover:scale-110 hover:border-[#1e8eab] hover:bg-white hover:text-[#004696] hover:shadow-md sm:p-3.5",
+        children: /* @__PURE__ */ jsx(IconComponent, { className: "h-10 w-10 sm:h-12 sm:w-12 transition-colors duration-300" })
       },
       `${tech.name}-${index2}`
     );
@@ -1501,12 +1491,12 @@ function Hero({
 }) {
   const renderVisualization = showVisualization ?? !compact;
   const renderTechMarquee = showTechMarquee ?? !compact;
-  return /* @__PURE__ */ jsxs("section", { className: "relative flex w-full flex-col overflow-hidden pt-20 pb-8 sm:pt-28 sm:pb-14 lg:min-h-screen lg:min-h-[100dvh] lg:justify-center lg:pt-32 lg:pb-20", children: [
+  return /* @__PURE__ */ jsxs("section", { className: "relative flex w-full flex-col overflow-hidden pt-24 pb-10 sm:pt-28 sm:pb-14 lg:min-h-screen lg:min-h-[100dvh] lg:justify-center lg:pt-32 lg:pb-20", children: [
     /* @__PURE__ */ jsx(AnimatedBackground, { variant: "hero" }),
     /* @__PURE__ */ jsxs(
       "div",
       {
-        className: `relative z-10 mx-auto w-full px-4 sm:px-6 lg:px-8 ${renderVisualization ? "grid max-w-7xl grid-cols-1 items-center gap-6 sm:gap-10 lg:grid-cols-2 lg:gap-16" : "max-w-4xl"}`,
+        className: `relative z-10 mx-auto w-full px-4 sm:px-6 lg:px-8 ${renderVisualization ? "grid max-w-7xl grid-cols-1 items-center gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-16" : "max-w-4xl"}`,
         children: [
           /* @__PURE__ */ jsxs("div", { className: renderVisualization ? void 0 : "max-w-3xl", children: [
             eyebrow && /* @__PURE__ */ jsxs(
@@ -1515,14 +1505,14 @@ function Hero({
                 initial: { opacity: 0, y: 10 },
                 animate: { opacity: 1, y: 0 },
                 transition: { duration: 0.6 },
-                className: "mb-4 sm:mb-6 inline-flex items-center gap-2 rounded-full border border-[rgba(0,70,150,0.16)] bg-white/80 px-3.5 py-1 sm:px-4 sm:py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-[#004696] backdrop-blur-sm",
+                className: "mb-5 sm:mb-6 inline-flex items-center gap-3 rounded-full border border-[rgba(0,70,150,0.2)] bg-white/95 px-5 py-2.5 text-sm sm:text-base font-bold uppercase tracking-[0.14em] text-[#004696] shadow-xs backdrop-blur-md",
                 children: [
-                  /* @__PURE__ */ jsx("span", { className: "h-1.5 w-1.5 rounded-full bg-[#1e8eab]" }),
+                  /* @__PURE__ */ jsx("span", { className: "h-3 w-3 rounded-full bg-[#1e8eab] animate-pulse" }),
                   eyebrow
                 ]
               }
             ),
-            /* @__PURE__ */ jsx("h1", { className: "text-[clamp(1.9rem,5.5vw,4.2rem)] font-extrabold leading-[1.08] tracking-tight text-[#0b1f33] break-words", children: titleLines.map((line, i) => /* @__PURE__ */ jsx(
+            /* @__PURE__ */ jsx("h1", { className: "text-[2.85rem] min-[380px]:text-[3.35rem] min-[430px]:text-[3.75rem] sm:text-[4rem] lg:text-[4.4rem] font-black leading-[1.04] tracking-tight text-[#0b1f33] break-words", children: titleLines.map((line, i) => /* @__PURE__ */ jsx(
               motion.span,
               {
                 initial: { opacity: 0, y: 24 },
@@ -1557,7 +1547,7 @@ function Hero({
                 initial: { opacity: 0, y: 20 },
                 animate: { opacity: 1, y: 0 },
                 transition: { duration: 0.7, delay: 0.4 },
-                className: "mt-4 sm:mt-7 max-w-lg text-base sm:text-lg leading-relaxed text-[#526575]",
+                className: "mt-6 sm:mt-8 max-w-xl text-[19px] min-[380px]:text-[21px] sm:text-[22px] font-normal leading-relaxed text-[#3e5263]",
                 children: description
               }
             ),
@@ -1567,19 +1557,19 @@ function Hero({
                 initial: { opacity: 0, y: 20 },
                 animate: { opacity: 1, y: 0 },
                 transition: { duration: 0.7, delay: 0.55 },
-                className: "mt-6 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto",
+                className: "mt-8 sm:mt-11 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto",
                 children: [
                   /* @__PURE__ */ jsxs(
                     HeroButton,
                     {
                       to: primaryTo,
-                      className: "group inline-flex items-center justify-center gap-2 rounded-full bg-[#004696] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(0,70,150,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1e8eab] hover:shadow-[0_16px_32px_rgba(30,142,171,0.32)]",
+                      className: "group inline-flex items-center justify-center gap-3 rounded-full bg-[#004696] px-9 py-5 text-[18px] sm:text-[19px] font-bold text-white shadow-[0_16px_36px_rgba(0,70,150,0.36)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1e8eab] hover:shadow-[0_20px_40px_rgba(30,142,171,0.4)] active:scale-[0.98]",
                       children: [
                         primaryLabel,
                         /* @__PURE__ */ jsx(
                           ArrowRight,
                           {
-                            size: 16,
+                            size: 22,
                             className: "transition-transform duration-300 group-hover:translate-x-1"
                           }
                         )
@@ -1590,7 +1580,7 @@ function Hero({
                     HeroButton,
                     {
                       to: secondaryTo,
-                      className: "inline-flex items-center justify-center gap-2 rounded-full border border-[rgba(0,70,150,0.28)] bg-white px-7 py-3.5 text-sm font-semibold text-[#004696] transition-all duration-300 hover:border-[#1e8eab] hover:bg-[#f3f8fa]",
+                      className: "inline-flex items-center justify-center gap-3 rounded-full border-2 border-[rgba(0,70,150,0.26)] bg-white px-9 py-5 text-[18px] sm:text-[19px] font-bold text-[#004696] shadow-sm backdrop-blur-xs transition-all duration-300 hover:border-[#1e8eab] hover:bg-[#f3f8fa] active:scale-[0.98]",
                       children: secondaryLabel
                     }
                   )
@@ -3944,7 +3934,7 @@ const route8 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProper
   default: careers,
   meta
 }, Symbol.toStringTag, { value: "Module" }));
-const serverManifest = { "entry": { "module": "/assets/entry.client-CumgHwSh.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js"], "css": [] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": true, "module": "/assets/root-D09y7Bv1.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/arrow-right-IQB89q_J.js", "/assets/solutions-DGS5J_xd.js", "/assets/chevron-down-C-wnGQGG.js", "/assets/workflow-BZKWucxU.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/home": { "id": "routes/home", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/home-BEGuiMpE.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CKJzDo60.js", "/assets/arrow-right-IQB89q_J.js", "/assets/arrow-up-right-CpFtQvYW.js", "/assets/CapabilityPill-Bq2zShMu.js", "/assets/CTASection-BlFs3cYz.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/workflow-BZKWucxU.js", "/assets/sparkles-DoRaVLZ9.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/about": { "id": "routes/about", "parentId": "root", "path": "about", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/about-CUC3OmFG.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CKJzDo60.js", "/assets/CTASection-BlFs3cYz.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/arrow-right-IQB89q_J.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/solutions/index": { "id": "routes/solutions/index", "parentId": "root", "path": "solutions", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/index-D-VqNYmz.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CKJzDo60.js", "/assets/arrow-right-IQB89q_J.js", "/assets/CTASection-BlFs3cYz.js", "/assets/solutions-DGS5J_xd.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/workflow-BZKWucxU.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/solutions/detail": { "id": "routes/solutions/detail", "parentId": "root", "path": "solutions/:slug", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": true, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/detail-DKy8vdjL.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CKJzDo60.js", "/assets/CapabilityPill-Bq2zShMu.js", "/assets/CTASection-BlFs3cYz.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/solutions-DGS5J_xd.js", "/assets/circle-check-DOzy85Ul.js", "/assets/arrow-right-IQB89q_J.js", "/assets/workflow-BZKWucxU.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/portfolio/index": { "id": "routes/portfolio/index", "parentId": "root", "path": "portfolio", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/index-BHyH3t8r.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CKJzDo60.js", "/assets/portfolio-Bl4GiWbd.js", "/assets/CTASection-BlFs3cYz.js", "/assets/arrow-right-IQB89q_J.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/arrow-up-right-CpFtQvYW.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/portfolio/detail": { "id": "routes/portfolio/detail", "parentId": "root", "path": "portfolio/:slug", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": true, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/detail-KgI_5l11.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/portfolio-Bl4GiWbd.js", "/assets/CTASection-BlFs3cYz.js", "/assets/arrow-right-IQB89q_J.js", "/assets/arrow-up-right-CpFtQvYW.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/contact": { "id": "routes/contact", "parentId": "root", "path": "contact", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/contact-VDwrDmQF.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/ContactForm-Cyh4H_66.js", "/assets/arrow-right-IQB89q_J.js", "/assets/circle-check-DOzy85Ul.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/careers": { "id": "routes/careers", "parentId": "root", "path": "careers", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/careers-HZxbmXB9.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CKJzDo60.js", "/assets/ContactForm-Cyh4H_66.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/sparkles-DoRaVLZ9.js", "/assets/arrow-right-IQB89q_J.js", "/assets/chevron-down-C-wnGQGG.js", "/assets/circle-check-DOzy85Ul.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 } }, "url": "/assets/manifest-c77b360c.js", "version": "c77b360c", "sri": void 0 };
+const serverManifest = { "entry": { "module": "/assets/entry.client-CumgHwSh.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js"], "css": [] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": true, "module": "/assets/root-CH67EuH3.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/arrow-right-IQB89q_J.js", "/assets/solutions-DGS5J_xd.js", "/assets/chevron-down-C-wnGQGG.js", "/assets/workflow-BZKWucxU.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/home": { "id": "routes/home", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/home-B1xWVimO.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CC0555Mw.js", "/assets/arrow-right-IQB89q_J.js", "/assets/arrow-up-right-CpFtQvYW.js", "/assets/CapabilityPill-Bq2zShMu.js", "/assets/CTASection-BlFs3cYz.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/workflow-BZKWucxU.js", "/assets/sparkles-DoRaVLZ9.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/about": { "id": "routes/about", "parentId": "root", "path": "about", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/about-CAsHotRk.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CC0555Mw.js", "/assets/CTASection-BlFs3cYz.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/arrow-right-IQB89q_J.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/solutions/index": { "id": "routes/solutions/index", "parentId": "root", "path": "solutions", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/index-tM53NzbP.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CC0555Mw.js", "/assets/arrow-right-IQB89q_J.js", "/assets/CTASection-BlFs3cYz.js", "/assets/solutions-DGS5J_xd.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/workflow-BZKWucxU.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/solutions/detail": { "id": "routes/solutions/detail", "parentId": "root", "path": "solutions/:slug", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": true, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/detail-BvccgH0c.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CC0555Mw.js", "/assets/CapabilityPill-Bq2zShMu.js", "/assets/CTASection-BlFs3cYz.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/solutions-DGS5J_xd.js", "/assets/circle-check-DOzy85Ul.js", "/assets/arrow-right-IQB89q_J.js", "/assets/workflow-BZKWucxU.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/portfolio/index": { "id": "routes/portfolio/index", "parentId": "root", "path": "portfolio", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/index-C6BMEGL2.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CC0555Mw.js", "/assets/portfolio-Bl4GiWbd.js", "/assets/CTASection-BlFs3cYz.js", "/assets/arrow-right-IQB89q_J.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/arrow-up-right-CpFtQvYW.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/portfolio/detail": { "id": "routes/portfolio/detail", "parentId": "root", "path": "portfolio/:slug", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": true, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/detail-KgI_5l11.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/portfolio-Bl4GiWbd.js", "/assets/CTASection-BlFs3cYz.js", "/assets/arrow-right-IQB89q_J.js", "/assets/arrow-up-right-CpFtQvYW.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/contact": { "id": "routes/contact", "parentId": "root", "path": "contact", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/contact-VDwrDmQF.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/ContactForm-Cyh4H_66.js", "/assets/arrow-right-IQB89q_J.js", "/assets/circle-check-DOzy85Ul.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/careers": { "id": "routes/careers", "parentId": "root", "path": "careers", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasDefaultExport": true, "hasErrorBoundary": false, "module": "/assets/careers-iHTjA5Jj.js", "imports": ["/assets/jsx-runtime-Cra9Yydo.js", "/assets/SectionHeader-CC0555Mw.js", "/assets/ContactForm-Cyh4H_66.js", "/assets/ScrollReveal-BCVoKbK-.js", "/assets/sparkles-DoRaVLZ9.js", "/assets/arrow-right-IQB89q_J.js", "/assets/chevron-down-C-wnGQGG.js", "/assets/circle-check-DOzy85Ul.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 } }, "url": "/assets/manifest-96309320.js", "version": "96309320", "sri": void 0 };
 const assetsBuildDirectory = "build/client";
 const basename = "/";
 const future = { "unstable_optimizeDeps": false, "v8_passThroughRequests": false, "v8_trailingSlashAwareDataRequests": false, "unstable_previewServerPrerendering": false, "v8_middleware": false, "v8_splitRouteModules": false, "v8_viteEnvironmentApi": false };
